@@ -61,7 +61,7 @@ p{
   padding: 10px;
   margin: 0;
   font-size: 22px;
-  line-height: 30px;
+  line-height: 35px;
   font-family: 'Poppins', sans-serif;
 }
 a{
@@ -163,12 +163,13 @@ hr {
     color: $darkHighlight;
   }
 }
+
 .highlight{
   cursor: pointer;
   will-change: transform;
   transition: color 450ms ease-in;
   border-radius: 4px;
-  padding: 2px;
+  padding: 0 5px;
   margin: 2px;
   background-color: rgba(#EFEFEE,.53);
   box-shadow: 0 0 1px rgba(0,0,0,0.25), 
@@ -183,9 +184,9 @@ hr {
     0 1px 2px rgba(0,0,0,0.20), 
     0 2px 4px rgba(0,0,0,0.15), 
     0 4px 8px rgba(0,0,0,0.10),;
+  
   }
 }
-
 
 // main custom scrollbar
 body::-webkit-scrollbar {
