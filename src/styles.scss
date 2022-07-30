@@ -190,7 +190,7 @@ hr {
 
 // main custom scrollbar
 body::-webkit-scrollbar {
-  width: 3px;               
+  width: 5px;               
 }
 
 body::-webkit-scrollbar-track {
@@ -202,6 +202,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;       
   border: 3px solid $secondHighlight;  
 }
+
 //containers custom scrollbar
 .scroll::-webkit-scrollbar {
   width: 3px;               
