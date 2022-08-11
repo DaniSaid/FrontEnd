@@ -16,9 +16,7 @@ export class SectionEducationComponent implements OnInit {
   constructor(private porfolioData:PortfolioDataService) { }
 
   ngOnInit(): void {
-    this.porfolioData.getData().subscribe(data=>{
-      this.myData = data;
-    })
+    
   }
 
 }

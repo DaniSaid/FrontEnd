@@ -15,11 +15,7 @@ export class SectionToolsComponent implements OnInit {
 
   ngOnInit(): void {
   
-    this.portfolioData.getData().subscribe(data =>{
-      console.log(this.myData);
     
-    this.myData = data;
-    });
 
   }
   onDrop(event : CdkDragDrop<string[]>){

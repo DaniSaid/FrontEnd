@@ -15,9 +15,7 @@ myData : any;
 
   ngOnInit(): void {
   
-    this.portfolioData.getData().subscribe(data =>{
-      this.myData = data;
-    })
+   
 
   }
 
