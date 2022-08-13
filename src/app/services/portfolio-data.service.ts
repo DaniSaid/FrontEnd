@@ -9,17 +9,18 @@ import { About } from '../model/About.model';
 })
 export class PortfolioDataService {
 
-  readonly Url = 'https://localhost:8080/portfolio';
+  readonly Url = 'http://localhost:8080';
 
   constructor(private http:HttpClient) { }
 
   getPortfolio(aboutId: number): Observable<Portfolio>{
     console.log("portfolio:" + aboutId);
-    return this.http.get<Portfolio>(this.Url + '/2');
+    return this.http.get<Portfolio>(this.Url + `/portfolio/${aboutId}`);
   }
 
   getAbout(): Observable<About[]>{
     console.log("recuperando about");
     return this.http.get<About[]>(this.Url + '/about');
   }
+
 }
