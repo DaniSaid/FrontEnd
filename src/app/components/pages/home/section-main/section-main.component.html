@@ -3,16 +3,16 @@
         <h1><b>Hola!</b></h1>
     </div>
 
-    <div class="p1 animated section-style">
-        <section *ngFor="let a of about">
+    <div class="p1 animated section-style" *ngFor="let a of about">
+        
         <p>Mi nombre es <a id="myPhoto" class="highlight">{{a.nombre}}</a>, vivo en {{a.provincia}}, <a id="countryPhoto" class="highlight">{{a.pais}}</a>, país donde nací, 
             soy una desarrolladora {{a.titulo}}  autodidacta y fanática del café.</p>
-        </section>
+        
     </div>
 
-    <div class="p2 section-style animated">
+    <div class="p2 section-style animated" *ngFor="let a of about">
         <p>
-         
+         {{a.descripcion}}
         </p>
     </div>
 

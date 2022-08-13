@@ -4,10 +4,10 @@ main{
 .title{
     grid-column: 3 / span 9;
 }
-.p1{
+section, .p1{
     grid-column: 4 / span 8;
 }
-.p2{
+section, .p2{
     grid-column: 3 / span 9;
 }
 about-button{
