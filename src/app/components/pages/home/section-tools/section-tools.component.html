@@ -3,21 +3,17 @@
   <div class="title section-style animated on-hover">
       <h2><b>Herramientas</b></h2>
   </div>
-<!--usar ngFor junto con lista de herramientas,
-    la lista tiene que ser de objetos
-    cada herramienta es un objeto que tiene id, nombre y una url del logo
 
-<div class="cardsGroup animated"
-  cdkDropList #drop="cdkDropList" [cdkDropListData]="myData.tools"
-  (cdkDropListDropped)="onDrop($event)">
-    <mat-card  *ngFor="let tool of myData.tools" cdkDrag>
+<div class="cardsGroup animated">
+    <mat-card  *ngFor="let t of tools" cdkDrag>
       <mat-card-header>
-          <img mat-card-sm-image [src]="tool.logo" alt="logo">
+          <img mat-card-sm-image [src]="t.imagen" alt="logo">
       </mat-card-header>
       <mat-card-content>
-            <h4><b>{{tool.logoName}}</b></h4> 
+            <h4><b>{{t.nombre}}</b></h4> 
       </mat-card-content>
     </mat-card>
     </div>
-  -->
-  </div>
+
+ 
+</div>

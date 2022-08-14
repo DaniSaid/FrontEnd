@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
+import { Tool } from 'src/app/model/Tool.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 
 @Component({
@@ -9,20 +10,21 @@ import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 })
 export class SectionToolsComponent implements OnInit {
 
- myData : any;
+ tools! : Tool[];
 
   constructor(private portfolioData:PortfolioDataService) { }
 
   ngOnInit(): void {
   
-    
+    this.cargarTools();
 
   }
-  onDrop(event : CdkDragDrop<string[]>){
-    if(event.previousContainer === event.container){
-      moveItemInArray(this.myData.tools,
-        event.previousIndex,
-        event.currentIndex)
-    }
+
+  cargarTools(){
+    this.tools = [];
+    this.portfolioData.getTools().subscribe(data => {
+      this.tools = data;
+    });
   }
+
 }
