@@ -1,20 +1,57 @@
 <main class="grid" [ngsRevealSet]="{ reset: true}" [ngsInterval]="400" [ngsSelector]="'.animated'">
+
+    <div>
+        <button type="button" class=""  (click)="editOpen()">edit</button>
+    </div>
+
     <div class="title section-style on-hover animated">
         <h1><b>Hola!</b></h1>
     </div>
 
-    <div class="p1 animated section-style" *ngFor="let a of about">
+    <div class="p1 animated section-style" *ngFor="let a of aboutList">
         
         <p>Mi nombre es <a id="myPhoto" class="highlight">{{a.nombre}}</a>, vivo en {{a.provincia}}, <a id="countryPhoto" class="highlight">{{a.pais}}</a>, país donde nací, 
             soy una desarrolladora {{a.titulo}}  autodidacta y fanática del café.</p>
         
     </div>
 
-    <div class="p2 section-style animated" *ngFor="let a of about">
+    <div class="p2 section-style animated" *ngFor="let a of aboutList">
         <p>
          {{a.descripcion}}
         </p>
     </div>
 
     <about-button class="animated"></about-button>
+
+    <!--modal-->
+    <div *ngIf="open" class="modal">
+        <div class="form-popup">
+            <form [formGroup]="editForm" (ngSubmit)="submit(editForm)" *ngFor="let a of aboutList">
+                <div class="modal-title">
+                    <h2>Editar</h2>
+                <button type="button" class="btn btn-primary" (click)="editClose()">X</button>
+                </div>
+
+                <div class="modal-body">
+                    <label for="nombre"><h3>Nombre</h3></label>
+                    <input type="text" placeholder="nuevo nombre" name="nombre" formControlName="nombre">
+                        
+                    <label for="provincia"><h3>Provincia</h3></label>
+                    <input type="text" placeholder="nuevo provincia" name="provincia" formControlName="provincia">
+
+                    <label for="país"><h3>País</h3></label>
+                    <input type="text" placeholder="nuevo país" name="país" formControlName="país">
+
+                    <label for="título"><h3>Título</h3></label>
+                    <input type="text" placeholder="nuevo título" name="título" formControlName="título">
+
+                    <label for="descripción"><h3>Descripción</h3></label>
+                    <input type="text" placeholder="nueva descripción" name="descripción" formControlName="descripción">
+
+                    <button type="submit">Confirmar Cambios</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
 </main>

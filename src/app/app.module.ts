@@ -8,6 +8,7 @@ import { MaterialModule } from './material.module';
 import { NgsRevealModule } from 'ngx-scrollreveal';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HomeComponent } from './components/pages/home/home.component';
 import { SectionMainComponent } from './components/pages/home/section-main/section-main.component';
@@ -22,8 +23,9 @@ import { Pagina404Component } from './components/pages/pagina404/pagina404.compo
 import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { LoginButtonComponent} from './login-button/login-button.component';
-import { AboutButtonComponent } from './about-button/about-button.component';
+import { LoginButtonComponent} from './components/login-button/login-button.component';
+import { AboutButtonComponent } from './components/about-button/about-button.component';
+import { EditMainComponent } from './components/pages/home/section-main/edit-main/edit-main.component';
 
 
 
@@ -44,6 +46,7 @@ import { AboutButtonComponent } from './about-button/about-button.component';
     SectionProjectsComponent,
     FooterComponent,
     SectionMainComponent,
+    EditMainComponent,
     
   ],
   imports: [
@@ -52,6 +55,8 @@ import { AboutButtonComponent } from './about-button/about-button.component';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgsRevealModule,
     DragDropModule
   ],
