@@ -32,9 +32,7 @@ export class SectionMainComponent implements OnInit {
                                     título: new FormControl(''),
                                     descripción: new FormControl('')});
 
-    this.portfolioData.getAbout().subscribe(data => {
-      this.about = data;
-    });
+    
   }
 
   //métodos para formulario
@@ -66,7 +64,7 @@ export class SectionMainComponent implements OnInit {
 
     }
 
-    this.about = new About(2, form.value.nombre, form.value.provincia, form.value.pais, form.value.titulo, form.value.descripcion, "");
+    this.about = new About(2, form.value.nombre, form.value.provincia, form.value.país, form.value.título, form.value.descripción, "");
    
     this.portfolioData.editAboutData(this.about).subscribe(data =>{
 
