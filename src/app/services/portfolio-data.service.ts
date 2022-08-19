@@ -43,5 +43,8 @@ export class PortfolioDataService {
     return this.http.get<Tool[]>(this.Url + "/tools");
   }
 
+  editTool( id: number, tool: Tool): Observable<any>{
+    return this.http.put<any>(this.Url + `/portfolio/tool/edit/${id}`, tool);
+  }
   
 }

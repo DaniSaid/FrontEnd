@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Pagina404Component implements OnInit {
 
-  constructor() { }
+  constructor(private portfolioDataService: PortfolioDataService) { }
 
   ngOnInit(): void {
   }

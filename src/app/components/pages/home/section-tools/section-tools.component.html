@@ -1,19 +1,49 @@
 <div class="tools">
-  
   <div class="title section-style animated on-hover">
-      <h2><b>Herramientas</b></h2>
+    <h2><b>Herramientas</b></h2>
   </div>
 
-<div class="cardsGroup animated">
-
-    <mat-card  *ngFor="let t of tools" cdkDrag>
-      <mat-card-header>
-          <img mat-card-sm-image [src]="t.imagen" alt="logo">
-      </mat-card-header>
-      <mat-card-content>
+  <div> <button mat-button (click)="editOpen()" routerLink="/">Editar</button> </div>
+  
+  <section class="cardsGroup animated">
+    
+      <div *ngFor="let t of tools">
+        <mat-card cdkDrag>
+          <mat-card-header>
+            <img mat-card-sm-image [src]="t.imagen" alt="logo">
+          </mat-card-header>
+          <mat-card-content>
             <h4><b>{{t.nombre}}</b></h4> 
-      </mat-card-content>
-    </mat-card>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+  </section>
+  
+  <section *ngIf="open" class="modal">
+        
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Editar</h2>
+        <button mat-button (click)="editClose()">X</button>
+      </div>
+      <div class="modal-content" *ngFor="let tool of tools">
+        <form [formGroup]="editForm" (ngSubmit)="submit(tool, editForm)">
+          <label for="nombre"><h3>{{tool.nombre}}</h3></label>
+          <mat-form-field appearance="fill">
+            <mat-label>nuevo nombre</mat-label>
+            <input matInput name="nombre" formControlName="nombre">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>url imagen</mat-label>
+            <input matInput name="imagen" formControlName="imagen">
+          </mat-form-field>
+
+          <input type="submit" value="Confirmar">
+        </form>
+      </div>
     </div>
+
+  </section>
  
 </div>

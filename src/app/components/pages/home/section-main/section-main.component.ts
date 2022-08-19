@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { About } from 'src/app/model/About.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
-import { AboutComponent } from '../../about/about.component';
+
 
 @Component({
   selector: 'app-section-main',
@@ -53,8 +53,9 @@ export class SectionMainComponent implements OnInit {
     console.log('país', form.value.país);
     console.log('título', form.value.título);
     console.log('descripción', form.value.descripción);
+    
     for(let a of this.aboutList){
-      if( form.value != null){
+      if( form.value !== null){
         a.nombre = form.value.nombre;
         a.provincia = form.value.provincia;
         a.pais = form.value.país;
