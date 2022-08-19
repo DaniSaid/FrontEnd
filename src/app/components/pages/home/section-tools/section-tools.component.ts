@@ -52,6 +52,9 @@ export class SectionToolsComponent implements OnInit {
     this.portfolioData.editTool(tool.id, this.tool).subscribe(data => {
       console.log("datos de herramienta editados" + JSON.stringify(data));
     });
+
+    form.value.nombre = '';
+    form.value.imagen = '';
   }
   // métodos mat-form
   
