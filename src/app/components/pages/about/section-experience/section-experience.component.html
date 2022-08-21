@@ -4,28 +4,80 @@
     </div>
 
     <div class="right">
-
-<!--
-        <div class="cardsGroup scroll">
-
-            <mat-card *ngFor="let exp of myData.experience">
-                    <img mat-card-image src="#" alt="icon ET N°21 DE 10" width="50%">
-                <mat-card-header>
-                    <mat-card-title>{{exp.name}}</mat-card-title>
-                    <mat-card-subtitle>trabajo {{exp.workType}} de {{exp.workingHours}}hs diarias</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <p>Puesto: <span>{{exp.position}}</span></p>
-                    <p>Descripción: <span>
-                   {{exp.description}}
-                    </span></p>
-                </mat-card-content> 
-            </mat-card>
-        </div>
+        
+        <mat-card *ngFor="let exp of experienceList">
+            <mat-card-header>
+                <mat-card-title>{{exp.puesto}}</mat-card-title>
+                <mat-card-subtitle>{{exp.detalle}}, {{exp.tipo}}</mat-card-subtitle>
+                <button type="button" (click)="openEdit(exp)">edit</button>
+                <button>delete</button>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Empresa: <span>{{exp.nombreEmpresa}}</span> <span>| {{exp.fechaIni}} - {{exp.fechaFin}}</span></p>
+            </mat-card-content>
+        </mat-card>
     </div>
+
     <div class="left">
-        <img [src]="image" alt="foto de libros" width="100%" height="100%">
+        <button type="button" (click)="openCreate()">Crear</button>
     </div>
--->
+
+    <section *ngIf="addOpen">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Agregar Experiencia</h2>
+                <button type="button" (click)="closeCreate()">X</button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <form [formGroup]="addForm" (ngSubmit)="crearExperiencia(addForm)">
+                <label for="puesto"><h3>Puesto</h3></label>
+                <mat-form-field appearance="fill">
+                    <mat-label>puesto</mat-label>
+                    <input type="text" matInput value="" formControlName="puesto" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>detalle</mat-label>
+                    <input type="text" matInput value="" formControlName="detalle">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>ej: full-time</mat-label>
+                    <input type="text" matInput value="" formControlName="tipo">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>nombre de la empresa</mat-label>
+                    <input type="text" matInput value="" formControlName="nombreEmpresa">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>fecha de Inicio</mat-label>
+                    <input type="text" matInput value="" formControlName="fechaIni">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>fecha de Finalización</mat-label>
+                    <input type="text" matInput value="" formControlName="fechaFin">
+                </mat-form-field>
+                <button type="submit">crear</button>
+            </form>
+        </div>
+    </section>
+
+    <section *ngIf="editOpen">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Editar Experiencia</h2>
+                <button type="button" (click)="closeEdit()">X</button>
+            </div>
+        </div>
+        <div class="modal-content">
+            <form [formGroup]="editForm" (ngSubmit)="editarExperiencia(editForm)">
+                <label for="puesto"><h3>Puesto: </h3></label>
+                <mat-form-field>
+                    <mat-label></mat-label>
+                    <input type="text" matInput value="" formControlName="">
+                </mat-form-field>
+                <button type="submit">confirmar</button>
+            </form>
+        </div>
+    </section>
 
 </div>

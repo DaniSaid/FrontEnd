@@ -20,7 +20,6 @@ import { SectionExperienceComponent } from './components/pages/about/section-exp
 import { SectionProjectsComponent } from './components/pages/home/section-projects/section-projects.component';
 import { Pagina404Component } from './components/pages/pagina404/pagina404.component';
 
-import { LoginComponent } from './login/login.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginButtonComponent} from './components/login-button/login-button.component';
@@ -36,7 +35,6 @@ import { EditMainComponent } from './components/pages/home/section-main/edit-mai
     AboutButtonComponent,
     ToolbarComponent,
     LoginButtonComponent,
-    LoginComponent,
     Pagina404Component,
     SectionToolsComponent,
     SectionContactComponent,

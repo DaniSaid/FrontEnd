@@ -54,14 +54,12 @@ export class SectionMainComponent implements OnInit {
     console.log('título', form.value.título);
     console.log('descripción', form.value.descripción);
     
-    for(let a of this.aboutList){
-      if( form.value !== null){
+    for(let a of this.aboutList){  
         a.nombre = form.value.nombre;
         a.provincia = form.value.provincia;
         a.pais = form.value.país;
         a.titulo = form.value.título;
         a.descripcion = form.value.descripción;
-      }
 
     }
 
