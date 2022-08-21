@@ -55,7 +55,7 @@ export class PortfolioDataService {
   }
 
   //métodos service de Experiencias
-  getExperiencias(): Observable<Experience[]>{
+  traerExperiencias(): Observable<Experience[]>{
     return this.http.get<Experience[]>(this.Url + "/experience-list");
   }
 
@@ -67,8 +67,8 @@ export class PortfolioDataService {
     return this.http.post<any>(this.Url + "/experience/create", experience);
   }
 
-  updateExperience(id: number, experience: Experience): Observable<any>{
-    return this.http.put<any>(this.Url + `/experience/update/${id}`, experience);
+  updateExperience(experience: Experience): Observable<any>{
+    return this.http.put<any>(this.Url + '/experience/update/' + experience.id, experience);
   }
 
   deleteExperience(id: number): Observable<any>{

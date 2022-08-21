@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Experience } from 'src/app/model/Experience.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 
@@ -19,10 +19,11 @@ public editOpen: boolean = false;
 public addForm!: FormGroup;
 public editForm!: FormGroup;
 
-  constructor(private portfolioService: PortfolioDataService) { }
+  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.cargarExperience();
+    this.getExperience();
+
     this.addForm = new FormGroup({
       puesto: new FormControl(''),
       detalle: new FormControl(''),
@@ -31,13 +32,15 @@ public editForm!: FormGroup;
       fechaIni: new FormControl(''),
       fechaFin: new FormControl('')
     });
-    this.editForm = new FormGroup({
-      puesto: new FormControl(''),
-      detalle: new FormControl(''),
-      tipo: new FormControl(''),
-      nombreEmpresa: new FormControl(''),
-      fechaIni: new FormControl(''),
-      fechaFin: new FormControl('')
+
+    this.editForm = this.formBuilder.group({
+      id:[''],
+      puesto: [''],
+      detalle: [''],
+      tipo: [''],
+      nombreEmpresa: [''],
+      fechaIni: [''],
+      fechaFin: ['']
     });
   }
 
@@ -49,19 +52,8 @@ public editForm!: FormGroup;
     this.addOpen = false;
   }
 
-  openEdit(exp: Experience): number{
-    this.editOpen = true;
-    var expId = exp.id;
-    
-    const experience = new Experience(expId,"","","","",0,0);
-    return expId;
-  }
-  closeEdit(): void{
-    this.editOpen = false;
-  }
-
-  cargarExperience(): void {
-    this.portfolioService.getExperiencias().subscribe(data => {
+  getExperience(): void {
+    this.portfolioService.traerExperiencias().subscribe(data => {
       this.experienceList = data
     });
   }
@@ -77,15 +69,30 @@ public editForm!: FormGroup;
     this.portfolioService.saveExperience(experience)
   }
 
-  editarExperiencia(editForm: FormGroup): void {
-    console.log("exp id:" + this.openEdit(this.experience))
-    this.experience.id = this.openEdit(this.experience);
-    this.experience.puesto = editForm.value.puesto;
-    this.experience.detalle = editForm.value.detalle;
-    this.experience.tipo = editForm.value.tipo;
-    this.experience.nombreEmpresa = editForm.value.nombreEmpresa;
-    this.experience.fechaIni = editForm.value.fechaIni;
-    this.experience.fechaFin = editForm.value.fechaFin;
+  openEdit(exp: Experience): void{
+    this.editOpen = true;
+    var expId = exp.id;
+    this.editForm.patchValue({
+      id: expId,
+      puesto: exp.puesto,
+      detalle: exp.detalle,
+      tipo: exp.tipo,
+      nombreEmpresa: exp.nombreEmpresa,
+      fechaIni: exp.fechaIni,
+      fechaFin: exp.fechaFin
+    });
+  }
+  
+  closeEdit(): void{
+    this.editOpen = false;
+  }
+
+  editar(): void{
+    this.portfolioService.updateExperience(this.editForm.value).subscribe(data =>{
+
+      console.log("datos editados:" + JSON.stringify(data));
+      
+    });
   }
 
 }

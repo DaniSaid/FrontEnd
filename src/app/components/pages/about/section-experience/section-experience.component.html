@@ -69,13 +69,38 @@
             </div>
         </div>
         <div class="modal-content">
-            <form [formGroup]="editForm" (ngSubmit)="editarExperiencia(editForm)">
+            <form [formGroup]="editForm" novalidate>
                 <label for="puesto"><h3>Puesto: </h3></label>
                 <mat-form-field>
-                    <mat-label></mat-label>
-                    <input type="text" matInput value="" formControlName="">
+                    <mat-label>nuevo puesto</mat-label>
+                    <input type="text" matInput value="" formControlName="puesto">
                 </mat-form-field>
-                <button type="submit">confirmar</button>
+                <label for="detalle"><h3>Detalle: </h3></label>
+                <mat-form-field>
+                    <mat-label>nuevo detalle</mat-label>
+                    <input type="text" matInput value="" formControlName="detalle">
+                </mat-form-field>
+                <label for="tipo"><h3>Tipo</h3></label>
+                <mat-form-field>
+                    <mat-label>ej: full-time</mat-label>
+                    <input type="text" matInput value="" formControlName="tipo">
+                </mat-form-field>
+                <label for="nombreEmpresa"><h3>Empresa</h3></label>
+                <mat-form-field>
+                    <mat-label>nuevo nombre</mat-label>
+                    <input type="text" matInput value="" formControlName="nombreEmpresa">
+                </mat-form-field>
+                <label for="fechaIni">Fecha Inicio</label>
+                <mat-form-field>
+                    <mat-label>nueva fecha de Inicio</mat-label>
+                    <input type="text" matInput value="" formControlName="fechaIni">
+                </mat-form-field>
+                <label for="fechaFin">nueva Fecha de Finalización</label>
+                    <mat-form-field>
+                        <mat-label>nueva fecha de finalización</mat-label>
+                        <input type="text" matInput value="" formControlName="fechaFin">
+                    </mat-form-field>
+                <button type="button" (click)="editar()">confirmar</button>
             </form>
         </div>
     </section>

@@ -24,8 +24,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginButtonComponent} from './components/login-button/login-button.component';
 import { AboutButtonComponent } from './components/about-button/about-button.component';
-import { EditMainComponent } from './components/pages/home/section-main/edit-main/edit-main.component';
-
 
 
 @NgModule({
@@ -44,7 +42,7 @@ import { EditMainComponent } from './components/pages/home/section-main/edit-mai
     SectionProjectsComponent,
     FooterComponent,
     SectionMainComponent,
-    EditMainComponent,
+
     
   ],
   imports: [
