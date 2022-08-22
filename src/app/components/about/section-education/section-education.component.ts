@@ -38,6 +38,7 @@ export class SectionEducationComponent implements OnInit {
   }
 
   getEducationList(): void{
+    this.educationList = [];
     this.portfolioService.getEducationList().subscribe(
       (eduResponse: Education[])=>{
         this.educationList = eduResponse;

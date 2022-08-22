@@ -10,14 +10,14 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { HomeComponent } from './components/pages/home/home.component';
-import { SectionMainComponent } from './components/pages/home/section-main/section-main.component';
-import { SectionToolsComponent } from './components/pages/home/section-tools/section-tools.component';
-import { SectionContactComponent } from './components/pages/home/section-contact/section-contact.component';
-import { AboutComponent } from './components/pages/about/about.component';
-import { SectionEducationComponent } from './components/pages/about/section-education/section-education.component';
-import { SectionExperienceComponent } from './components/pages/about/section-experience/section-experience.component';
-import { SectionProjectsComponent } from './components/pages/home/section-projects/section-projects.component';
+import { HomeComponent } from './components/home/home.component';
+import { SectionMainComponent } from './components/home/section-main/section-main.component';
+import { SectionToolsComponent } from './components/home/section-tools/section-tools.component';
+import { SectionContactComponent } from './components/home/section-contact/section-contact.component';
+import { AboutComponent } from './components/about/about.component';
+import { SectionEducationComponent } from './components/about/section-education/section-education.component';
+import { SectionExperienceComponent } from './components/about/section-experience/section-experience.component';
+import { SectionProjectsComponent } from './components/home/section-projects/section-projects.component';
 import { Pagina404Component } from './components/pages/pagina404/pagina404.component';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';

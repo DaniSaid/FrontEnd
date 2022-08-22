@@ -31,7 +31,7 @@ export class SectionMainComponent implements OnInit {
                                     país: new FormControl(''),
                                     título: new FormControl(''),
                                     descripción: new FormControl('')});
-
+    
     
   }
 

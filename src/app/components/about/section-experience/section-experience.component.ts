@@ -38,6 +38,10 @@ public editForm!: FormGroup;
     });
   }
 
+  ngOnChanges(): void{
+    this.getExperiences();
+  }
+
   //obtengo mi lista de experiencias del back
   getExperiences(): void {
     this.portfolioService.getExperienceList().subscribe((expResponse: Experience[]) => {
@@ -52,6 +56,7 @@ public editForm!: FormGroup;
   submit(add: NgForm){
     this.portfolioService.saveExperience(add.value).subscribe((expResponse: Experience)=>{
       console.log("exp agregada:" + JSON.stringify(expResponse));
+      this.getExperiences();
     });
     this.closeAdd();
   }
@@ -72,14 +77,16 @@ public editForm!: FormGroup;
       fechaIni: exp.fechaIni,
       fechaFin: exp.fechaFin
     });
+
+    this.getExperiences();
   }
   onEdit(): void{
     this.portfolioService.updateExperience(this.editForm.value).subscribe(data =>{
 
       console.log("datos editados:" + JSON.stringify(data));
-      
+      this.getExperiences();
     });
-    this.closeEdit();
+    
   }
   closeEdit(): void{
     this.modalEdit = false;
@@ -94,6 +101,7 @@ public editForm!: FormGroup;
   onDelete(): void{
     this.portfolioService.deleteExperience(this.deleteId).subscribe(data =>{
       console.log("datos borrados:" + JSON.stringify(data));
+      this.getExperiences();
     });
     this.closeDelete();
   }
