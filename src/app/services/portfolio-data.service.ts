@@ -6,6 +6,7 @@ import { About } from '../model/About.model';
 import { Tool } from '../model/Tool.model';
 import { Skill } from '../model/Skill.model';
 import { Experience } from '../model/Experience.model';
+import { Education } from '../model/Education.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,47 +22,39 @@ export class PortfolioDataService {
     return this.http.get<Portfolio>(this.Url + `/portfolio/${aboutId}`);
   }
 
-  //métodos service mi perfil(about)
+  //---------------métodos service mi perfil(about)---------------
   getAboutList(): Observable<About[]>{
     console.log("recuperando about");
-    return this.http.get<About[]>(this.Url + '/about-list');
+    return this.http.get<About[]>(this.Url + '/about/list');
   }
 
   editAboutData(about: About): Observable<any>{
     return this.http.post<any>(this.Url + '/portfolio/about/edit', about);
   }
   
-  //métodos service de herramientas
+  //---------------métodos service de herramientas---------------
   getTools(): Observable<Tool[]>{
     console.log("obteniendo lista Tools");
-    return this.http.get<Tool[]>(this.Url + "/tools-list");
+    return this.http.get<Tool[]>(this.Url + "/tools/list");
   }
 
   editTool( id:number, tool:Tool): Observable<any>{
     return this.http.put<any>(this.Url + `/portfolio/tool/edit/${id}`, tool);
   }
 
-  //métodos service de habilidades
-  getSkills(): Observable<Skill[]>{
-    return this.http.get<Skill[]>(this.Url + "/skills-list");
+  //---------------métodos service de habilidades---------------
+  
+
+  //---------------métodos service de Experiencias---------------
+  getExperienceList(): Observable<Experience[]>{
+    return this.http.get<Experience[]>(this.Url + "/experience/list");
   }
 
-  getSkillById(id:number): Observable<Skill>{
-    return this.http.get<Skill>(this.Url + `/portfolio/skill/${id}`)
-  }
-
-  editSkill( id: number, skill: Skill): Observable<any>{
-    return this.http.put<any>(this.Url + `/portfolio/skill/edit/${id}`, skill);
-  }
-
-  //métodos service de Experiencias
-  getExperiences(): Observable<Experience[]>{
-    return this.http.get<Experience[]>(this.Url + "/experience-list");
-  }
-
+  /*
   getExperienceById(id:number): Observable<Experience>{
-    return this.http.get<Experience>(this.Url + `/experience/detail/${id}`);
+    return this.http.get<Experience>(this.Url + "/experience/detail/" + id);
   }
+  */
 
   saveExperience(experience: Experience): Observable<any>{
     return this.http.post<any>(this.Url + "/experience/create", experience);
@@ -75,4 +68,26 @@ export class PortfolioDataService {
     return this.http.delete<any>(this.Url + "/experience/delete/" + id);
   }
 
+  //---------------métodos service Educación---------------
+  getEducationList(): Observable<Education[]>{
+    return this.http.get<Education[]>(this.Url + "/education/list");
+  }
+
+  /*
+  getEducationById(id: number): Observable<Education>{
+    return this.http.get<Education>(this.Url + "/education/detail" + id);
+  }
+  */
+
+  saveEducation(education : Education):Observable<any>{
+    return this.http.post<any>(this.Url + "/education/create", education);
+  }
+
+  updateEducation(education : Education): Observable<any>{
+    return this.http.put<any>(this.Url + "/education/update/" + education.id, education);
+  }
+
+  deleteEducation(id: number):Observable<any>{
+    return this.http.delete<any>(this.Url + "/education/delete/" + id);
+  }
 }

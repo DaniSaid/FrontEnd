@@ -1,9 +1,9 @@
 <div class= "container">
-    <div class="title section-style">
+    <section class="title section-style">
         <h1>Experiencia</h1>
-    </div>
+    </section>
 
-    <div class="right">
+    <section class="right">
         
         <mat-card *ngFor="let exp of experienceList">
             <mat-card-header>
@@ -13,14 +13,14 @@
                 <button type="button"(click)="delete(exp)" >delete</button>
             </mat-card-header>
             <mat-card-content>
-                <p>Empresa: <span>{{exp.nombreEmpresa}}</span> <span>| {{exp.fechaIni}} - {{exp.fechaFin}}</span></p>
+                <p>Empresa: <span>{{exp.nombreEmpresa}}</span> <span>||  {{exp.fechaIni}} - {{exp.fechaFin}}</span></p>
             </mat-card-content>
         </mat-card>
-    </div>
+    </section>
 
-    <div class="left">
+    <section class="left">
         <button type="button" (click)="add()">Crear</button>
-    </div>
+    </section>
 
     <section *ngIf="modalAdd">
         <div class="modal-container">

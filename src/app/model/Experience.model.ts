@@ -1,6 +1,6 @@
 export class Experience{
 
-    id!: number;
+    id: number;
     puesto: string;
     detalle: string;
     tipo: string;

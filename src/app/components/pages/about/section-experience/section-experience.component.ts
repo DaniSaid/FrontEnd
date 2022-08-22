@@ -40,7 +40,7 @@ public editForm!: FormGroup;
 
   //obtengo mi lista de experiencias del back
   getExperiences(): void {
-    this.portfolioService.getExperiences().subscribe((expResponse: Experience[]) => {
+    this.portfolioService.getExperienceList().subscribe((expResponse: Experience[]) => {
       this.experienceList = expResponse;
     });
   }

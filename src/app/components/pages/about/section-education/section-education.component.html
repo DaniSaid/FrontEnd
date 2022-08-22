@@ -1,23 +1,133 @@
 <div class="container">
-    <div class="title section-style">
+    <section class="title section-style">
         <h1>Educación</h1>
-    </div>
-    <div class="left">
-        <div class="cardsGroup scroll">
-            <mat-card *ngFor="let edu of myData.education">
-                <mat-card-header>
-                    <img mat-card-avatar [src]="edu.logo" alt="icon ET N°21 DE 10">
-                    <mat-card-title> {{edu.name}} </mat-card-title>
-                    <mat-card-subtitle>{{edu.subName}}, {{edu.level}} </mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    <p>Título obtenido: <span>{{edu.title}}</span></p>
-                    <p>{{edu.dateInit}} - {{edu.dateEnd}} </p>
-                </mat-card-content>    
-            </mat-card>
-        </div>
-    </div>
-    <div class="der">
+    </section>
+    <section class="left">
+        <mat-card *ngFor="let edu of educationList">
+            <mat-card-header>
+                <mat-card-title>{{edu.titulo}}</mat-card-title>
+                <mat-card-subtitle>{{edu.detalle}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <p>{{edu.fechaIni}} <span>-</span>{{edu.fechaFin}}</p>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-actions align="start">
+                <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="delete(edu)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="boton editar" (click)="edit(edu)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </section>
+    <section class="der">
+        <button mat-mini-fab aria-label="botón agregar" (click)="add()">
+            <mat-icon>add</mat-icon>
+        </button>
         <img [src]="image" alt="foto de libros" width="100%" height="100%">
-    </div>
+    </section>
+
+    <section *ngIf="modalAdd">
+        <div class="modal-container">
+            <div class="modal-header">
+                <button mat-mini-fab aria-label="botón cerrar" (click)="closeAdd()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <h2>Agregar Educación</h2>
+            </div>
+        </div>
+        <div class="modal-content">
+            <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
+                <label for="titulo"><h3>Título</h3></label>
+                <mat-form-field appearance="fill">
+                    <mat-label>título</mat-label>
+                    <input type="text" matInput value="" name="titulo" #titulo="ngModel" ngModel>
+                </mat-form-field>
+                <label for="detalle">Descripcíon</label>
+                <mat-form-field>
+                    <mat-label>descripcíon</mat-label>
+                    <input type="text" matInput value="" name="detalle" #detalle="ngModel" ngModel required>
+                </mat-form-field>
+                <label for="imagen">Imagen</label>
+                <mat-form-field>
+                    <mat-label>imagen url</mat-label>
+                    <input type="text" matInput value="" name="imagen" #imagen="ngModel" ngModel required>
+                </mat-form-field>
+                <label for="fechaIni">Fecha Inicio</label>
+                <mat-form-field>
+                    <mat-label>Fecha inicio</mat-label>
+                    <input type="text" matInput value="" name="fechaIni" #fechaIni="ngModel" ngModel required>
+                </mat-form-field>
+                <label for="fechaFin">Fecha de Finalización</label>
+                <mat-form-field>
+                    <mat-label>fecha finalización</mat-label>
+                    <input type="text" matInput value="" name="fechaFin" #fechaFin="ngModel" ngModel required>
+                </mat-form-field>
+                <button type="submit">Crear</button>
+            </form>
+        </div>
+    </section>
+
+    <section *ngIf="modalEdit">
+        <div class="modal-container">
+            <div class="modal-header">
+                <button mat-mini-fab aria-label="botón cerrar" (click)="closeEdit()">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <h2>Editar Educación</h2>
+            </div>
+        </div>
+        <div class="modal-content">
+            <form [formGroup]="editForm" novalidate>
+                <label for="titulo"><h3>Título: </h3></label>
+                <mat-form-field>
+                    <mat-label>nuevo título</mat-label>
+                    <input type="text" matInput value="" name="titulo" formControlName="titulo">
+                </mat-form-field>
+                <label for="detalle">Descripcíon</label>
+                <mat-form-field>
+                    <mat-label>nueva descripcíon</mat-label>
+                    <input type="text" matInput value="" name="detalle" formControlName="detalle">
+                </mat-form-field>
+                <label for="fechaIni">Fecha Inicio</label>
+                <mat-form-field>
+                    <mat-label>nueva fecha de inicio</mat-label>
+                    <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni">
+                </mat-form-field>
+                <label for="fechaFin">Fecha Finalización</label>
+                <mat-form-field>
+                    <mat-label>nueva fecha finalización</mat-label>
+                    <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin">
+                    <label for="imagen">Logo</label>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>nueva URL Logo</mat-label>
+                    <input type="text" matInput value="" name="imagen" formControlName="imagen">
+                </mat-form-field>
+                <button type="button" (click)="onEdit()">Aplicar</button>
+            </form>
+        </div>
+    </section>
+    <section *ngIf="modalDelete">
+        <mat-card>
+            <mat-card-actions>
+                <button mat-mini-fab aria-label="botón cerrar" (click)="closeDelete()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-card-actions>
+            <mat-card-header>
+                <mat-card-title>Borrar Educación</mat-card-title>
+            </mat-card-header>
+            <mat-divider inset></mat-divider>
+            <mat-card-content>
+                <h3>¿Esta seguro que desea borrar la educación?</h3>
+            </mat-card-content>
+            <mat-card-footer>
+                <button type="button" (click)="onDelete()">Confirmar</button>
+            </mat-card-footer>
+        </mat-card>
+    </section>
 </div>
