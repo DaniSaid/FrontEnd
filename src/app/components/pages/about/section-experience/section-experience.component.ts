@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Experience } from 'src/app/model/Experience.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 
@@ -14,24 +15,17 @@ experienceList: Experience[] = [];
 experience!: Experience;
 
 public image : string = " /assets/images/work-desk.jpg";
-public addOpen : boolean = false;
-public editOpen: boolean = false;
+public modalAdd : boolean = false;
+public modalEdit: boolean = false;
+public modalDelete: boolean = false;
+private deleteId!: number;
 public addForm!: FormGroup;
 public editForm!: FormGroup;
 
-  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder) { }
+  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder, public http: HttpClient) { }
 
   ngOnInit(): void {
-    this.getExperience();
-
-    this.addForm = new FormGroup({
-      puesto: new FormControl(''),
-      detalle: new FormControl(''),
-      tipo: new FormControl(''),
-      nombreEmpresa: new FormControl(''),
-      fechaIni: new FormControl(''),
-      fechaFin: new FormControl('')
-    });
+    this.getExperiences();
 
     this.editForm = this.formBuilder.group({
       id:[''],
@@ -44,33 +38,30 @@ public editForm!: FormGroup;
     });
   }
 
-  openCreate(): void {
-    this.addOpen = true;
-  }
-
-  closeCreate(): void {
-    this.addOpen = false;
-  }
-
-  getExperience(): void {
-    this.portfolioService.traerExperiencias().subscribe(data => {
-      this.experienceList = data
+  //obtengo mi lista de experiencias del back
+  getExperiences(): void {
+    this.portfolioService.traerExperiencias().subscribe((expResponse: Experience[]) => {
+      this.experienceList = expResponse;
     });
   }
 
-  crearExperiencia(addForm: FormGroup): void {
-    const experience = new Experience(0,'','','','', 0, 0);
-    experience.puesto = addForm.value.puesto;
-    experience.detalle = addForm.value.detalle;
-    experience.tipo = addForm.value.tipo;
-    experience.nombreEmpresa = addForm.value.nombreEmpresa;
-    experience.fechaIni = addForm.value.fechaIni;
-    experience.fechaFin = addForm.value.fechaFin;
-    this.portfolioService.saveExperience(experience)
+  //métodos para agregar una nueva experiencia a la lista
+  add(): void{
+    this.modalAdd = true;
   }
-
-  openEdit(exp: Experience): void{
-    this.editOpen = true;
+  submit(add: NgForm){
+    this.portfolioService.saveExperience(add.value).subscribe((expResponse: Experience)=>{
+      console.log("exp agregada:" + JSON.stringify(expResponse));
+    });
+    this.closeAdd();
+  }
+  closeAdd(): void{
+    this.modalAdd = false;
+  }
+ 
+  //métodos para editar experiencia
+  edit(exp: Experience): void{
+    this.modalEdit = true;
     var expId = exp.id;
     this.editForm.patchValue({
       id: expId,
@@ -82,17 +73,34 @@ public editForm!: FormGroup;
       fechaFin: exp.fechaFin
     });
   }
-  
-  closeEdit(): void{
-    this.editOpen = false;
-  }
-
-  editar(): void{
+  onEdit(): void{
     this.portfolioService.updateExperience(this.editForm.value).subscribe(data =>{
 
       console.log("datos editados:" + JSON.stringify(data));
       
     });
+    this.closeEdit();
   }
+  closeEdit(): void{
+    this.modalEdit = false;
+  }
+
+  //métodos para borrar experiencia
+  delete(exp: Experience): void{
+    this.modalDelete = true;
+    this.deleteId = exp.id;
+  }
+
+  onDelete(): void{
+    this.portfolioService.deleteExperience(this.deleteId).subscribe(data =>{
+      console.log("datos borrados:" + JSON.stringify(data));
+    });
+    this.closeDelete();
+  }
+
+  closeDelete(): void{
+    this.modalDelete = false;
+  }
+
 
 }

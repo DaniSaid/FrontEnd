@@ -72,7 +72,7 @@ export class PortfolioDataService {
   }
 
   deleteExperience(id: number): Observable<any>{
-    return this.http.delete<any>(this.Url + `/experience/delete/${id}`);
+    return this.http.delete<any>(this.Url + "/experience/delete/" + id);
   }
 
 }

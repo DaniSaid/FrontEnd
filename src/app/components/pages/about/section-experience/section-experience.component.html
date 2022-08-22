@@ -9,8 +9,8 @@
             <mat-card-header>
                 <mat-card-title>{{exp.puesto}}</mat-card-title>
                 <mat-card-subtitle>{{exp.detalle}}, {{exp.tipo}}</mat-card-subtitle>
-                <button type="button" (click)="openEdit(exp)">edit</button>
-                <button>delete</button>
+                <button type="button" (click)="edit(exp)">edit</button>
+                <button type="button"(click)="delete(exp)" >delete</button>
             </mat-card-header>
             <mat-card-content>
                 <p>Empresa: <span>{{exp.nombreEmpresa}}</span> <span>| {{exp.fechaIni}} - {{exp.fechaFin}}</span></p>
@@ -19,49 +19,49 @@
     </div>
 
     <div class="left">
-        <button type="button" (click)="openCreate()">Crear</button>
+        <button type="button" (click)="add()">Crear</button>
     </div>
 
-    <section *ngIf="addOpen">
+    <section *ngIf="modalAdd">
         <div class="modal-container">
             <div class="modal-header">
                 <h2>Agregar Experiencia</h2>
-                <button type="button" (click)="closeCreate()">X</button>
+                <button type="button" (click)="closeAdd()">X</button>
             </div>
         </div>
         <div class="modal-content">
-            <form [formGroup]="addForm" (ngSubmit)="crearExperiencia(addForm)">
+            <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
                 <label for="puesto"><h3>Puesto</h3></label>
                 <mat-form-field appearance="fill">
                     <mat-label>puesto</mat-label>
-                    <input type="text" matInput value="" formControlName="puesto" required>
+                    <input type="text" matInput value=""  name="puesto" #puesto="ngModel" ngModel required>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>detalle</mat-label>
-                    <input type="text" matInput value="" formControlName="detalle">
+                    <input type="text" matInput value="" name="detalle" #detalle="ngModel" ngModel required>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>ej: full-time</mat-label>
-                    <input type="text" matInput value="" formControlName="tipo">
+                    <input type="text" matInput value="" name="tipo" #detalle="ngModel" ngModel required>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>nombre de la empresa</mat-label>
-                    <input type="text" matInput value="" formControlName="nombreEmpresa">
+                    <input type="text" matInput value="" name="nombreE" #nombreE="ngModel" ngModel required>
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>fecha de Inicio</mat-label>
-                    <input type="text" matInput value="" formControlName="fechaIni">
-                </mat-form-field>
+                    <input type="text" matInput value="" name="fechaIni" #fechaIni="ngModel" ngModel>
+                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>fecha de Finalización</mat-label>
-                    <input type="text" matInput value="" formControlName="fechaFin">
+                    <input type="text" matInput value="" name="fechaFin" #fechaFin="ngModel" ngModel>
                 </mat-form-field>
                 <button type="submit">crear</button>
             </form>
         </div>
     </section>
 
-    <section *ngIf="editOpen">
+    <section *ngIf="modalEdit">
         <div class="modal-container">
             <div class="modal-header">
                 <h2>Editar Experiencia</h2>
@@ -100,9 +100,27 @@
                         <mat-label>nueva fecha de finalización</mat-label>
                         <input type="text" matInput value="" formControlName="fechaFin">
                     </mat-form-field>
-                <button type="button" (click)="editar()">confirmar</button>
+                <button type="button" (click)="onEdit()">confirmar</button>
             </form>
         </div>
+    </section>
+
+    <section *ngIf="modalDelete">
+        <mat-card>
+            <mat-card-actions align="end">
+                <button mat-button (click)="closeDelete()"></button>
+            </mat-card-actions>
+            <mat-card-header>
+                <mat-card-title>Borrar Experiencia</mat-card-title> 
+            </mat-card-header>          
+            <mat-divider inset></mat-divider>
+            <mat-card-content>
+                <h3>La experiencia será borrada</h3>
+            </mat-card-content>
+            <mat-card-footer>
+                <button type="button" (click)="onDelete()">Confirmar</button>
+            </mat-card-footer>
+        </mat-card>
     </section>
 
 </div>
