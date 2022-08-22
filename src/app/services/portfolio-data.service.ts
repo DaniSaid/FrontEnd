@@ -55,7 +55,7 @@ export class PortfolioDataService {
   }
 
   //métodos service de Experiencias
-  traerExperiencias(): Observable<Experience[]>{
+  getExperiences(): Observable<Experience[]>{
     return this.http.get<Experience[]>(this.Url + "/experience-list");
   }
 
