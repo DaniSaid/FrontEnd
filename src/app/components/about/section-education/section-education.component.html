@@ -14,7 +14,7 @@
             </mat-card-content>
             <mat-divider></mat-divider>
             <mat-card-actions align="start">
-                <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" (click)="delete(edu)">
+                <button mat-mini-fab aria-label="Example icon button with a delete icon" (click)="delete(edu)">
                     <mat-icon>delete</mat-icon>
                 </button>
                 <button mat-icon-button aria-label="boton editar" (click)="edit(edu)">
@@ -79,36 +79,36 @@
                 </button>
                 <h2>Editar Educación</h2>
             </div>
-        </div>
-        <div class="modal-content">
-            <form [formGroup]="editForm" novalidate>
-                <label for="titulo"><h3>Título: </h3></label>
-                <mat-form-field>
-                    <mat-label>nuevo título</mat-label>
-                    <input type="text" matInput value="" name="titulo" formControlName="titulo">
-                </mat-form-field>
-                <label for="detalle">Descripcíon</label>
-                <mat-form-field>
-                    <mat-label>nueva descripcíon</mat-label>
-                    <input type="text" matInput value="" name="detalle" formControlName="detalle">
-                </mat-form-field>
-                <label for="fechaIni">Fecha Inicio</label>
-                <mat-form-field>
-                    <mat-label>nueva fecha de inicio</mat-label>
-                    <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni">
-                </mat-form-field>
-                <label for="fechaFin">Fecha Finalización</label>
-                <mat-form-field>
-                    <mat-label>nueva fecha finalización</mat-label>
-                    <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin">
-                    <label for="imagen">Logo</label>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>nueva URL Logo</mat-label>
-                    <input type="text" matInput value="" name="imagen" formControlName="imagen">
-                </mat-form-field>
-                <button type="button" (click)="onEdit()">Aplicar</button>
-            </form>
+            <div class="modal-content">
+                <form [formGroup]="editForm" novalidate>
+                    <label for="titulo"><h3>Título: </h3></label>
+                    <mat-form-field>
+                        <mat-label>nuevo título</mat-label>
+                        <input type="text" matInput value="" name="titulo" formControlName="titulo">
+                    </mat-form-field>
+                    <label for="detalle">Descripcíon</label>
+                    <mat-form-field>
+                        <mat-label>nueva descripcíon</mat-label>
+                        <input type="text" matInput value="" name="detalle" formControlName="detalle">
+                    </mat-form-field>
+                    <label for="fechaIni">Fecha Inicio</label>
+                    <mat-form-field>
+                        <mat-label>nueva fecha de inicio</mat-label>
+                        <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni">
+                    </mat-form-field>
+                    <label for="fechaFin">Fecha Finalización</label>
+                    <mat-form-field>
+                        <mat-label>nueva fecha finalización</mat-label>
+                        <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin">
+                        <label for="imagen">Logo</label>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>nueva URL Logo</mat-label>
+                        <input type="text" matInput value="" name="imagen" formControlName="imagen">
+                    </mat-form-field>
+                    <button type="button" (click)="onEdit()">Aplicar ambios</button>
+                </form>
+            </div>
         </div>
     </section>
     <section *ngIf="modalDelete">

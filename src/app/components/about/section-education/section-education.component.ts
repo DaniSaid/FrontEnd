@@ -51,6 +51,7 @@ export class SectionEducationComponent implements OnInit {
   submit(add: NgForm){
     this.portfolioService.saveEducation(add.value).subscribe((eduResponse: Education)=>{
       console.log("edu agregada:" + JSON.stringify(eduResponse));
+      this.getEducationList();
     });
   }
   closeAdd(): void{
@@ -72,6 +73,7 @@ export class SectionEducationComponent implements OnInit {
   onEdit(): void{
     this.portfolioService.updateEducation(this.editForm.value).subscribe(data =>{
       console.log("datos editados:" + JSON.stringify(data));
+      this.getEducationList();
     }
     );
   }
@@ -86,6 +88,7 @@ export class SectionEducationComponent implements OnInit {
   onDelete(): void{
     this.portfolioService.deleteEducation(this.deleteId).subscribe(data=>{
       console.log("datos borrados:" + JSON.stringify(data));
+      this.getEducationList();
     });
     this.closeDelete();
   }

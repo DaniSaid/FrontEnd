@@ -38,8 +38,16 @@ export class PortfolioDataService {
     return this.http.get<Tool[]>(this.Url + "/tools/list");
   }
 
-  editTool( id:number, tool:Tool): Observable<any>{
-    return this.http.put<any>(this.Url + `/portfolio/tool/edit/${id}`, tool);
+  saveTool(tool: Tool): Observable<any>{
+    return this.http.post<any>(this.Url+ "/tool/create", tool);
+  }
+
+  updateTool(tool:Tool): Observable<any>{
+    return this.http.put<any>(this.Url + "/tool/update/" + tool.id, tool);
+  }
+
+  deleteTool(id: number): Observable<any>{
+    return this.http.delete<any>(this.Url + "/tool/delete/" + id);
   }
 
   //---------------métodos service de habilidades---------------

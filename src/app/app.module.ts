@@ -18,7 +18,7 @@ import { AboutComponent } from './components/about/about.component';
 import { SectionEducationComponent } from './components/about/section-education/section-education.component';
 import { SectionExperienceComponent } from './components/about/section-experience/section-experience.component';
 import { SectionProjectsComponent } from './components/home/section-projects/section-projects.component';
-import { Pagina404Component } from './components/pages/pagina404/pagina404.component';
+import { Pagina404Component } from './components/pagina404/pagina404.component';
 
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';

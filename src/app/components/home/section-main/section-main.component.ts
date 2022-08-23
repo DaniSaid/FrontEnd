@@ -13,8 +13,7 @@ export class SectionMainComponent implements OnInit {
 
 
   public aboutList!: About[];
-  private about: About =  new About(2,"","","","","","");
-
+  private about!: About;
   public editForm!: FormGroup;
   public  open = false;
 
