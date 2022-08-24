@@ -29,7 +29,7 @@ export class PortfolioDataService {
   }
 
   editAboutData(about: About): Observable<any>{
-    return this.http.post<any>(this.Url + '/portfolio/about/edit', about);
+    return this.http.put<any>(this.Url + '/portfolio/about/edit', about);
   }
   
   //---------------métodos service de herramientas---------------
@@ -51,7 +51,13 @@ export class PortfolioDataService {
   }
 
   //---------------métodos service de habilidades---------------
-  
+  getSkillList(): Observable<Skill[]>{
+    return this.http.get<Skill[]>(this.Url + "/skill/list");
+  }
+
+  updateSkill(skill: Skill): Observable<any>{
+    return this.http.put<any>(this.Url + "/skill/update/"+ skill.id, skill);
+  }
 
   //---------------métodos service de Experiencias---------------
   getExperienceList(): Observable<Experience[]>{

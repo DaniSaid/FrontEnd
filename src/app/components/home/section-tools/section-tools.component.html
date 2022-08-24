@@ -26,37 +26,6 @@
       </div>
 
   </section>
-  
-  <section *ngIf="modalEdit" class="modal">
-        
-    <div class="modal-container">
-      <div class="modal-header">
-        <h2>Editar</h2>
-        <button mat-mini-fab aria-label="botón cerrar" (click)="editClose()">
-          <mat-icon>close</mat-icon>
-        </button>
-      </div>
-      <div class="modal-content" *ngFor="let tool of tools">
-        <form [formGroup]="editForm" (ngSubmit)="submitEdit(tool, editForm)">
-          <label for="nombre"><h3>{{tool.nombre}}</h3></label>
-          <mat-form-field appearance="fill">
-            <mat-label>nuevo nombre</mat-label>
-            <input matInput value="" formControlName="nombre">
-          </mat-form-field>
-          <mat-form-field appearance="fill">
-            <mat-label>url imagen</mat-label>
-            <input matInput name="imagen" formControlName="imagen">
-          </mat-form-field>
-
-          <input type="submit" value="Confirmar">
-          <button mat-mini-fab aria-label="botón borrar" (click)="delete(tool)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </form>
-      </div>
-    </div>
-
-  </section>
 
   <section *ngIf="modalAdd" class="modal">
     <div class="modal-container">
@@ -97,6 +66,38 @@
           </mat-card-actions>
         </mat-card>
     </div>
+  </section>
+
+  
+  <section *ngIf="modalEdit" class="modal">
+        
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Editar</h2>
+        <button mat-mini-fab aria-label="botón cerrar" (click)="editClose()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="modal-content" *ngFor="let tool of tools">
+        <form [formGroup]="editForm" (ngSubmit)="submitEdit(tool, editForm)">
+          <label for="nombre"><h3>{{tool.nombre}}</h3></label>
+          <mat-form-field appearance="fill">
+            <mat-label>nuevo nombre</mat-label>
+            <input matInput value="" formControlName="nombre">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>url imagen</mat-label>
+            <input matInput name="imagen" formControlName="imagen">
+          </mat-form-field>
+
+          <input type="submit" value="Confirmar">
+          <button mat-mini-fab aria-label="botón borrar" (click)="delete(tool)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+
   </section>
  
 </div>

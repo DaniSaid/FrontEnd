@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { About } from 'src/app/model/About.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 
@@ -11,13 +11,12 @@ import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 })
 export class SectionMainComponent implements OnInit {
 
-
   public aboutList!: About[];
   private about!: About;
   public editForm!: FormGroup;
   public  open = false;
 
-  constructor(private portfolioData:PortfolioDataService, private formBuilder: FormBuilder) {
+  constructor(private portfolioData:PortfolioDataService) {
   
   }
 
@@ -29,9 +28,17 @@ export class SectionMainComponent implements OnInit {
                                     provincia: new FormControl(''),
                                     país: new FormControl(''),
                                     título: new FormControl(''),
-                                    descripción: new FormControl('')});
+                                    descripción: new FormControl('')
+    });
     
     
+  }
+
+  cargarAbout(){
+    this.aboutList = [];
+    this.portfolioData.getAboutList().subscribe((aboutResponse: About[]) =>{
+      this.aboutList = aboutResponse;
+    })
   }
 
   //métodos para formulario
@@ -47,39 +54,16 @@ export class SectionMainComponent implements OnInit {
 
   //almacena los datos del formulario
   submit(form: FormGroup){
-    console.log('nombre', form.value.nombre);
-    console.log('provincia', form.value.provincia);
-    console.log('país', form.value.país);
-    console.log('título', form.value.título);
-    console.log('descripción', form.value.descripción);
-    
-    for(let a of this.aboutList){  
-        a.nombre = form.value.nombre;
-        a.provincia = form.value.provincia;
-        a.pais = form.value.país;
-        a.titulo = form.value.título;
-        a.descripcion = form.value.descripción;
-
-    }
 
     this.about = new About(2, form.value.nombre, form.value.provincia, form.value.país, form.value.título, form.value.descripción, "");
    
     this.portfolioData.editAboutData(this.about).subscribe(data =>{
 
       console.log("datos editados:" + JSON.stringify(data));
-      
+      this.cargarAbout();
     });
   
 
-  }
-
-  //--------------------------
-
-  cargarAbout(){
-    this.aboutList = [];
-    this.portfolioData.getAboutList().subscribe((aboutResponse: About[]) =>{
-      this.aboutList = aboutResponse;
-    })
   }
 
 }

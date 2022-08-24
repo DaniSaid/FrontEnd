@@ -1,17 +1,17 @@
 <div class="contact grid">
-
+    <button mat-mini-fab aria-label="botón editar" (click)="editOpen()">
+        <mat-icon>edit</mat-icon>
+    </button>
     <div class="title section-style animated on-hover">
             <h2><b>Hablemos!</b></h2>
     </div>
 
-    <button >Editar</button>
-
     <div class="p1 section-style animated">
         <p >Si buscas una persona 
-            <b><span class="on-hover">skill</span></b>, 
-            <b><span class="on-hover">proactiva</span></b>, que sepa 
-            <b><span class="on-hover">comunicarse</span></b> y 
-            <b><span class="on-hover">trabajar en equipo</span></b>.
+            <b><span class="on-hover"></span></b>, 
+            <b><span class="on-hover"></span></b>, que sepa 
+            <b><span class="on-hover"></span></b> y 
+            <b><span class="on-hover"></span></b>.
         </p>
     </div>
     <div class="p2 section-style animated">
@@ -25,23 +25,24 @@
         </p>
     </div>
 
-<!--
-    <div class="form">
-        <form class="form-box">
-            <mat-form-field class="field-box">
-                <input type="text" class="input-style" matInput placeholder="nombre">
-                
-                <input type="text" class="input-style" matInput placeholder="email" required>
-                <mat-error ></mat-error>
+    <section *ngIf="modalEdit" class="modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <button mat-mini-fab aria-label="botón cerrar" (click)="editClose()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+            <div class="modal-content" *ngFor="let skill of skillList">
+                <form [formGroup]="editForm" (ngSubmit)="submitEdit(skill, editForm)">
+                    <label for="nombre"><h3>{{skill.nombre}}</h3></label>
+                    <mat-form-field appearance="fill">
+                        <mat-label>nueva skill</mat-label>
+                        <input matInput value="" formControlName="nombre">
+                    </mat-form-field>
+                    <input type="submit" value="Confirmar">
+                </form>
+            </div>
+        </div>
+    </section>
 
-                <mat-label>Leave a comment</mat-label>
-                <textarea matInput placeholder="tu mensaje"></textarea>
-            </mat-form-field>
-            
-            <input type="submit" value="Submit">
-        </form>
-    </div>
--->
-
-    <!--formulario para Editar-->
 </div>
