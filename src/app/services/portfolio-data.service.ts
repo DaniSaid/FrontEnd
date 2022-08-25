@@ -33,7 +33,7 @@ export class PortfolioDataService {
   }
   
   //---------------métodos service de herramientas---------------
-  getTools(): Observable<Tool[]>{
+  getToolList(): Observable<Tool[]>{
     console.log("obteniendo lista Tools");
     return this.http.get<Tool[]>(this.Url + "/tools/list");
   }
