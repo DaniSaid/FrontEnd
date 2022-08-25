@@ -1,7 +1,9 @@
 <main class="grid" [ngsRevealSet]="{ reset: true}" [ngsInterval]="400" [ngsSelector]="'.animated'">
 
     <div>
-        <button type="button" class=""  (click)="editOpen()">edit</button>
+        <button mat-raised-button (click)="editOpen()">
+            <mat-icon>edit</mat-icon>
+        </button>
     </div>
 
     <div class="title section-style on-hover animated">

@@ -1,0 +1,22 @@
+<section>
+    <div class="title">
+        <h2><b>Habilidades Blandas</b></h2>
+    </div>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu desplegable">
+        <mat-icon>more_vert</mat-icon>
+        <span>ajustes</span>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>editar</span>
+        </button>
+        <button mat-raised-button aria-label="botón editar">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </mat-menu>
+
+
+</section>

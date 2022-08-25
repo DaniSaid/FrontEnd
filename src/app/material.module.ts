@@ -4,6 +4,8 @@ import {NgModule} from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -16,6 +18,8 @@ import { MatGridListModule } from '@angular/material/grid-list'
     MatSidenavModule,
     MatToolbarModule,
     MatCardModule,
+    MatMenuModule,
+    MatButtonModule,
     MatButtonToggleModule,
     MatIconModule,
     MatListModule,
@@ -27,6 +31,8 @@ import { MatGridListModule } from '@angular/material/grid-list'
     MatSidenavModule,
     MatToolbarModule,
     MatCardModule,
+    MatMenuModule,
+    MatButtonModule,
     MatButtonToggleModule,
     MatIconModule,
     MatListModule,

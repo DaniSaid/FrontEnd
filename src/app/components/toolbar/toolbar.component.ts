@@ -67,13 +67,6 @@ export class ToolbarComponent implements OnInit {
   
   ngOnInit(): void {
   
-    /*service trae los datos del .json
-    this.portfolioData.getData().subscribe(data =>{
-      console.log(data);
-    this.portfolio = data;
-
-    });
-    */
   }
   menuState:string = 'close';
   navState:string = 'out';
