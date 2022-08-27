@@ -1,6 +1,6 @@
 <!--botón login-->
 <div class="container">
-  <a (click)="open()" routerLink="/" class="btn btn-l">
+  <a (click)="open()" class="btn btn-l">
     <svg width="80" height="30">
       <rect x="0" y="0" width="100%" height="100%"/><!--rectangulo para animar los bordes-->
       <text x="50%" y="55%" text-anchor="middle" alignment-baseline="middle">
@@ -12,23 +12,29 @@
 
 <!--formulario-->
 <div *ngIf="buttonOpen" class="modal">
-  
-    <form class="modal-content animate">
-      <div class="modal-title">
-        <h1>Login</h1>
-        <button type="button" class="btn" (click)="close()">X</button>
-      </div>
-
-      <div class="modal-container">
-        <label for="uname"><h3>Nombre de Usuario</h3></label>
-        <input type="text" placeholder="Ingrese su nombre de usuario" name="uname" required>
-
-        <label for="psw"><h3>Contraseña</h3></label>
-        <input type="password" placeholder="Ingrese su contraseña" name="psw" required>
-
-        <button type="submit" class="btn confirm">Confirmar</button>
-      </div>
-     
-    </form>
-  
+  <mat-card>
+    <mat-card-actions align="end">
+      <button mat-icon-button (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="login($event)">
+        <mat-form-field appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input matInput type="text" placeholder="usuario" formControlName="user">
+          <mat-error *ngIf="user!.hasError('required')">el campo es obligatorio</mat-error>
+          <mat-error *ngIf="user!.hasError('pattern')">debe contener solo números</mat-error>
+          <mat-error *ngIf="user!.hasError('minlength')">7 caracteres mínimo</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input matInput tyoe="text" placeholder="contraseña" formControlName="password">
+          <mat-error *ngIf="password!.hasError('required')">el campo es obligatorio</mat-error>
+          <mat-error *ngIf="password!.hasError('minlength')">debe tener 8 caracteres mínimo</mat-error>
+        </mat-form-field>
+        <button type="submit" mat-raised-button>Acceder</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
