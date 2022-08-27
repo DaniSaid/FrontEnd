@@ -3,20 +3,81 @@
         <h2><b>Habilidades Blandas</b></h2>
     </div>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu desplegable">
-        <mat-icon>more_vert</mat-icon>
-        <span>ajustes</span>
-    </button>
-
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <mat-icon>edit</mat-icon>
-            <span>editar</span>
+    <div class="menu-btn">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu desplegable">
+            <span>ajustes</span>
+            <mat-icon>more_vert</mat-icon>
         </button>
-        <button mat-raised-button aria-label="botón editar">
-            <mat-icon>edit</mat-icon>
-        </button>
-    </mat-menu>
+    </div>
 
+    <div class="menu">
+        <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item aria-label="botón editar">
+                <mat-icon>edit</mat-icon>
+                <span>editar</span>
+            </button>
+            <button mat-menu-item aria-label="botón borrar">
+                <mat-icon>delete</mat-icon>
+                <span>borrar</span>
+            </button>
+            <button mat-menu-item aria-label="botón agregar">
+                <mat-icon>add</mat-icon>
+                <span>agregar</span>
+            </button>
+        </mat-menu>
+    </div>
+
+    <div class="cardsGroup" *ngFor="let e of skillList">
+        <mat-card class="card">
+            <mat-card-actions align="end">
+                <button mat-icon-button aria-label="botón editar">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="botón borrar">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+            <mat-card-content>
+                <h3>habilidad: {{e.skill}}</h3>
+            </mat-card-content>
+            <mat-card-footer>
+                <mat-progress-bar mode="determinate" [value]="e.progress" color="warn"></mat-progress-bar>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+
+    <section *ngIf="modalAdd" class="form-card">
+        <div class="form-card-container">
+            <mat-card>
+                <mat-card-actions align="end">
+                    <button mat-icon-button>
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-card-actions>
+                <mat-card-header>
+                    <mat-card-title>Agregar Habilidades</mat-card-title>
+                </mat-card-header>
+                <mat-divider inset></mat-divider>
+                <mat-card-content>
+                    <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
+                        <mat-form-field appearance="fill">
+                            <mat-label>nueva Habilidad</mat-label>
+                            <input type="text" matInput value="" name="skill" #skill="ngModel" ngModel required>           
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Nivel</mat-label>
+                            <input type="text" matInput value="" name="progress" #progress="ngModel" ngModel required>
+                            <mat-hint>Ingrese un número del 1 al 100</mat-hint>                           
+                        </mat-form-field>
+                        <button type="submit">Submit</button>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </section>
+
+    <section *ngIf="modalDelete" class="form-card">
+        
+    </section>
 
 </section>

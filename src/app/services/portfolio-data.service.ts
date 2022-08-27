@@ -55,6 +55,10 @@ export class PortfolioDataService {
     return this.http.get<Skill[]>(this.Url + "/skill/list");
   }
 
+  saveSkill(skill: Skill): Observable<any>{
+    return this.http.post<any>(this.Url + "/skill/create", skill);
+  }
+
   updateSkill(skill: Skill): Observable<any>{
     return this.http.put<any>(this.Url + "/skill/update/"+ skill.id, skill);
   }

@@ -1,10 +1,12 @@
 export class Skill{
     id! : number;
-    nombre: string;
+    skill: string;
+    progress: number;
 
-    constructor( id: number, nombre: string){
+    constructor( id: number,skill: string, progress: number ){
         this.id = id;
-        this.nombre = nombre;
+        this.skill = skill;
+        this.progress = progress;
     }
 
 }
