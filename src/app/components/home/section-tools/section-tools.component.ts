@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm} from '@angular/forms';
 import { Tool } from 'src/app/model/Tool.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-section-tools',
@@ -19,11 +20,20 @@ export class SectionToolsComponent implements OnInit {
 
   private deleteId!: number;
 
-  constructor(private portfolioService:PortfolioDataService, private formBuilder: FormBuilder) {
+  constructor(private portfolioService:PortfolioDataService, private formBuilder: FormBuilder, private tokenService: TokenService) {
     
    }
 
+   isLogged = false;
+
   ngOnInit(): void {
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+
+    }
+
     this.getToolList();
     this.editForm = this.formBuilder.group({
       id: [''],

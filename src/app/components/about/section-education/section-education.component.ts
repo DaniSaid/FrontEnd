@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Education } from 'src/app/model/Education.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -23,9 +24,18 @@ export class SectionEducationComponent implements OnInit {
 
   private deleteId!: number;
 
-  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder) { }
+  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder, private tokenService: TokenService) { }
+   
+  isLogged = false;
 
   ngOnInit(): void {
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+
+    }
+
     this.getEducationList();
     this.editForm = this.formBuilder.group({
       id:[''],

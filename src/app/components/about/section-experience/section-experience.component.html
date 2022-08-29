@@ -9,8 +9,8 @@
             <mat-card-header>
                 <mat-card-title>{{exp.puesto}}</mat-card-title>
                 <mat-card-subtitle>{{exp.detalle}}, {{exp.tipo}}</mat-card-subtitle>
-                <button type="button" (click)="edit(exp)">edit</button>
-                <button type="button"(click)="delete(exp)" >delete</button>
+                <button type="button" (click)="edit(exp)" *ngIf="isLogged">edit</button>
+                <button type="button"(click)="delete(exp)" *ngIf="isLogged">delete</button>
             </mat-card-header>
             <mat-card-content>
                 <p>Empresa: <span>{{exp.nombreEmpresa}}</span> <span>||  {{exp.fechaIni}} - {{exp.fechaFin}}</span></p>
@@ -19,7 +19,7 @@
     </section>
 
     <section class="left">
-        <button type="button" (click)="add()">Crear</button>
+        <button type="button" (click)="add()" *ngIf="isLogged">Crear</button>
     </section>
 
     <section *ngIf="modalAdd">

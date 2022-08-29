@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Experience } from 'src/app/model/Experience.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-section-experience',
@@ -22,9 +23,18 @@ private deleteId!: number;
 public addForm!: FormGroup;
 public editForm!: FormGroup;
 
-  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder, public http: HttpClient) { }
+  constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder, public http: HttpClient, private tokenService: TokenService) { }
+
+  isLogged = false;
 
   ngOnInit(): void {
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+
+    }
+
     this.getExperiences();
 
     this.editForm = this.formBuilder.group({

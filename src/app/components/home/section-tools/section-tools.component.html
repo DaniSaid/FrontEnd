@@ -3,7 +3,7 @@
     <h2><b>Herramientas</b></h2>
   </div>
 
-  <div> 
+  <div *ngIf="isLogged"> 
     <button mat-mini-fab aria-label="botón editar" (click)="editOpen()">
       <mat-icon>edit</mat-icon>
     </button> 

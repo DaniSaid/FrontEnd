@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { About } from 'src/app/model/About.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
+import { TokenService } from 'src/app/services/token.service';
 
 
 @Component({
@@ -12,23 +13,32 @@ import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 export class SectionMainComponent implements OnInit {
 
   public aboutList!: About[];
-  private about!: About;
   public editForm!: FormGroup;
   public  open = false;
 
-  constructor(private portfolioData:PortfolioDataService) {
+  constructor(private portfolioService:PortfolioDataService, private fb: FormBuilder, private token: TokenService) {
   
   }
 
+  isLogged = false;
+
   ngOnInit(): void {
+    if(this.token.getToken()){
+      this.isLogged = true;
+    }else{
+      this.isLogged = false;
+
+    }
+
     this.cargarAbout();
 
-    //almacena los datos del formulario
-    this.editForm = new FormGroup({ nombre: new FormControl(''),
-                                    provincia: new FormControl(''),
-                                    país: new FormControl(''),
-                                    título: new FormControl(''),
-                                    descripción: new FormControl('')
+    //tomo los datos del formulario
+    this.editForm = this.fb.group({ id: [''],
+                                    nombre: [''],
+                                    provincia: [''],
+                                    pais: [''],
+                                    titulo: [''],
+                                    descripcion: ['']
     });
     
     
@@ -36,15 +46,31 @@ export class SectionMainComponent implements OnInit {
 
   cargarAbout(){
     this.aboutList = [];
-    this.portfolioData.getAboutList().subscribe((aboutResponse: About[]) =>{
+    this.portfolioService.getAboutList().subscribe((aboutResponse: About[]) =>{
       this.aboutList = aboutResponse;
     })
   }
 
   //métodos para formulario
 
-  editOpen(){
+  editOpen(a : About) : void {
     this.open = true;
+    this.editForm.patchValue({
+      id: a.id,
+      nombre: a.nombre,
+      provincia: a.provincia,
+      pais: a.pais,
+      titulo: a.titulo,
+      descripcion: a.descripcion,
+    });
+    this.cargarAbout();
+  }
+
+  onEdit(): void{
+    this.portfolioService.editAboutData(this.editForm.value).subscribe(data =>{
+      console.log("datos editados:" + JSON.stringify(data));
+      this.cargarAbout();
+    });
   }
 
   editClose(){
@@ -55,9 +81,7 @@ export class SectionMainComponent implements OnInit {
   //almacena los datos del formulario
   submit(form: FormGroup){
 
-    this.about = new About(2, form.value.nombre, form.value.provincia, form.value.país, form.value.título, form.value.descripción, "");
-   
-    this.portfolioData.editAboutData(this.about).subscribe(data =>{
+    this.portfolioService.editAboutData(form.value).subscribe(data =>{
 
       console.log("datos editados:" + JSON.stringify(data));
       this.cargarAbout();

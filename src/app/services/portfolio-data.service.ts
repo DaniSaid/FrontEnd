@@ -17,9 +17,8 @@ export class PortfolioDataService {
 
   constructor(private http:HttpClient) { }
 
-  getPortfolioById(aboutId: number): Observable<Portfolio>{
-    console.log("portfolio:" + aboutId);
-    return this.http.get<Portfolio>(this.Url + `/portfolio/${aboutId}`);
+  getPortfolio(userType: string[]): Observable<Portfolio[]>{
+    return this.http.get<Portfolio[]>(this.Url + '/portfolio/'+ userType);
   }
 
   //---------------métodos service mi perfil(about)---------------
@@ -29,7 +28,7 @@ export class PortfolioDataService {
   }
 
   editAboutData(about: About): Observable<any>{
-    return this.http.put<any>(this.Url + '/portfolio/about/edit', about);
+    return this.http.put<any>(this.Url + '/about/edit', about);
   }
   
   //---------------métodos service de herramientas---------------
