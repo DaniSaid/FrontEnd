@@ -10,8 +10,7 @@ import { UserLogin } from '../model/UserLogin.model';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL = 'http://localhost:8080/auth';
-  URL='https://localhost:8080';
+  authURL = 'https://git.heroku.com/portafoliodg.git/auth';
 
   constructor(private http: HttpClient) { }
 
