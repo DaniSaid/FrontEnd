@@ -1,10 +1,22 @@
 <!--botón login-->
-<div class="container">
+<div class="container" *ngIf="!isLogged">
   <a (click)="open()" class="btn btn-l">
     <svg width="80" height="30">
       <rect x="0" y="0" width="100%" height="100%"/><!--rectangulo para animar los bordes-->
       <text x="50%" y="55%" text-anchor="middle" alignment-baseline="middle">
         Login
+      </text>
+    </svg>
+  </a>
+</div>
+
+<!--botón logout-->
+<div class="container" *ngIf="isLogged">
+  <a (click)="onLogOut()" class="btn btn-l">
+    <svg width="80" height="30">
+      <rect x="0" y="0" width="100%" height="100%"/><!--rectangulo para animar los bordes-->
+      <text x="50%" y="55%" text-anchor="middle" alignment-baseline="middle">
+        Log Out
       </text>
     </svg>
   </a>
@@ -19,19 +31,16 @@
       </button>
     </mat-card-actions>
     <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="login($event)">
+      <form #form="ngForm" (ngSubmit)="onLogin()" novalidate>
         <mat-form-field appearance="fill">
-          <mat-label>Usuario</mat-label>
-          <input matInput type="text" placeholder="usuario" formControlName="user">
-          <mat-error *ngIf="user!.hasError('required')">el campo es obligatorio</mat-error>
-          <mat-error *ngIf="user!.hasError('pattern')">debe contener solo números</mat-error>
-          <mat-error *ngIf="user!.hasError('minlength')">7 caracteres mínimo</mat-error>
+          <mat-label for="userName">Usuario</mat-label>
+          <input matInput type="text" placeholder="usuario" id="userName" name="userName" [(ngModel)]="userName" required>
+     
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Contraseña</mat-label>
-          <input matInput tyoe="text" placeholder="contraseña" formControlName="password">
-          <mat-error *ngIf="password!.hasError('required')">el campo es obligatorio</mat-error>
-          <mat-error *ngIf="password!.hasError('minlength')">debe tener 8 caracteres mínimo</mat-error>
+          <mat-label for="password">Contraseña</mat-label>
+          <input matInput type="text" placeholder="contraseña" id="password" name="password" [(ngModel)]="password" required>
+     
         </mat-form-field>
         <button type="submit" mat-raised-button>Acceder</button>
       </form>

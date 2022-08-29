@@ -1,31 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { JWTdto } from '../model/JWTdto.model';
+import { NewUser } from '../model/NewUser.model';
+import { UserLogin } from '../model/UserLogin.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  url='https://localhost:4200/';
-  token = {user:"39056342", password:"DG2787"};
-  loged = false;
-  constructor(private router: Router) { }
+  authURL = 'http://localhost:8080/auth';
+  URL='https://localhost:8080';
 
-  login(user: string, password: string){
-    if(user == this.token.user && password == this.token.password){
-      this.router.navigate(['/']);
-      localStorage.setItem('auth_token', this.token.user + this.token.password); 
-      return this.loged = true;
-    }else 
-      return this.loged = false;
-  }
+  constructor(private http: HttpClient) { }
 
-  logout(){
-    localStorage.removeItem('token');
-  }
-
-  public get logIn(): boolean{
-    return (localStorage.getItem('token') !== null);
+  public new(newUser: NewUser): Observable<any>{
+    return this.http.post<any>(this.authURL + '/new/user', newUser);
+  } 
+  
+  public login(userLogin: UserLogin):Observable<JWTdto>{
+    return this.http.post<JWTdto>(this.authURL + '/login', userLogin);
   }
   
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserLogin } from 'src/app/model/UserLogin.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'login-button',
@@ -9,40 +11,62 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login-button.component.scss']
 })
 export class LoginButtonComponent implements OnInit {
-  form: FormGroup;
+
+  isLogged = false;
+  logginFail = false;
+  loginUsuario!: UserLogin;
+  userName!: string;
+  password!: string;
+  roles: string[] = [];
+  errMsj!: string;
+ 
 
    //el formulario login por default no se muestra
   buttonOpen: boolean = false;
 
-  constructor(private router: Router,private authService: AuthService, private fb: FormBuilder) { 
-    this.form = this.fb.group({
-      user:['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/),Validators.minLength(7)]],
-      password:['',[Validators.required, Validators.minLength(6)]]
-    });
-  }
+  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
+   
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+      this.roles = this.tokenService.getAuthorities();
+    }else{
+      this.isLogged = false;
+    }
   }
 
   open(){
     this.buttonOpen = true;
   }
-  login(event: Event){
-    event.preventDefault;
-    this.authService.login(this.form.value.user, this.form.value.password);
-    this.router.navigate(['/'])
+
+  onLogin(): void {
+    this.loginUsuario = new UserLogin(this.userName, this.password);
+    this.authService.login(this.loginUsuario).subscribe({
+      next: (data) =>{
+        this.isLogged = true;
+        this.logginFail = false;
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUserName(data.userName);
+        this.tokenService.setAuthorities(data.authorities);
+        this.roles = data.authorities;
+        this.close();
+      },
+      error: (e) => {
+        this.isLogged = false;
+        this.logginFail = true;
+        this.errMsj = e.error.mensaje;
+      }
+    })
+
   }
 
   close(){
     this.buttonOpen = false;
   }
 
-  //getters para obtener los valores del formulario
-  get user(){
-    return this.form.get('user');
+  onLogOut():void{
+    this.tokenService.logOut();
+    window.location.reload();
   }
-  get password(){
-    return this.form.get('password');
-  }
-
 }

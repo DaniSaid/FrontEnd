@@ -25,7 +25,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginButtonComponent} from './components/login-button/login-button.component';
 import { AboutButtonComponent } from './components/about-button/about-button.component';
 import { SectionSkillsComponent } from './components/about/section-skills/section-skills.component';
-import { SkillDeleteDialogComponent } from './components/about/section-skills/skill-delete-dialog/skill-delete-dialog.component';
 
 
 @NgModule({
@@ -45,8 +44,6 @@ import { SkillDeleteDialogComponent } from './components/about/section-skills/sk
     FooterComponent,
     SectionMainComponent,
     SectionSkillsComponent,
-    SkillDeleteDialogComponent,
-
     
   ],
   imports: [
