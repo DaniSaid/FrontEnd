@@ -10,7 +10,7 @@ import { UserLogin } from '../model/UserLogin.model';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL = 'https://portafoliodg.herokuapp.com/auth';
+  authURL = 'https://portfoliodg.herokuapp.com/auth';
 
   constructor(private http: HttpClient) { }
 

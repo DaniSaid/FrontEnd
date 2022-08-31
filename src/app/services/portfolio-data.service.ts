@@ -13,7 +13,7 @@ import { Education } from '../model/Education.model';
 })
 export class PortfolioDataService {
 
-  readonly Url = 'https://portafoliodg.herokuapp.com/';
+  readonly Url = 'https://portfoliodg.herokuapp.com/';
 
   constructor(private http:HttpClient) { }
 
