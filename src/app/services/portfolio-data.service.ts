@@ -13,98 +13,98 @@ import { Education } from '../model/Education.model';
 })
 export class PortfolioDataService {
 
-  readonly Url = 'https://git.heroku.com/portafoliodg.git';
+  readonly Url = 'https://portafoliodg.herokuapp.com/';
 
   constructor(private http:HttpClient) { }
 
   getPortfolio(userType: string[]): Observable<Portfolio[]>{
-    return this.http.get<Portfolio[]>(this.Url + '/portfolio/'+ userType);
+    return this.http.get<Portfolio[]>(this.Url + 'portfolio/'+ userType);
   }
 
   //---------------métodos service mi perfil(about)---------------
   getAboutList(): Observable<About[]>{
     console.log("recuperando about");
-    return this.http.get<About[]>(this.Url + '/about/list');
+    return this.http.get<About[]>(this.Url + 'about/list');
   }
 
   editAboutData(about: About): Observable<any>{
-    return this.http.put<any>(this.Url + '/about/edit', about);
+    return this.http.put<any>(this.Url + 'about/edit', about);
   }
   
   //---------------métodos service de herramientas---------------
   getToolList(): Observable<Tool[]>{
     console.log("obteniendo lista Tools");
-    return this.http.get<Tool[]>(this.Url + "/tools/list");
+    return this.http.get<Tool[]>(this.Url + "tools/list");
   }
 
   saveTool(tool: Tool): Observable<any>{
-    return this.http.post<any>(this.Url+ "/tool/create", tool);
+    return this.http.post<any>(this.Url+ "tool/create", tool);
   }
 
   updateTool(tool:Tool): Observable<any>{
-    return this.http.put<any>(this.Url + "/tool/update/" + tool.id, tool);
+    return this.http.put<any>(this.Url + "tool/update/" + tool.id, tool);
   }
 
   deleteTool(id: number): Observable<any>{
-    return this.http.delete<any>(this.Url + "/tool/delete/" + id);
+    return this.http.delete<any>(this.Url + "tool/delete/" + id);
   }
 
   //---------------métodos service de habilidades---------------
   getSkillList(): Observable<Skill[]>{
-    return this.http.get<Skill[]>(this.Url + "/skill/list");
+    return this.http.get<Skill[]>(this.Url + "skill/list");
   }
 
   saveSkill(skill: Skill): Observable<any>{
-    return this.http.post<any>(this.Url + "/skill/create", skill);
+    return this.http.post<any>(this.Url + "skill/create", skill);
   }
 
   updateSkill(skill: Skill): Observable<any>{
-    return this.http.put<any>(this.Url + "/skill/update/"+ skill.id, skill);
+    return this.http.put<any>(this.Url + "skill/update/"+ skill.id, skill);
   }
 
   //---------------métodos service de Experiencias---------------
   getExperienceList(): Observable<Experience[]>{
-    return this.http.get<Experience[]>(this.Url + "/experience/list");
+    return this.http.get<Experience[]>(this.Url + "experience/list");
   }
 
   /*
   getExperienceById(id:number): Observable<Experience>{
-    return this.http.get<Experience>(this.Url + "/experience/detail/" + id);
+    return this.http.get<Experience>(this.Url + "experience/detail/" + id);
   }
   */
 
   saveExperience(experience: Experience): Observable<any>{
-    return this.http.post<any>(this.Url + "/experience/create", experience);
+    return this.http.post<any>(this.Url + "experience/create", experience);
   }
 
   updateExperience(experience: Experience): Observable<any>{
-    return this.http.put<any>(this.Url + '/experience/update/' + experience.id, experience);
+    return this.http.put<any>(this.Url + 'experience/update/' + experience.id, experience);
   }
 
   deleteExperience(id: number): Observable<any>{
-    return this.http.delete<any>(this.Url + "/experience/delete/" + id);
+    return this.http.delete<any>(this.Url + "experience/delete/" + id);
   }
 
   //---------------métodos service Educación---------------
   getEducationList(): Observable<Education[]>{
-    return this.http.get<Education[]>(this.Url + "/education/list");
+    return this.http.get<Education[]>(this.Url + "education/list");
   }
 
   /*
   getEducationById(id: number): Observable<Education>{
-    return this.http.get<Education>(this.Url + "/education/detail" + id);
+    return this.http.get<Education>(this.Url + "education/detail" + id);
   }
   */
 
   saveEducation(education : Education):Observable<any>{
-    return this.http.post<any>(this.Url + "/education/create", education);
+    return this.http.post<any>(this.Url + "education/create", education);
   }
 
   updateEducation(education : Education): Observable<any>{
-    return this.http.put<any>(this.Url + "/education/update/" + education.id, education);
+    return this.http.put<any>(this.Url + "education/update/" + education.id, education);
   }
 
   deleteEducation(id: number):Observable<any>{
-    return this.http.delete<any>(this.Url + "/education/delete/" + id);
+    return this.http.delete<any>(this.Url + "education/delete/" + id);
   }
 }
