@@ -13,7 +13,7 @@ import { Education } from '../model/Education.model';
 })
 export class PortfolioDataService {
 
-  readonly Url = 'http://localhost:8080';
+  readonly Url = 'http://localhost:8080/';
 
   constructor(private http:HttpClient) { }
 
