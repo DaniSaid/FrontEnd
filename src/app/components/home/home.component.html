@@ -1,20 +1,20 @@
 <app-toolbar></app-toolbar>
 
-<main>
+<main [ngsRevealSet]="{ reset: true}" [ngsInterval]="500" [ngsSelector]="'.'">
   <!--mp3(?)-->
   <app-section-main></app-section-main>
   
-  <div id="hr1" class="animated">
+  <div id="hr1" >
     <hr>
   </div>
 
-  <app-section-tools></app-section-tools>
+  <app-section-tools ></app-section-tools>
   
-  <div id="hr2" class="animated">
+  <div id="hr2" >
     <hr>
   </div>
 
-  <app-section-contact></app-section-contact>
+  <app-section-contact ></app-section-contact>
   
 <!--
     <div class="der">

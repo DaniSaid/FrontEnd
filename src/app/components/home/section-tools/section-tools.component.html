@@ -1,9 +1,9 @@
 <section class="tools">
-  <div class="title section-style animated on-hover">
+  <div class="title section-style on-hover">
     <h2><b>Herramientas</b></h2>
   </div>
 
-  <div *ngIf="isLogged"> 
+  <div id="menu" *ngIf="isLogged"> 
     <button mat-mini-fab aria-label="botón editar" (click)="editOpen()">
       <mat-icon>edit</mat-icon>
     </button> 
@@ -12,7 +12,7 @@
     </button>
   </div>
   
-  <section class="cardsGroup animated">
+  <section class="cardsGroup">
     
       <div *ngFor="let t of toolList">
         <mat-card cdkDrag>

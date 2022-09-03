@@ -44,15 +44,14 @@ $secondHighlight:#F1E0AC;
 $darkHighlight: #d4662ecc;
 
 body{
-  width:100%;
-  margin: 0;
+  width: 100%;
   background: $base;
+  margin: 0;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 main{
   padding: 100px 40px 40px;
-  color: $darkContrast;
 }
 ul, li{
   padding:0;
@@ -79,7 +78,6 @@ input{
   grid-template-columns: repeat(12, 1fr);
   gap: 30px;
 }
-
 
 .section-style {
   display: flex;
@@ -149,8 +147,6 @@ hr {
     rgba($darkContrast, 0),
     rgba($darkContrast, 1) 50%,
     rgba($darkContrast, 0) 100%);
-
-
 }
 
 .on-hover{

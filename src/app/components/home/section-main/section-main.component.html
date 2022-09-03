@@ -1,59 +1,97 @@
-<main class="grid" [ngsRevealSet]="{ reset: true}" [ngsInterval]="800" [ngsSelector]="'.animated'">
+<section class="grid">
+  <section id="nested" *ngFor="let a of aboutList">
+    <button
+      id="edit-btn"
+      mat-raised-button
+      (click)="editOpen(a)"
+      *ngIf="isLogged"
+    >
+      <mat-icon>edit</mat-icon>
+    </button>
 
-    <section class="grid" *ngFor="let a of aboutList">
-        <button mat-raised-button (click)="editOpen(a)" *ngIf="isLogged">
-            <mat-icon>edit</mat-icon>
-        </button>
-
-    <div class="title section-style on-hover animated">
-        <h1><b>Hola!</b></h1>
+    <div id="title" class="section-style on-hover">
+      <h1><b>Hola!</b></h1>
     </div>
 
-    <div class="p1 animated section-style">
-        
-        <p>Mi nombre es <a id="myPhoto" class="highlight">{{a.nombre}}</a>, vivo en {{a.provincia}}, <a id="countryPhoto" class="highlight">{{a.pais}}</a>, pais donde nací, 
-            soy una desarrolladora {{a.titulo}}  autodidacta y fanática del café.</p>
-        
+    <div id="p1" class="section-style">
+      <p>
+        Mi nombre es <a id="myPhoto" class="highlight">{{ a.nombre }}</a
+        >, vivo en {{ a.provincia }},
+        <a id="countryPhoto" class="highlight">{{ a.pais }}</a
+        >, país donde nací.
+      </p>
     </div>
 
-    <div class="p2 section-style animated" *ngIf="a.descripcion">
-        <p>
-         {{a.descripcion}}
-        </p>
+    <div id="p2" class="section-style">
+      <p>
+        Soy una desarrolladora {{ a.titulo }} autodidacta y fanática del
+        café.
+      </p>
     </div>
 
-    <about-button class="animated"></about-button>
-    </section>
+    <div id="p3" class="section-style" *ngIf="a.descripcion">
+      <p>
+        {{ a.descripcion }}
+      </p>
+    </div>
 
-    <!--modal-->
-    <div *ngIf="open" class="modal">
-        <div class="modal-title">
-            <h2>Editar</h2>
-        <button type="button" class="btn btn-primary" (click)="editClose()">X</button>
+    <about-button></about-button>
+  </section>
+
+  <!--modal-->
+  <section id="der" *ngIf="open" class="modal">
+    <div class="modal-title">
+      <h2>Editar</h2>
+      <button type="button" class="btn btn-primary" (click)="editClose()">
+        X
+      </button>
+    </div>
+    <div class="form-popup">
+      <form [formGroup]="editForm" novalidate>
+        <div class="modal-body">
+          <label for="nombre"><h3>Nombre</h3></label>
+          <input
+            type="text"
+            placeholder="nuevo nombre"
+            name="nombre"
+            formControlName="nombre"
+          />
+
+          <label for="provincia"><h3>Provincia</h3></label>
+          <input
+            type="text"
+            placeholder="nuevo provincia"
+            name="provincia"
+            formControlName="provincia"
+          />
+
+          <label for="pais"><h3>País</h3></label>
+          <input
+            type="text"
+            placeholder="nuevo pais"
+            name="pais"
+            formControlName="pais"
+          />
+
+          <label for="titulo"><h3>Título</h3></label>
+          <input
+            type="text"
+            placeholder="nuevo titulo"
+            naie="título"
+            formControlName="titulo"
+          />
+
+          <label for="descripcion"><h3>Descripción</h3></label>
+          <input
+            type="text"
+            placeholder="nueva descripcion"
+            name="descripcion"
+            formControlName="descripcion"
+          />
+          <br />
+          <button type="button" (click)="onEdit()">Confirmar Cambios</button>
         </div>
-        <div class="form-popup">
-            <form [formGroup]="editForm" novalidate>
-
-                <div class="modal-body">
-                    <label for="nombre"><h3>Nombre</h3></label>
-                    <input type="text" placeholder="nuevo nombre" name="nombre" formControlName="nombre">
-                        
-                    <label for="provincia"><h3>Provincia</h3></label>
-                    <input type="text" placeholder="nuevo provincia" name="provincia" formControlName="provincia">
-
-                    <label for="pais"><h3>País</h3></label>
-                    <input type="text" placeholder="nuevo pais" name="pais" formControlName="pais">
-
-                    <label for="titulo"><h3>Título</h3></label>
-                    <input type="text" placeholder="nuevo titulo" naie="título" formControlName="titulo">
-
-                    <label for="descripcion"><h3>Descripción</h3></label>
-                    <input type="text" placeholder="nueva descripcion" name="descripcion" formControlName="descripcion">
-
-                    <button type="button" (click)="onEdit()">Confirmar Cambios</button>
-                </div>
-                
-            </form>
-        </div>
+      </form>
     </div>
-</main>
+  </section>
+</section>

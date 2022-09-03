@@ -15,7 +15,7 @@ $highlight: #D74E09;
     background: $bg;
     color: $font;
     border: 0;
-    border-radius: 2px;
+    border-radius: 6px;
     padding: 5px 10px;
     font-size: 16px;
 
@@ -33,13 +33,14 @@ $highlight: #D74E09;
     height: 100%;
     top: 0;
     left: 0;
+    border-radius: 6px;
     background: rgba(0, 0, 0, 0.5);
 
     position: absolute;  
     z-index: -1; //asi la sombra queda dentro del botón y detras de las letras
 
     transform-origin: left;
-    transform: scaleX(.01);
+    transform: scaleX(.93);
     transition: transform 500ms ease-in;
 }
 .bttn:hover{

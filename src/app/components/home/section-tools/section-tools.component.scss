@@ -1,8 +1,15 @@
 .tools{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  gap: 30px;
   padding: 20px 40px;
+  grid-template-areas: ". . title . ."
+  " menu cards cards cards .";
 }
 
 .title{
+  grid-area: title;
   width: 300px;
   position: relative;
   margin: 20px auto;
@@ -12,16 +19,18 @@
   left: 0;
 }
 
-.cardsGroup {
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  margin: 50px 100px;
+#menu{
+  grid-area: menu;
+}
 
-  grid-template-columns: repeat(2, minmax(200px, 1fr));
-  grid-auto-rows: auto;
-  grid-gap: 50px;
-  text-align: center;
+.cardsGroup {
+  grid-area: cards;
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-evenly;
+  gap: 20px;
   }
   mat-card-header{
     justify-content: center;
@@ -30,6 +39,7 @@
 
   mat-card{
     cursor:pointer;
+    text-align: center;
     background: none;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     transition: 0.3s;
@@ -75,8 +85,8 @@
   }
   
 
-//form styles
 
+//form styles
 .modal {
   position: fixed; /* Stay in place */
   z-index: 4; /* Sit on top */
