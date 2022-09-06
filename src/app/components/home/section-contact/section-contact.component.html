@@ -1,32 +1,49 @@
-<div class="contact grid">
+<section class="contact">
     
-    <div class="title section-style on-hover">
+    <div id="title" class="section-style on-hover">
             <h2><b>Hablemos!</b></h2>
     </div>
-<!--
-    <div class="p1 section-style">
-        <p> Si buscas una persona 
-            <b><span class="on-hover">habilidad 1</span></b>, 
-            <b><span class="on-hover">habilidad 2</span></b>, que sepa 
-            <b><span class="on-hover">habilidad 3</span></b> y 
-            <b><span class="on-hover">habilidad 4</span></b>
-        </p>
-    </div>
--->
-    <div class="p2 section-style">
-        <p> contame que te pareció mi portafolio
-        </p>
+    
+    <div id="p1" class="section-style">
+        <p> Contame que te pareció mi portafolio </p>
     </div>
 
-    <div class="p3 section-style">
-        <p> podés mandarme un <b><span class="mail-hover">mail</span></b> o 
-            dejarme un mensaje llenando los siguientes campos.
-        </p>
+        <div id="p2" class="section-style">
+            <p> podés encontrarme en:  </p>
+ </div>
+
+    <div id="icons">
+        <mat-card class="mat-elevation-z0" (click)="copie(0)"> 
+            <mat-card-content>
+                <img mat-card-sm-image [src]="discord">
+                <br>
+                <b>Discord</b>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="mat-elevation-z0" (click)="copie(1)"> 
+            <mat-card-content>
+                <img mat-card-sm-image [src]="linkedIn">
+                <br>
+                <b>LinkedIn</b>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="mat-elevation-z0" (click)="copie(2)"> 
+            <mat-card-content>
+                <img mat-card-sm-image [src]="gmail">
+                <br>
+                <b>email</b>     
+            </mat-card-content>
+        </mat-card>
     </div>
 
+    <!--
+        <div id="p3" class="section-style">
+           <p>o mandarme un <b><span class="mail-hover">mail</span></b></p> 
+        </div>
+    -->
     <!--
         capas armo un formulario de contacto o capas solo hago que, al hacer click en la palabra
         "mail" mi dirección se copie directamente en el portapapeles quien sabe ¯\_(ツ)_/¯
     -->
 
-</div>
+</section>
