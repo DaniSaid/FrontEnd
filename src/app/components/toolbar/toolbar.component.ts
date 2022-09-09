@@ -58,8 +58,7 @@ import { Router } from '@angular/router';
 
 export class ToolbarComponent implements OnInit {
 
-  portfolio : any;
-  
+  ArgPLogo: string = " /assets/images/APLogo-darkmode.png";
 
   constructor(private portfolioData:PortfolioDataService, public router: Router){
 

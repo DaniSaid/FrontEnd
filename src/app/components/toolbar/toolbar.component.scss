@@ -7,10 +7,9 @@ $darkHighlight: #d4662ecc;
 header{
     display: flex;
     background:#222;
-    align-items: center; /*alinea contenido al centro de la fila*/
+    align-items: center;
     justify-content: space-between;
-   
-    color: #eee;
+    color: $base;
     max-height: 50px;
     align-content: center;
     padding: 20px 80px;
@@ -27,6 +26,8 @@ img{
   height: auto;
   width: 100%;
 }
+
+//botón menu
 .burger{
   display: block;
   font-size: 1.2rem;
@@ -46,6 +47,7 @@ img{
  background: $highlight;
 }
 
+//menu
 nav{ 
   background: rgba(51, 51, 51, 0.911);
   position: fixed;

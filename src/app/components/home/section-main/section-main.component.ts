@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { About } from 'src/app/model/About.model';
@@ -8,7 +9,16 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-section-main',
   templateUrl: './section-main.component.html',
-  styleUrls: ['./section-main.component.scss']
+  styleUrls: ['./section-main.component.scss'],
+  animations:[
+    //animacion hecha para los formularios
+    trigger('showTrigger', [
+      transition(':enter',[
+        style({ scale: 0.8}),
+        animate('150ms', style({ scale: 1 }))
+      ])
+    ])
+  ]
 })
 export class SectionMainComponent implements OnInit {
 
@@ -40,8 +50,6 @@ export class SectionMainComponent implements OnInit {
                                     titulo: [''],
                                     descripcion: ['']
     });
-    
-    
   }
 
   cargarAbout(){
@@ -52,7 +60,6 @@ export class SectionMainComponent implements OnInit {
   }
 
   //métodos para formulario
-
   editOpen(a : About) : void {
     this.open = true;
     this.editForm.patchValue({
@@ -78,7 +85,6 @@ export class SectionMainComponent implements OnInit {
 
   }
 
-  //almacena los datos del formulario
   submit(form: FormGroup){
 
     this.portfolioService.editAboutData(form.value).subscribe(data =>{
@@ -86,8 +92,7 @@ export class SectionMainComponent implements OnInit {
       console.log("datos editados:" + JSON.stringify(data));
       this.cargarAbout();
     });
-  
-
   }
+
 
 }

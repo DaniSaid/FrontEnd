@@ -36,7 +36,7 @@ export class SectionContactComponent implements OnInit {
         break;
       case 1: 
         navigator.clipboard.writeText(this.linkedInLink);
-        this.snack.open('link de linkedin copiada!', 'Cerrar', {
+        this.snack.open('link de linkedin copiado!', 'Cerrar', {
           duration : 5000
         });
         break;

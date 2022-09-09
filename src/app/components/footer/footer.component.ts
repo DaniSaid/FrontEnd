@@ -9,22 +9,14 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  portfolio : any;
+  ArgPLogo: string = " /assets/images/APLogo-darkmode.png";
   
-  constructor(private portfolioData:PortfolioDataService, public router: Router){
+  constructor(public router: Router){
 
   }
   
   ngOnInit(): void {
   
-    /*service trae los datos del .json
-    this.portfolioData.getData().subscribe(data =>{
-      console.log(data);
-    this.portfolio = data;
-
-    });
-
-    */
   }
   
 }

@@ -1,6 +1,60 @@
-main{
-    padding: 0;
+$color1: #04bf9d;
+$color2: #03a696;
+$color3: #253659;
+main {
+  margin: 0;
+  padding: 0;
+  color: #eee;
+  background: #222;
 }
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  padding: 100px 20vw;
+}
+
+.curve {
+  position: absolute;
+  height: 3rem;
+  width: 100%;
+  bottom: 0;
+}
+
+.curve::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 50%;
+  width: 55%;
+  height: 100%;
+  background-color: #222;
+  transform: translate(85%, 60%);
+}
+.curve::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 50%;
+  width: 55%;
+  height: 100%;
+ background-color: #3c31dd;
+ transform: translate(-4%, 40%);
+ z-index: -1;
+}
+
+.color1 {
+  background: $color1;
+}
+.color2 {
+  background: $color2;
+}
+.color3 {
+  background: $color3;
+}
+
 /*
 .container{
     position: absolute;

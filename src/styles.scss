@@ -47,7 +47,7 @@ body{
   width: 100%;
   background: $base;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Roboto,'Poppins', "Helvetica Neue", sans-serif;
   overflow-x: hidden;
 }
 main{
@@ -133,34 +133,6 @@ input{
     
 }
 
-hr {
-    border: 0;
-    margin: 1.35em auto;
-    max-width: 100%;
-    background-position: 50%;
-    box-sizing: border-box;
-    height: 2px;
-    
-    color: $darkContrast;
-    background-image: linear-gradient(
-    90deg,
-    rgba($darkContrast, 0),
-    rgba($darkContrast, 1) 50%,
-    rgba($darkContrast, 0) 100%);
-}
-
-.on-hover{
-  cursor: pointer;
-  will-change: transform;
-  transition: color 450ms ease-in;
-  color: $darkContrast;
-
-  &:hover{
-    transition: transform 150ms;
-    color: $darkHighlight;
-  }
-}
-
 .highlight{
   cursor: pointer;
   will-change: transform;
@@ -182,6 +154,78 @@ hr {
     0 2px 4px rgba(0,0,0,0.15), 
     0 4px 8px rgba(0,0,0,0.10),;
   
+  }
+}
+.on-hover{
+  cursor: pointer;
+  will-change: transform;
+  transition: color 450ms ease-in;
+  color: $darkContrast;
+
+  &:hover{
+    transition: transform 150ms;
+    color: $darkHighlight;
+  }
+}
+
+hr {
+    border: 0;
+    margin: 1.35em auto;
+    max-width: 100%;
+    background-position: 50%;
+    box-sizing: border-box;
+    height: 2px;
+    
+    color: $darkContrast;
+    background-image: linear-gradient(
+    90deg,
+    rgba($darkContrast, 0),
+    rgba($darkContrast, 1) 50%,
+    rgba($darkContrast, 0) 100%);
+}
+
+//delete dialog modal
+.delete-warning{
+  mat-dialog-container{
+    background-color: rgb(230, 207, 194);
+  }
+}
+
+//form card styles
+.modal{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed; 
+  z-index: 4;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(41, 41, 41); 
+  background-color: rgba(0, 0, 0, 0.32);
+  padding-top: 60px;
+
+  .modal-container, mat-card{
+    padding: 1rem;
+    background-color: rgb(236, 220, 210);
+
+  }
+  mat-card .close-btn{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+  }
+  mat-card-title{
+    display: flex;
+    justify-content: center;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  mat-card-actions{
+    display: flex;
+    justify-content: space-around;
   }
 }
 

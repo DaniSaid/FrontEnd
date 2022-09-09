@@ -1,46 +1,93 @@
-<section class="grid">
-  <section id="nested" *ngFor="let a of aboutList">
-    <button
-      id="edit-btn"
-      mat-raised-button
-      (click)="editOpen(a)"
-      *ngIf="isLogged"
-    >
-      <mat-icon>edit</mat-icon>
-    </button>
+<section id="aboutMe" *ngFor="let a of aboutList">
+  <button
+    id="edit-btn"
+    mat-raised-button
+    (click)="editOpen(a)"
+    *ngIf="isLogged"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
 
-    <div id="title" class="section-style on-hover">
-      <h1><b>Hola!</b></h1>
-    </div>
+  <div id="title" class="section-style on-hover">
+    <h1><b>Hola!</b></h1>
+  </div>
 
-    <div id="p1" class="section-style">
-      <p>
-        Mi nombre es <a id="myPhoto" class="highlight" alt="foto">{{ a.nombre }}</a
-        >, vivo en {{ a.provincia }},
-        <a id="countryPhoto" class="highlight">{{ a.pais }}</a
-        >, país donde nací.
-      </p>
-    </div>
+  <div id="p1" class="section-style">
+    <p>
+      Mi nombre es
+      <a id="myPhoto" class="highlight" alt="foto">{{ a.nombre }}</a
+      >, vivo en {{ a.provincia }},
+      <a id="countryPhoto" class="highlight">{{ a.pais }}</a
+      >, país donde nací.
+    </p>
+  </div>
 
-    <div id="p2" class="section-style">
-      <p>
-        Soy una desarrolladora {{ a.titulo }} autodidacta y fanática del
-        café.
-      </p>
-    </div>
+  <div id="p2" class="section-style">
+    <p>
+      Soy una desarrolladora {{ a.titulo }} autodidacta y fanática del café.
+    </p>
+  </div>
 
-    <div id="p3" class="section-style" *ngIf="a.descripcion">
-      <p>
-        {{ a.descripcion }}
-      </p>
-    </div>
+  <div id="p3" class="section-style" *ngIf="a.descripcion">
+    <p>
+      {{ a.descripcion }}
+    </p>
+  </div>
 
-    <about-button></about-button>
-  </section>
+  <about-button></about-button>
+</section>
 
-  <!--modal-->
-  <section id="der" *ngIf="open" class="modal">
-    <div class="modal-title">
+<!--modal-->
+<section *ngIf="open" class="modal">
+  <mat-card @showTrigger class="modal-container">
+    <mat-card-actions class="close-btn">
+      <button mat-icon-button aria-label="botón cerrar" (click)="editClose()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+    <mat-card-title>
+      <h2>Editar Perfil</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="editForm" novalidate>
+        <mat-form-field>
+          <mat-label for="nombre"><h3>Nombre</h3></mat-label>
+          <input type="text" matInput name="nombre" value="" formControlName="nombre">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label for="provincia"><h3>Provincia</h3></mat-label>
+          <input type="text" matInput name="" value="" formControlName="provincia">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label for="pais"><h3>País</h3></mat-label>
+          <input type="text" matInput name="" value="" formControlName="pais">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label for="titulo"><h3>Título</h3></mat-label>
+          <input type="text" matInput name="" value="" formControlName="titulo">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label for="descripcion"><h3>Descripción</h3></mat-label>
+          <textarea type="text" matInput name="" value="" formControlName="descripcion"></textarea>
+        </mat-form-field>
+        <br/>
+        <mat-card-actions>
+          <button  type="button" mat-flat-button color="warn" aria-label="botón cancelar" (click)="editClose()">
+            Cancelar
+          </button>
+          <button  type="button" mat-stroked-button color="accent" aria-label="botón confirmar cambios" (click)="onEdit()">
+            Confirmar
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <!--
+    <div>
       <h2>Editar</h2>
       <button type="button" class="btn btn-primary" (click)="editClose()">
         X
@@ -56,7 +103,7 @@
             name="nombre"
             formControlName="nombre"
           />
-
+  
           <label for="provincia"><h3>Provincia</h3></label>
           <input
             type="text"
@@ -64,7 +111,7 @@
             name="provincia"
             formControlName="provincia"
           />
-
+  
           <label for="pais"><h3>País</h3></label>
           <input
             type="text"
@@ -72,7 +119,7 @@
             name="pais"
             formControlName="pais"
           />
-
+  
           <label for="titulo"><h3>Título</h3></label>
           <input
             type="text"
@@ -80,7 +127,7 @@
             naie="título"
             formControlName="titulo"
           />
-
+  
           <label for="descripcion"><h3>Descripción</h3></label>
           <input
             type="text"
@@ -93,5 +140,5 @@
         </div>
       </form>
     </div>
-  </section>
+  -->
 </section>
