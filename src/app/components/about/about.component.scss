@@ -1,11 +1,20 @@
-$color1: #04bf9d;
-$color2: #03a696;
-$color3: #253659;
+$color1A:#bbc5cd;
+$color1B:#cacbde;
+$color1C:#d9dbf1;
+
+$color2A:#120432;
+$color2B:#180642;
+$color2C:#1e0853;
+
+$color3A:#40012a;
+$color3B:#4d0232;
+$color3C:#5a023a;
+
 main {
   margin: 0;
   padding: 0;
   color: #eee;
-  background: #222;
+  background: #120432;
 }
 section {
   position: relative;
@@ -13,106 +22,42 @@ section {
   flex-direction: column;
   align-items: center;
   min-height: 400px;
-  padding: 100px 20vw;
-}
-
-.curve {
-  position: absolute;
-  height: 3rem;
-  width: 100%;
-  bottom: 0;
-}
-
-.curve::before {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 100% 50%;
-  width: 55%;
-  height: 100%;
-  background-color: #222;
-  transform: translate(85%, 60%);
-}
-.curve::after {
-  content: "";
-  display: block;
-  position: absolute;
-  border-radius: 100% 50%;
-  width: 55%;
-  height: 100%;
- background-color: #3c31dd;
- transform: translate(-4%, 40%);
- z-index: -1;
+  padding: 10%;
 }
 
 .color1 {
-  background: $color1;
+  color: #333;
+  background: rgba($color1A,1);
+  background: linear-gradient(0deg,
+   rgba($color1A,1) 30%,
+    rgba($color1B,1) 75%,
+     rgba($color1C,1) 100%);
 }
 .color2 {
-  background: $color2;
-}
+  background: rgba($color2A,1);
+  background: linear-gradient(0deg,
+   rgba($color2A,1) 30%,
+   rgba($color2B,1) 65%,
+   rgba($color2C,1) 100%);
+  }
 .color3 {
-  background: $color3;
-}
+  border-top-left-radius: 70% 30%;
+            border-top-right-radius: 70% 30%;
+  background: rgba($color3A,1);
+  background: linear-gradient(0deg,
+   rgba($color3A,1) 30%, 
+   rgba($color3B,1) 75%, 
+   rgba($color3C,1) 100%);
+  }
 
-/*
-.container{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  
-    display: grid;
-    grid-template-columns: repeat(8, minmax(60px, 123px));
-    grid-template-rows: minmax(50px, 100px);
-    gap: 5px;
-  
-    margin: 0;
+  .spacer{
+    aspect-ratio: 960/200;
     width: 100%;
-    height: 250vh;
-    
-    background-color: #eeebe7;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 
-    grid-template-areas:
-    "navbar navbar navbar"
-    "education education education"
-    "experience experience experience"
-    ;
-}
-
-.navbar{
-    grid-area: navbar;
-    grid-column: 1/9;
-}
-
-#section-education{
-    grid-area: education;
-    grid-column: 1/9;
-    margin: 60px 0;
-}
-#section-experience{
-    grid-area: experience;
-    grid-column: 1/9;
-    grid-row-start: 4/5;
-    margin: 50px 0;
-}
-
-#section-projects{
-    grid-area: project;
-    grid-column: 1/9;
-}
-.footer{
-    grid-area: footer;
-}
-
-.container{
-    #section-education{
-        background: #142246;
-        height: max-content;
-    }
-    #section-experience{
-        background: #22242b;
-        height: max-content;
-    }
-*/
+  .layer{
+    background-image: url( /assets/images/wave.svg);
+  }

@@ -1,45 +1,54 @@
 <div class="container">
-    <section class="title section-style">
-        <h1>Educación</h1>
-    </section>
     <section class="left">
-        <mat-card *ngFor="let edu of educationList">
-            <mat-card-header>
-                <mat-card-title>{{edu.titulo}}</mat-card-title>
-                <mat-card-subtitle>{{edu.detalle}}</mat-card-subtitle>
-            </mat-card-header>
-            <mat-divider></mat-divider>
-            <mat-card-content>
-                <p>{{edu.fechaIni}} <span>-</span>{{edu.fechaFin}}</p>
-            </mat-card-content>
-            <mat-divider></mat-divider>
-            <mat-card-actions align="start" *ngIf="isLogged">
-                <button mat-mini-fab aria-label="Example icon button with a delete icon" (click)="delete(edu)">
-                    <mat-icon>delete</mat-icon>
-                </button>
-                <button mat-icon-button aria-label="boton editar" (click)="edit(edu)">
-                    <mat-icon>edit</mat-icon>
-                </button>
-            </mat-card-actions>
-        </mat-card>
+        <img src="/assets/images/studying.svg" alt="">
     </section>
     <section class="der">
-        <button mat-mini-fab aria-label="botón agregar" (click)="add()" *ngIf="isLogged">
-            <mat-icon>add</mat-icon>
-        </button>
-        <img [src]="image" alt="foto de libros" width="100%" height="100%">
+        <div class="add-btn">
+            <button mat-icon-button aria-label="botón crear" class="white" (click)="add()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="cards-group">
+            <mat-card class="transparent mat-elevation-z0" *ngFor="let edu of educationList">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                        <mat-icon class="material-icons-outlined violeta">school</mat-icon>
+                    </div>
+                    <mat-card-title>{{edu.titulo}}</mat-card-title>
+                    <mat-card-subtitle>{{edu.detalle}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="azul">
+                    <p>{{edu.fechaIni}} <span>-</span>{{edu.fechaFin}}</p>
+                </mat-card-content>
+                <mat-divider class="azul"></mat-divider>
+                <mat-card-actions align="end" *ngIf="isLogged">
+                    <button mat-flat-button color="warn" aria-label="botón borrar">
+                        borrar
+                    </button>
+                    <button mat-stroked-button class="white" aria-label="botón editar">
+                         editar
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <!--
+            <button mat-mini-fab aria-label="botón agregar" (click)="add()" *ngIf="isLogged">
+                <mat-icon>add</mat-icon>
+            </button>
+            <img [src]="image" alt="foto de libros" width="100%" height="100%">
+        -->
     </section>
 
     <section *ngIf="modalAdd">
-        <div class="modal-container">
-            <div class="modal-header">
+        <div class="modal">
+            <div class="modal-container">
                 <button mat-mini-fab aria-label="botón cerrar" (click)="closeAdd()">
                     <mat-icon>close</mat-icon>
                 </button>
                 <h2>Agregar Educación</h2>
             </div>
         </div>
-        <div class="modal-content">
+        <div>
             <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
                 <label for="titulo"><h3>Título</h3></label>
                 <mat-form-field appearance="fill">

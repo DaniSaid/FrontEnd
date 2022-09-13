@@ -43,8 +43,12 @@ $highlight: #D74E09;
 $secondHighlight:#F1E0AC;
 $darkHighlight: #d4662ecc;
 
+html{
+  overflow: auto;
+}
 body{
   width: 100%;
+  position: fixed;
   background: $base;
   margin: 0;
   font-family: Roboto,'Poppins', "Helvetica Neue", sans-serif;
@@ -89,7 +93,7 @@ input{
 
   border-radius: 17px;
   padding: 10px 5px;
-  background-color: rgba(#EFEFEE,.53);
+  background-color: rgba(#dee0f7,.53);
 
   box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
               0 2px 2px rgba(0,0,0,0.11), 
@@ -140,7 +144,7 @@ input{
   border-radius: 4px;
   padding: 0 5px;
   margin: 2px;
-  background-color: rgba(#EFEFEE,.53);
+  background-color: rgba(#dee0f7,.53);
   box-shadow: 0 0 1px rgba(0,0,0,0.25), 
   0 1px 2px rgba(0,0,0,0.20), 
   0 2px 4px rgba(0,0,0,0.15), 

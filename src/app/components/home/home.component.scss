@@ -1,6 +1,11 @@
 main{
+    width: 100%;
     margin: 0;
-    background-image: url( /assets/images/layered-waves2.svg);
+    background-image: url( /assets/images/layered-waves.svg);
     background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+    overflow-x: auto;
 }

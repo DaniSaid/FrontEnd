@@ -1,22 +1,21 @@
 <app-toolbar></app-toolbar>
-
-<main [ngsRevealSet]="{ reset: true}" [ngsInterval]="500" [ngsSelector]="'.'">
-  <!--mp3(?)-->
-  <app-section-main></app-section-main>
+  <main [ngsRevealSet]="{ reset: true}" [ngsInterval]="500" [ngsSelector]="'.'">
+    <!--mp3(?)-->
+    <app-section-main></app-section-main>
+    
+    <div id="hr1" >
+      <hr>
+    </div>
   
-  <div id="hr1" >
-    <hr>
-  </div>
-
-  <app-section-tools ></app-section-tools>
+    <app-section-tools ></app-section-tools>
+    
+    <div id="hr2" >
+      <hr>
+    </div>
   
-  <div id="hr2" >
-    <hr>
-  </div>
-
-  <!--section-proyect-->
-
-  <app-section-contact ></app-section-contact>
+    <!--section-proyect-->
   
-</main>
-<app-footer></app-footer>
+    <app-section-contact ></app-section-contact>
+    
+  </main>
+  <app-footer></app-footer>
