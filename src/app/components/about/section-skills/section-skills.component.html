@@ -1,8 +1,5 @@
-<section>
-    <div class="title">
-        <h2><b>Habilidades Blandas</b></h2>
-    </div>
-
+<section class="container">
+    <!--
     <div class="menu-btn">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu desplegable">
             <span>ajustes</span>
@@ -26,31 +23,50 @@
             </button>
         </mat-menu>
     </div>
+-->
+<div class="btn-left">
+    <button
+      mat-mini-fab
+      color="warn"
+      aria-label="botón agregar"
+      (click)="add()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
-    <div class="cardsGroup" *ngFor="let e of skillList">
-        <mat-card class="card">
-            <mat-card-actions align="end">
-                <button mat-icon-button aria-label="botón editar">
-                    <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button aria-label="botón borrar">
-                    <mat-icon>delete</mat-icon>
-                </button>
-            </mat-card-actions>
-            <mat-card-content>
-                <h3>habilidad: {{e.skill}}</h3>
-            </mat-card-content>
-            <mat-card-footer>
-                <mat-progress-bar mode="determinate" [value]="e.progress" color="warn"></mat-progress-bar>
-            </mat-card-footer>
-        </mat-card>
-    </div>
-
-    <section *ngIf="modalAdd" class="form-card">
-        <div class="form-card-container">
-            <mat-card>
+    <section class="cards-group">
+        <div *ngFor="let e of skillList">
+            <mat-card class="mat-elevation-z0">
                 <mat-card-actions align="end">
-                    <button mat-icon-button>
+                    <button mat-icon-button aria-label="botón editar" (click)="openEdit(e)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button aria-label="botón borrar" (click)="delete(e)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </mat-card-actions>
+                <mat-card-header>
+                    <!--a futuro: el usuario podrá elegir el icono de una lista-->               
+               <mat-icon #icon>{{e.icon}}</mat-icon>
+                  
+                </mat-card-header>
+                <mat-card-content>
+                    <h3>{{e.skill}}</h3>
+                </mat-card-content>
+                <mat-card-footer>
+                    <mat-progress-bar mode="determinate" [value]="e.progress" color="warn"></mat-progress-bar>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+    </section>
+
+    <!--formulario agregar habilidad-->
+    <section *ngIf="modalAdd" class="modal">
+        <div class="form-card-container">
+            <mat-card  @showTrigger>
+                <mat-card-actions class="btn-right">
+                    <button mat-icon-button arial-label="botón cerrar" (click)="closeAdd()">
                         <mat-icon>close</mat-icon>
                     </button>
                 </mat-card-actions>
@@ -65,19 +81,61 @@
                             <input type="text" matInput value="" name="skill" #skill="ngModel" ngModel required>           
                         </mat-form-field>
                         <mat-form-field appearance="fill">
+                            <mat-label>icono</mat-label>
+                            <input type="text" matInput value="" name="icon" #icon="ngModel" ngModel required>  
+                            <mat-hint align="end">ingresar nombres de iconos de google font</mat-hint>         
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
                             <mat-label>Nivel</mat-label>
                             <input type="text" matInput value="" name="progress" #progress="ngModel" ngModel required>
                             <mat-hint>Ingrese un número del 1 al 100</mat-hint>                           
                         </mat-form-field>
-                        <button type="submit">Submit</button>
+                        <mat-card-actions class="btn-left">
+                            <button type="submit" mat-stroked-button color="accent">Confirmar</button>
+                        </mat-card-actions>
                     </form>
                 </mat-card-content>
             </mat-card>
         </div>
     </section>
-
-    <section *ngIf="modalDelete" class="form-card">
-        
+    
+    <!--formulario editar-->
+    <section *ngIf="modalEdit" class="modal">
+        <mat-card @showTrigger class="modal-container">
+            <mat-card-actions class="btn-right">
+                <button mat-icon-button aria-label="botón cerrar" (click)="closeEdit()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-card-actions>
+            <mat-card-title>
+                <h3>Editar Habilidad</h3>
+            </mat-card-title>
+            <mat-card-content align="start">
+                <form [formGroup]="editForm" novalidate>
+                    <mat-form-field appearance="fill" color="primary">
+                        <mat-label for="skill">Habilidad</mat-label>
+                        <input type="text" matInput name="skill" value="" formControlName="skill">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" color="primary">
+                        <mat-label for="icon">Icono</mat-label>
+                        <input type="text" matInput name="icon" value="" formControlName="icon">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" color="primary">
+                        <mat-label>Nivel</mat-label>
+                        <input type="text" matInput value="" name="progress" formControlName="progress">
+                        <mat-hint>Ingrese un número del 1 al 100</mat-hint>  
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-flat-button color="warn" (click)="closeEdit()">
+                    Cancelar
+                  </button>
+                <button mat-stroked-button color="accent" (click)="onEdit()">
+                    Confirmar
+                </button>
+            </mat-card-actions>
+        </mat-card>
     </section>
 
 </section>

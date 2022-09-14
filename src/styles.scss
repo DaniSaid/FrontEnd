@@ -172,20 +172,19 @@ input{
   }
 }
 
-hr {
+.custom-hr{
     border: 0;
     margin: 1.35em auto;
     max-width: 100%;
     background-position: 50%;
     box-sizing: border-box;
     height: 2px;
-    
-    color: $darkContrast;
+
     background-image: linear-gradient(
     90deg,
-    rgba($darkContrast, 0),
-    rgba($darkContrast, 1) 50%,
-    rgba($darkContrast, 0) 100%);
+    rgba($base, 0),
+    rgba($base, 1) 50%,
+    rgba($base, 0) 100%);
 }
 
 //delete dialog modal
@@ -216,9 +215,15 @@ hr {
     background-color: rgb(236, 220, 210);
 
   }
-  mat-card .close-btn{
+  mat-card .btn-right{
     display: flex;
     justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+  }
+  mat-card .btn-left{
+    display: flex;
+    justify-content: flex-start;
     padding: 0;
     margin: 0;
   }

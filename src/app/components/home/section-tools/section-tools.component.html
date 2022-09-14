@@ -46,7 +46,7 @@
   <section *ngIf="modalAdd" class="modal">
     <!--@showTrigger se usa para activar la animacion -->
     <mat-card @showTrigger class="modal-container">
-      <mat-card-actions class="close-btn">
+      <mat-card-actions class="btn-right">
         <button mat-icon-button aria-label="botón cerrar" (click)="closeAdd()">
           <mat-icon>close</mat-icon>
         </button>
@@ -82,7 +82,7 @@
 
   <section *ngIf="modalEdit" class="modal">
     <mat-card @showTrigger class="modal-container">
-      <mat-card-actions class="close-btn">
+      <mat-card-actions class="btn-right">
         <button mat-icon-button aria-label="botón cerrar" (click)="editClose()">
           <mat-icon>close</mat-icon>
         </button>

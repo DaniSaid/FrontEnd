@@ -1,3 +1,42 @@
-.menu-btn{
-    margin: 100px;
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 0;
+}
+
+//todas las tarjetas son del mismo ancho
+.cards-group{
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-evenly;
+    margin-bottom: 20%;
+    gap: 10%;
+}
+
+.btn-left{
+    align-self: flex-end;
+    padding: 20px 0;
+}
+
+mat-card{
+    width: 150px;
+    margin-bottom: 10%;
+    text-align: center;
+    background: transparent;
+}
+
+mat-card-header{
+    mat-icon{
+        font-size: 50px;
+        margin: 30px 20px;
+    }
+}
+
+.icon-size{
+    font-size: 30px;
 }

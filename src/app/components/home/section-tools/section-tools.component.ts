@@ -39,7 +39,7 @@ export class SectionToolsComponent implements OnInit {
     
    }
 
-   isLogged = false;
+   isLogged: boolean = false;
 
   ngOnInit(): void {
     if(this.tokenService.getToken()){

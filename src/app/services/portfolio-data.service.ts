@@ -62,6 +62,10 @@ export class PortfolioDataService {
     return this.http.put<any>(this.Url + "skill/update/"+ skill.id, skill);
   }
 
+  deleteSkill(id: number): Observable<any>{
+    return this.http.delete<any>(this.Url + "skill/delete/" + id);
+  }
+
   //---------------métodos service de Experiencias---------------
   getExperienceList(): Observable<Experience[]>{
     return this.http.get<Experience[]>(this.Url + "experience/list");
