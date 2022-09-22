@@ -25,7 +25,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginButtonComponent} from './components/login-button/login-button.component';
 import { AboutButtonComponent } from './components/about-button/about-button.component';
 import { SectionSkillsComponent } from './components/about/section-skills/section-skills.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({

@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm} from '@angular/forms';
 import { Tool } from 'src/app/model/Tool.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 import { TokenService } from 'src/app/services/token.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-section-tools',

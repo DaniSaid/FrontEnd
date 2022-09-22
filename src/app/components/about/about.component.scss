@@ -1,20 +1,19 @@
-$color1A:#bbc5cd;
-$color1B:#cacbde;
-$color1C:#d9dbf1;
+$color1A: #bbc5cd;
+$color1B: #cacbde;
+$color1C: #d9dbf1;
 
 $color2A: #f3f3f3;
 $color2B: #e4e4e4;
 $color2C: #d8d7d7;
 
-$color3A:#0c1938;
-$color3B:#0f1e42;
-$color3C:#12234d;
-
+$color3A: #0c1938;
+$color3B: #0f1e42;
+$color3C: #12234d;
 
 main {
   margin: 0;
   padding: 0;
-  color: #eee;
+  color: #333;
   background: #f3f3f3;
 }
 section {
@@ -27,107 +26,94 @@ section {
 }
 
 .color1 {
-  color: #333;
-  background: rgba($color1A,1);
-  background: linear-gradient(0deg,
-   rgba($color1A,1) 30%,
-    rgba($color1B,1) 75%,
-     rgba($color1C,1) 100%);
+  background: rgba($color1A, 1);
+  background: linear-gradient(
+    0deg,
+    rgba($color1A, 1) 30%,
+    rgba($color1B, 1) 75%,
+    rgba($color1C, 1) 100%
+  );
 }
 .color2 {
-  background: rgba($color2A,1);
-  background: linear-gradient(0deg,
-   rgba($color2A,1) 30%,
-   rgba($color2B,1) 65%,
-   rgba($color2C,1) 100%);
-  }
+  background: rgba($color2A, 1);
+  background: linear-gradient(
+    0deg,
+    rgba($color2A, 1) 30%,
+    rgba($color2B, 1) 65%,
+    rgba($color2C, 1) 100%
+  );
+}
 .color3 {
-  border-top-left-radius: 70% 30%;
-  border-top-right-radius: 70% 30%;
-  background: rgba($color3A,1);
+  color: #f3f3f3;
+  border-top-left-radius: 80% 20%;
+  border-top-right-radius: 80% 20%;
+  background: rgba($color3A, 1);
 
-  background-image: radial-gradient( circle 610px at 5.2% 51.6%,
-    rgba($color3B,1) 0%,
-     rgba($color3A,1) 97.5% );
-  }
+  background-image: radial-gradient(
+    circle 610px at 5.2% 51.6%,
+    rgba($color3B, 1) 0%,
+    rgba($color3A, 1) 97.5%
+  );
+}
 
-  .spacer{
-    aspect-ratio: 960/200;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.spacer {
+  aspect-ratio: 960/80;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
 
-  .layer{
-    background-image: url( /assets/images/wave.svg);
-  }
+.layer {
+  background-image: url(/assets/images/wave.svg);
+}
 
-  .title-color1{
-    width: 100%;
-    background: $color1C;
-  }
-  
-  .title-left{
-    margin: 0;
-    padding: 10% 0 5% 0;
-    color: #0c1938;
+.title-style{
+  border-bottom: 2px solid currentColor;
+  display: inline-block;
+  line-height: 0.85;
+  text-transform: uppercase;
 
-    h2{
-      margin: 0;
-      padding: 0;
-    }
-  }
-
-  .title-right{
-    margin-right: 10rem;
-    padding: 10% 10%;
-    color: #0c1938;
-
-    h2{
-      margin: 0;
-      padding: 0;
-    }
-    
-  }
-  .hr-lines-left{
-    position: relative;
-    /*  new lines  */
-    max-width: 500px;
-    text-align: center;
-  }
-
-  .hr-lines-right{
-    position: relative;
-    /*  new lines  */
-    max-width: 500px;
-    text-align: center;
-  }
-
-  .hr-lines-left:before{
-    content:" ";
-    display: block;
-    height: 2px;
-    width: 15rem;
-    position: absolute;
-    top: 50%;
-    right: 65%;
-    background: $color3B;
-  }
-
-  .hr-lines-right:after{
-    content:" ";
-    display: block;
-    height: 2px;
-    width: 20rem;
-    position: absolute;
-    top: 50%;
-    left: 15rem;
-    background: $color3B;
-  }
-  
+  margin-top: 3rem;
+}
+.title-style-left {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  left: -10rem;
+  margin: 3rem 0;
+}
+.title-style-left::before {
+  content: "";
+  position: absolute;
+  width: 26rem;
+  height: 3px;
+  background-color: currentColor;
+  top: 1.7rem;
+}
+.title-style-left::before {
+  left: -27rem;
+}
+.title-style-right {
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  left: 10rem;
+  margin: 3rem 0;
+}
+.title-style-right::after {
+  content: "";
+  position: absolute;
+  width: 26rem;
+  height: 3px;
+  background-color: currentColor;
+  top: 1.7rem;
+}
+.title-style-right::after {
+  right: -27rem;
+}

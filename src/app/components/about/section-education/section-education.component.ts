@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Education } from 'src/app/model/Education.model';
@@ -8,12 +9,18 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-section-education',
   templateUrl: './section-education.component.html',
-  styleUrls: ['./section-education.component.scss']
+  styleUrls: ['./section-education.component.scss'],
+  animations:[
+    /*animacion hecha para los formularios*/
+    trigger('showTrigger', [
+      transition(':enter',[
+        style({ scale: 0.8}),
+        animate('150ms', style({ scale: 1 }))
+      ])
+    ])
+  ]
 })
 export class SectionEducationComponent implements OnInit {
-
-  public image : string = " /assets/images/open-book.jpg";
-
   public educationList: Education[] = [];
   public education!: Education;
 
@@ -26,7 +33,7 @@ export class SectionEducationComponent implements OnInit {
 
   constructor(private portfolioService: PortfolioDataService, private formBuilder: FormBuilder, private tokenService: TokenService) { }
    
-  isLogged = false;
+  isLogged: boolean = false;
 
   ngOnInit(): void {
     if(this.tokenService.getToken()){
@@ -74,7 +81,7 @@ export class SectionEducationComponent implements OnInit {
     this.editForm.patchValue({
       id: eduId,
       titulo: education.titulo,
-      detalle: education.detalle,
+      nivel: education.detalle,
       fechaIni: education.fechaIni,
       fechaFin: education.fechaFin,
       imagen: education.imagen
@@ -86,6 +93,8 @@ export class SectionEducationComponent implements OnInit {
       this.getEducationList();
     }
     );
+
+    this.closeEdit();
   }
   closeEdit(): void{
     this.modalEdit = false;

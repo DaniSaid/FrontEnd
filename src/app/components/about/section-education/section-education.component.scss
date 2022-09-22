@@ -1,83 +1,89 @@
-$violeta:#6E30F2;
+$violeta: #6e30f2;
 $azul: #323cf8;
 
 //maquetado principal de sección
-.container{
-    display:grid;
-    background: rgba(51, 51, 51, 0);
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    grid-template-areas: 
-    "leftSide rightSide"
-    ;
+.container {
+  display: grid;
+  background: rgba(51, 51, 51, 0);
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-template-areas: "leftSide rightSide";
 }
-.left{
-    grid-area: leftSide;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-evenly;
+.left {
+  grid-area: leftSide;
+  align-self: center;
+  img {
+    width: 100%;
+    height: 470px;
+    margin: 0;
+    padding: 0;
+  }
 }
-.right{
-    grid-area: rightSide;
-    justify-self: center;
-    align-self: center;
+.right {
+  grid-area: rightSide;
+  justify-self: center;
+  align-self: center;
 }
 //--------------------------------------------
 
-img{
-    width: 100%;
+.add-btn {
+  display: flex;
+  justify-content: flex-end;
+  button,
+  mat-icon {
+    background-color: $azul;
+  }
 }
 
-.add-btn{
-    display: flex;
-    justify-content: flex-end;
-    button, mat-icon{
-        background-color: $azul;
-    }
+.cards-group {
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-evenly;
+  gap: 20px;
 }
 
-.cards-group{
-    width: 100%;
-    display: inline-flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: space-around;
-    justify-content: space-evenly;
-    gap: 20px;
+mat-card.dark-background {
+  width: 20em;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  mat-card-title {
+    color: whitesmoke;
+  }
+  mat-card-subtitle {
+    color: whitesmoke;
+  }
+  mat-card-content {
+    color: whitesmoke;
+  }
+
+  mat-divider {
+    border-top-color: #acb0f2;
+  }
+  mat-card-actions {
+    gap: 10px;
+  }
 }
 
-mat-card{
-    width: 20em;
-    background: rgba(0, 0, 0, 0.75);
-    border-radius: 15px;
-    mat-card-title{
-        color: whitesmoke;
-    }
-    mat-card-subtitle{
-                color: whitesmoke;
-    }
-    mat-card-content{
-        color: whitesmoke;
-    }
-    mat-icon{
-        font-size: 3rem;
-    }
-    mat-divider{
-        border-top-color: #ACB0F2;
-    }
-    mat-card-actions{
-        gap: 10px;
-    }
+mat-icon.large {
+  font-size: 3rem;
 }
 
 //customiza color de mat-icon
-.violeta{
-    color: $violeta;
+.violeta {
+  color: $violeta;
 }
 //cambia color de fuente botón editar
-.white{
-    color:white
+.white {
+  color: white;
 }
+.svg{
+    width: 70%;
+    position: relative;
+    top: 40%;
+    left: 19%;
 
+    z-index: 0;
+}

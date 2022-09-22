@@ -51,15 +51,43 @@ body{
   position: fixed;
   background: $base;
   margin: 0;
-  font-family: Roboto,'Poppins', "Helvetica Neue", sans-serif;
+  font-family: 'Roboto','Poppins', "Helvetica Neue", sans-serif;
   overflow-x: hidden;
 }
 main{
-  padding: 100px 40px 40px;
+  margin: 0;
+  padding:0;
 }
 ul, li{
   padding:0;
   list-style-type: none;
+}
+a{
+  text-decoration: none;
+  color: $darkContrast;
+}
+h1{
+  padding: 10px;
+  margin: 0;
+  font-size: 52.11px;
+font-style: normal;
+font-weight: 400;
+}
+   h2{
+  padding: 10px;
+  margin: 0;
+  font-size: 39.09px;
+font-style: normal;
+font-weight: 300;
+}
+
+  
+h3{
+  padding: 10px;
+  margin: 0;
+  font-size: 29.33px;
+font-style: normal;
+font-weight: 200;
 }
 p{
   padding: 10px;
@@ -67,10 +95,6 @@ p{
   font-size: 22px;
   line-height: 35px;
   font-family: 'Poppins', sans-serif;
-}
-a{
-  text-decoration: none;
-  color: $darkContrast;
 }
 input{
   font-family: 'Poppins', sans-serif;
@@ -92,40 +116,13 @@ input{
   justify-content: center;
 
   border-radius: 17px;
-  padding: 10px 5px;
+  padding: 0 1em;
   background-color: rgba(#dee0f7,.53);
 
   box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
               0 2px 2px rgba(0,0,0,0.11), 
               0 4px 4px rgba(0,0,0,0.11), 
               0 6px 8px rgba(0,0,0,0.11);
-
-  h1{
-    padding: 10px;
-    margin: 0;
-    font-size: 52.11px;
-    font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  }
-    
-  h2{
-    padding: 10px;
-    margin: 0;
-    font-size: 39.09px;
-    font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 300;
-  }
-    
-  h3{
-    padding: 10px;
-    margin: 0;
-    font-size: 29.33px;
-    font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 200;
-  }
     
   &:hover{
     box-shadow: 0 1px 1px rgba(0,0,0,0.25), 
@@ -231,10 +228,33 @@ input{
     display: flex;
     justify-content: center;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+    h2{
+      margin: 0;
+    }
+    h3{
+      margin: 0;
+    }
   }
   mat-card-actions{
     display: flex;
     justify-content: space-around;
+  }
+  mat-form-field{
+    margin: 5px;
+  }
+  mat-divider{
+    margin-bottom: 15px;
+  }
+}
+
+mat-card.modal-delete{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 18px 15px 0;
+  mat-card-actions{
+    margin-top: 5px;
   }
 }
 

@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { Skill } from 'src/app/model/Skill.model';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -28,6 +28,7 @@ export class SectionSkillsComponent implements OnInit {
   public editForm!: FormGroup;
   public modalAdd: boolean = false;
   public modalEdit: boolean = false;
+  public modalDelete: boolean = false;
 
   private deleteId!: number;
   isLogged: boolean = false;
@@ -81,23 +82,19 @@ export class SectionSkillsComponent implements OnInit {
   }
   //----Borrar
   delete(skill: Skill):void{
-    const dialogRef = this.dialog.open(ConfirmDialogComponent,{
-      data: '¿Quiere borrar la habilidad?',
-      panelClass: 'delete-warning'
-    });
-    dialogRef.afterClosed().subscribe(res =>{
-      if(res){
-        this.deleteId = skill.id;
-        this.onDelete();
-      }
-    });
+   this.modalDelete = true;
+   this.deleteId = skill.id;
   }
 
   onDelete(): void{
     this.portfolioService.deleteSkill(this.deleteId).subscribe(data =>{
-      console.log("habilidad borrada" + JSON.stringify(data));
       this.getSkillList();
     });
+    this.closeDelete();
+  }
+
+  closeDelete(): void{
+    this.modalDelete = false;
   }
   
   //----Editar

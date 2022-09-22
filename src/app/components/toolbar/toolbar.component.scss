@@ -58,8 +58,7 @@ nav{
   width: 30%;
   min-width: 230px;
   padding: 20px;
-  padding-top: 180px;
-  font-family: 'Poppins', sans-serif;
+  padding-top: 7rem;
   z-index: 2;
 }
 nav a{
@@ -88,7 +87,4 @@ nav.open{
   position: absolute;
   top: 0; /*ignora otros componentes y empieza desde la parte superior de la página*/
   right: 0;
-}
-ul li{
-  padding: 0 0 95px;
 }

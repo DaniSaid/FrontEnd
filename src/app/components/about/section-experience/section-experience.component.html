@@ -1,25 +1,32 @@
 <div class= "container">
-    <section class="title section-style">
-        <h1>Experiencia</h1>
-    </section>
-
     <section class="right">
-        
-        <mat-card *ngFor="let exp of experienceList">
-            <mat-card-header>
-                <mat-card-title>{{exp.puesto}}</mat-card-title>
-                <mat-card-subtitle>{{exp.detalle}}, {{exp.tipo}}</mat-card-subtitle>
-                <button type="button" (click)="edit(exp)" *ngIf="isLogged">edit</button>
-                <button type="button"(click)="delete(exp)" *ngIf="isLogged">delete</button>
-            </mat-card-header>
-            <mat-card-content>
-                <p>Empresa: <span>{{exp.nombreEmpresa}}</span> <span>||  {{exp.fechaIni}} - {{exp.fechaFin}}</span></p>
-            </mat-card-content>
-        </mat-card>
+        <div class="add-btn">
+            <button mat-icon-button aria-label="botón crear" class="white" (click)="add()" *ngIf="isLogged">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div class="cards-group">
+            <mat-card *ngFor="let exp of experienceList">
+                <mat-card-header>
+                    <mat-card-title>{{exp.puesto}}</mat-card-title>
+                    <mat-card-subtitle>{{exp.detalle}}, {{exp.tipo}}</mat-card-subtitle>
+                    <mat-card-actions>
+                        <button type="button" mat-stroked-button (click)="edit(exp)" *ngIf="isLogged">editar</button>
+                        <button type="button" mat-flat-button color="warn" (click)="delete(exp)" *ngIf="isLogged">borrar</button>
+                    </mat-card-actions>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>Empresa: {{exp.nombreEmpresa}} <span class="accent-color"> || </span>  {{exp.fechaIni}} - {{exp.fechaFin}}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
     </section>
 
     <section class="left">
-        <button type="button" (click)="add()" *ngIf="isLogged">Crear</button>
+        <div class="svg-background">
+            <img src="/assets/images/looking-for-job.svg" alt="" />
+        </div>
+        <p>Actualmente me encuentro sin experiencia laboral relacionada a programación</p>
     </section>
 
     <section *ngIf="modalAdd">

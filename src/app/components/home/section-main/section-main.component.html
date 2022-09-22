@@ -37,10 +37,10 @@
   <about-button></about-button>
 </section>
 
-<!--modal-->
+<!--Editar-->
 <section *ngIf="open" class="modal">
   <mat-card @showTrigger class="modal-container">
-    <mat-card-actions class="close-btn">
+    <mat-card-actions class="btn-right">
       <button mat-icon-button aria-label="botón cerrar" (click)="editClose()">
         <mat-icon>close</mat-icon>
       </button>
@@ -48,6 +48,7 @@
     <mat-card-title>
       <h2>Editar Perfil</h2>
     </mat-card-title>
+    <mat-divider inset></mat-divider>
     <mat-card-content>
       <form [formGroup]="editForm" novalidate>
         <mat-form-field>
