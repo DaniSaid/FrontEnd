@@ -205,27 +205,30 @@ input{
   overflow: auto;
   background-color: rgb(41, 41, 41); 
   background-color: rgba(0, 0, 0, 0.32);
-  padding-top: 60px;
 
   .modal-container, mat-card{
     padding: 1rem;
     background-color: rgb(236, 220, 210);
 
   }
-  mat-card .btn-right{
+ .btn-right{
     display: flex;
     justify-content: flex-end;
     padding: 0;
     margin: 0;
   }
-  mat-card .btn-left{
+ .btn-left{
     display: flex;
     justify-content: flex-start;
     padding: 0;
     margin: 0;
   }
+  mat-card{
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+  }
   mat-card-title{
-    display: flex;
     justify-content: center;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     h2{
@@ -235,9 +238,11 @@ input{
       margin: 0;
     }
   }
+  mat-card-content{
+    margin-top: 10px;
+  }
   mat-card-actions{
-    display: flex;
-    justify-content: space-around;
+    justify-content: center;
   }
   mat-form-field{
     margin: 5px;
@@ -253,6 +258,7 @@ mat-card.modal-delete{
   flex-wrap: wrap;
   align-items: center;
   padding: 18px 15px 0;
+
   mat-card-actions{
     margin-top: 5px;
   }

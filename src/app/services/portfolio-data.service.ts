@@ -7,6 +7,7 @@ import { Tool } from '../model/Tool.model';
 import { Skill } from '../model/Skill.model';
 import { Experience } from '../model/Experience.model';
 import { Education } from '../model/Education.model';
+import { Project } from '../model/Project.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class PortfolioDataService {
     return this.http.get<Portfolio[]>(this.Url + 'portfolio/'+ userType);
   }
 
-  //---------------métodos service mi perfil(about)---------------
+  //---------------métodos service mi perfil(about)-------------
   getAboutList(): Observable<About[]>{
     console.log("recuperando about");
     return this.http.get<About[]>(this.Url + 'about/list');
@@ -31,7 +32,7 @@ export class PortfolioDataService {
     return this.http.put<any>(this.Url + 'about/edit', about);
   }
   
-  //---------------métodos service de herramientas---------------
+  //---------------métodos service de herramientas--------------
   getToolList(): Observable<Tool[]>{
     console.log("obteniendo lista Tools");
     return this.http.get<Tool[]>(this.Url + "tools/list");
@@ -47,6 +48,24 @@ export class PortfolioDataService {
 
   deleteTool(id: number): Observable<any>{
     return this.http.delete<any>(this.Url + "tool/delete/" + id);
+  }
+
+  //---------------métodos service de Proyectos-----------------
+  getProjectList(): Observable<Project[]>{
+    console.log("obteniendo lista Projects");
+    return this.http.get<Project[]>(this.Url + "projects/list");
+  }
+
+  saveProject(project: Project): Observable<any>{
+    return this.http.post<any>(this.Url+ "project/create", project);
+  }
+
+  updateProject(project: Project): Observable<any>{
+    return this.http.put<any>(this.Url + "project/update/" + project.id, project);
+  }
+
+  deleteProject(id: number): Observable<any>{
+    return this.http.delete<any>(this.Url + "project/delete/" + id);
   }
 
   //---------------métodos service de habilidades---------------

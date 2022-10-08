@@ -8,7 +8,7 @@
     <mat-icon>edit</mat-icon>
   </button>
 
-  <div id="title" class="section-style on-hover">
+  <div class="title section-style on-hover">
     <h1><b>Hola!</b></h1>
   </div>
 
@@ -40,39 +40,34 @@
 <!--Editar-->
 <section *ngIf="open" class="modal">
   <mat-card @showTrigger class="modal-container">
-    <mat-card-actions class="btn-right">
-      <button mat-icon-button aria-label="botón cerrar" (click)="editClose()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-card-actions>
     <mat-card-title>
-      <h2>Editar Perfil</h2>
+      <h3><b>Editar Perfil</b></h3>
     </mat-card-title>
     <mat-divider inset></mat-divider>
     <mat-card-content>
       <form [formGroup]="editForm" novalidate>
         <mat-form-field>
-          <mat-label for="nombre"><h3>Nombre</h3></mat-label>
+          <mat-label for="nombre">Nombre</mat-label>
           <input type="text" matInput name="nombre" value="" formControlName="nombre">
         </mat-form-field>
-        <br>
+      
         <mat-form-field>
-          <mat-label for="provincia"><h3>Provincia</h3></mat-label>
+          <mat-label for="provincia">Provincia</mat-label>
           <input type="text" matInput name="" value="" formControlName="provincia">
         </mat-form-field>
         <br>
         <mat-form-field>
-          <mat-label for="pais"><h3>País</h3></mat-label>
+          <mat-label for="pais">País</mat-label>
           <input type="text" matInput name="" value="" formControlName="pais">
         </mat-form-field>
-        <br>
+     
         <mat-form-field>
-          <mat-label for="titulo"><h3>Título</h3></mat-label>
+          <mat-label for="titulo">Título</mat-label>
           <input type="text" matInput name="" value="" formControlName="titulo">
         </mat-form-field>
         <br>
         <mat-form-field>
-          <mat-label for="descripcion"><h3>Descripción</h3></mat-label>
+          <mat-label for="descripcion">Descripción</mat-label>
           <textarea type="text" matInput name="" value="" formControlName="descripcion"></textarea>
         </mat-form-field>
         <br/>
@@ -87,59 +82,4 @@
       </form>
     </mat-card-content>
   </mat-card>
-  <!--
-    <div>
-      <h2>Editar</h2>
-      <button type="button" class="btn btn-primary" (click)="editClose()">
-        X
-      </button>
-    </div>
-    <div class="form-popup">
-      <form [formGroup]="editForm" novalidate>
-        <div class="modal-body">
-          <label for="nombre"><h3>Nombre</h3></label>
-          <input
-            type="text"
-            placeholder="nuevo nombre"
-            name="nombre"
-            formControlName="nombre"
-          />
-  
-          <label for="provincia"><h3>Provincia</h3></label>
-          <input
-            type="text"
-            placeholder="nuevo provincia"
-            name="provincia"
-            formControlName="provincia"
-          />
-  
-          <label for="pais"><h3>País</h3></label>
-          <input
-            type="text"
-            placeholder="nuevo pais"
-            name="pais"
-            formControlName="pais"
-          />
-  
-          <label for="titulo"><h3>Título</h3></label>
-          <input
-            type="text"
-            placeholder="nuevo titulo"
-            naie="título"
-            formControlName="titulo"
-          />
-  
-          <label for="descripcion"><h3>Descripción</h3></label>
-          <input
-            type="text"
-            placeholder="nueva descripcion"
-            name="descripcion"
-            formControlName="descripcion"
-          />
-          <br />
-          <button type="button" (click)="onEdit()">Confirmar Cambios</button>
-        </div>
-      </form>
-    </div>
-  -->
 </section>

@@ -1,0 +1,36 @@
+//para pantallas de escritorio
+@media screen and(min-width: 760px) {
+    #projects{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        gap: 1rem;
+        padding: 0 5rem;
+        justify-items: center;
+        grid-template-areas: 
+        " . title addBtn "
+        ". tabs .";
+    }
+}
+
+
+.title{
+    grid-area: title;
+    justify-self: center;
+ }
+#tabs{
+    grid-area: tabs;
+}
+#addBtn{
+    grid-area: addBtn;
+    justify-self: center;
+}
+img{
+    max-width: 8rem;
+    height:auto;
+}
+
+.project-card{
+    padding: 1rem;
+    background: transparent;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Portfolio } from 'src/app/model/Portfolio.model';
 import { UserLogin } from 'src/app/model/UserLogin.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
@@ -11,7 +12,7 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./login-button.component.scss']
 })
 export class LoginButtonComponent implements OnInit {
-
+  public portfolioList!: Portfolio[];
   isLogged = false;
   logginFail = false;
   loginUsuario!: UserLogin;
@@ -23,8 +24,9 @@ export class LoginButtonComponent implements OnInit {
 
   //el formulario login por default no se muestra
   buttonOpen: boolean = false;
+  hide: boolean = true;
 
-  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router, private portfolioService: PortfolioDataService) { }
+  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router, private portfolioService : PortfolioDataService) { }
 
   ngOnInit(): void {
    
@@ -35,7 +37,6 @@ export class LoginButtonComponent implements OnInit {
       this.isLogged = false;
     }
   }
-
 
   open(){
     this.buttonOpen = true;
@@ -51,7 +52,7 @@ export class LoginButtonComponent implements OnInit {
         this.tokenService.setUserName(data.userName);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
-        this.router.navigate(['']);
+        window.location.reload();
         this.close();
       },
       error: (e) => {
@@ -71,4 +72,7 @@ export class LoginButtonComponent implements OnInit {
     this.tokenService.logOut();
     window.location.reload();
   }
+
+  //muestra la contraseña ingresada
+  get passwordInput() { return this.password }  
 }

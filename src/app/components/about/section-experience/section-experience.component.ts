@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
@@ -8,7 +9,16 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-section-experience',
   templateUrl: './section-experience.component.html',
-  styleUrls: ['./section-experience.component.scss']
+  styleUrls: ['./section-experience.component.scss'],
+  animations:[
+    /*animacion hecha para los formularios*/
+    trigger('showTrigger', [
+      transition(':enter',[
+        style({ scale: 0.8}),
+        animate('150ms', style({ scale: 1 }))
+      ])
+    ])
+  ]
 })
 export class SectionExperienceComponent implements OnInit {
 

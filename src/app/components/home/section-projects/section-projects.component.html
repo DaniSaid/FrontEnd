@@ -1,0 +1,165 @@
+<section id="projects">
+    <div class="title section-style on-hover">
+        <h2><b>Proyectos</b></h2>
+    </div>
+    <div id="addBtn" *ngIf="isLogged">
+        <button
+          mat-mini-fab
+          color="warn"
+          aria-label="botón agregar"
+          (click)="add()"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <div id="tabs">
+        <mat-tab-group mat-align-tabs="center">
+            <div *ngFor="let p of projectList ; let i = index">
+              <mat-tab label="{{i + 1}}">
+                  <mat-card class="project-card">
+                      <mat-card-actions align="end" id="delete-button" *ngIf="isLogged">
+                          <button mat-icon-button aria-label="botón editar" (click)="openEdit(p)">
+                              <mat-icon>edit</mat-icon>
+                          </button>
+                          <button mat-icon-button aria-label="botón borrar"  (click)="delete(p)">
+                            <mat-icon>close</mat-icon>
+                          </button>
+                        </mat-card-actions>
+                      <mat-card-title-group>
+                        <mat-card-title>{{p.nombre}}</mat-card-title>
+                        <mat-card-subtitle>{{p.detalle}}</mat-card-subtitle>
+                        <img mat-card-image [src]="p.imagen" alt="imagen del proyecto">
+                      </mat-card-title-group>
+                      <mat-card-actions>
+                          <a mat-stroked-button [href]="p.repo">repositorio</a>
+                          <a mat-flat-button color="primary" [href]="p.web">sitio web</a>
+                        </mat-card-actions>
+                    </mat-card>
+              </mat-tab>
+            </div>
+        </mat-tab-group>
+    </div>
+</section>
+
+<!--Agregar-->
+<section *ngIf="modalAdd" class="modal">
+    <mat-card @showTrigger class="modal-container">
+      <mat-card-title>
+        <h3><b>Nuevo Proyecto</b></h3>
+      </mat-card-title>
+      <mat-divider inset></mat-divider>
+      <mat-card-content>
+        <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label for="nombre">Nombre</mat-label>
+            <input type="text" matInput name="nombre" value="" ngModel #nombre="ngModel" required/>
+            <mat-error>campo obligatorio</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="detalle">Descripción</mat-label>
+            <input type="text" matInput name="detalle" value="" ngModel #detalle="ngModel"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="repo">link de repositorio</mat-label>
+            <input type="text" matInput name="repo" value="" ngModel #repo="ngModel" required/>
+            <mat-error>campo obligatorio</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="web">link página web</mat-label>
+            <input type="text" matInput name="web" value="" ngModel #web="ngModel"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="imagen">Imagen</mat-label>
+            <input type="text" matInput name="imagen" value="" ngModel #imagen="ngModel" required/>
+            <mat-error>campo obligatorio</mat-error>
+          </mat-form-field>
+          <br>
+        <mat-card-actions>
+          <button mat-flat-button color="warn" (click)="closeAdd()">
+            Cancelar
+          </button>
+          <button type="submit" mat-stroked-button color="accent">
+            Confirmar
+          </button>
+        </mat-card-actions>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!--Editar-->
+  <section *ngIf="modalEdit" class="modal">
+    <mat-card @showTrigger class="modal-container">
+      <mat-card-title>
+        <h3><b>Editar Proyecto</b></h3>
+      </mat-card-title>
+      <mat-divider inset></mat-divider>
+      <mat-card-content>
+        <form [formGroup]="editForm" novalidate>
+          <mat-form-field appearance="fill">
+            <mat-label for="nombre">Nuevo Nombre</mat-label>
+            <input
+              type="text"
+              matInput
+              name="nombre"
+              value=""
+              formControlName="nombre"
+              required
+            />
+            <mat-error>campo obligatorio</mat-error>
+          </mat-form-field>
+          <br/>
+          <mat-form-field appearance="fill">
+            <mat-label for="detalle">Descripción</mat-label>
+            <input type="text" matInput name="detalle" value="" formControlName="detalle"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="repo">link de repositorio</mat-label>
+            <input type="text" matInput name="repo" value="" formControlName="repo" required/>
+            <mat-error>campo obligatorio</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="web">link página web</mat-label>
+            <input type="text" matInput name="web" value="" formControlName="web"/>
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="fill">
+            <mat-label for="imagen">Imagen</mat-label>
+            <input type="text" matInput name="imagen" value="" formControlName="imagen" required/>
+            <mat-error>campo obligatorio</mat-error>
+          </mat-form-field>
+          <br>
+        </form>
+        <mat-card-actions>
+          <button mat-flat-button color="warn" (click)="closeEdit()">
+            Cancelar
+          </button>
+          <button mat-stroked-button color="accent" (click)="onEdit()">
+            Confirmar
+          </button>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!--Borrar-->
+  <section *ngIf="modalDelete" class="modal">
+    <mat-card @showTrigger class="modal-delete">
+        <mat-card-header>
+            <mat-card-title>¿Borrar Formación?</mat-card-title>
+        </mat-card-header>
+        <mat-divider inset></mat-divider>
+        <mat-card-footer>
+            <mat-card-actions>
+                <button type="button" mat-flat-button color="warn" (click)="closeDelete()">Cancelar</button>
+                <button type="button" mat-stroked-button color="accent" (click)="onDelete()">Confirmar</button>
+            </mat-card-actions>
+        </mat-card-footer>
+    </mat-card>
+  </section>

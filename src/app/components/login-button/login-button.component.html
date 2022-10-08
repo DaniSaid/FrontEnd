@@ -27,12 +27,13 @@
 <!--formulario-->
 <div *ngIf="buttonOpen" class="modal">
   <mat-card >
-    <mat-card-actions class="close-btn">
+    <mat-card-actions class="btn-right">
       <button mat-icon-button (click)="close()">
         <mat-icon>close</mat-icon>
       </button>
     </mat-card-actions>
-    <mat-card-title><h2>LOGIN</h2></mat-card-title>
+    <mat-card-title><h3><b>LOGIN</b></h3></mat-card-title>
+    <mat-divider inset></mat-divider>
     <mat-card-content class="content">
       <form #form="ngForm" (ngSubmit)="onLogin()" novalidate>
         <mat-form-field appearance="fill">
@@ -46,22 +47,20 @@
             [(ngModel)]="userName"
             required
           />
+          <mat-error>ingrese su nombre de usuario</mat-error>
         </mat-form-field>
+        <mat-icon matSuffix>person</mat-icon>
         <br>
         <mat-form-field appearance="fill">
           <mat-label for="password">Contraseña</mat-label>
-          <input
-            matInput
-            type="text"
-            placeholder="contraseña"
-            id="password"
-            name="password"
-            [(ngModel)]="password"
-            required
-          />
+          <input matInput placeholder="contraseña" [type]="hide ? 'password' : 'text'" id="password"
+          name="password" [(ngModel)]="password" required>
+          <mat-error>campo obligatorio</mat-error>
+          <!-- <mat-hint *ngIf="!passwordInput">Enter your password</mat-hint> -->
         </mat-form-field>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-card-actions>
-          <button type="submit" mat-stroked-button color="accent" aria-label="botón login">
+          <button type="submit" mat-flat-button color="accent" aria-label="botón login">
             Acceder
           </button>
         </mat-card-actions>

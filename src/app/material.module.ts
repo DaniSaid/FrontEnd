@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDialogModule,
     MatProgressBarModule,
     MatGridListModule,
+    MatTabsModule,
     MatSnackBarModule
   ],
   exports: [
@@ -50,6 +52,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatDialogModule,
     MatProgressBarModule,
     MatGridListModule,
+    MatTabsModule,
     MatSnackBarModule
   ]
 })

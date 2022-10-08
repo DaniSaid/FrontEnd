@@ -14,8 +14,6 @@ $background: #D4D2D5;
     "leftSide rightSide"
     ;
 }
-
-
 .left{
     grid-area: leftSide;
     align-self: center;
@@ -31,25 +29,19 @@ $background: #D4D2D5;
     grid-area: rightSide;
     justify-self: center;
     align-self: center;
-    padding: 3rem;
-}
-.section-style{
-    width: 100%;
-    border-radius: 0;
-    padding: 10px;
-    margin: 0;
-    background: $background;
-    color: $primary;
+    padding-bottom: 3rem;
 }
 
 .add-btn {
     display: flex;
     justify-content: flex-end;
+    margin-bottom: 10px;
     button,
     mat-icon {
       background-color: $secondary;
     }
   }
+
 .cards-group {
     width: 100%;
     display: inline-flex;
@@ -57,18 +49,20 @@ $background: #D4D2D5;
     flex-direction: row;
     align-content: space-around;
     justify-content: space-evenly;
-    gap: 20px;
   }
-
-mat-card{
-    border-radius: 10px;
-    color: #222;
-    background: $background;
-
-    mat-card-header{
-        justify-content: space-between;
-    }
+mat-card.exp-card{
+  width: 25em;
+  background-color: $background;
+  mat-card-header{
+    justify-content: space-between;
+  }
 }
+
+//form grid
+.childrenWidth100 > * {
+  width: 100%;
+}
+//----
 .svg-background {
     width: 50%;
     position: relative;
@@ -78,6 +72,6 @@ mat-card{
     z-index: 0;
   }
 
-  .accent-color{
+.accent-color{
     color: $accent;
-  }
+}
