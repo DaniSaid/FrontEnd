@@ -14,7 +14,7 @@ import { Project } from '../model/Project.model';
 })
 export class PortfolioDataService {
 
-  readonly Url = 'https://git.heroku.com/portfoliodg.git/';
+  readonly Url = 'https://portfoliodg.herokuapp.com/';
 
   constructor(private http:HttpClient) { }
 
