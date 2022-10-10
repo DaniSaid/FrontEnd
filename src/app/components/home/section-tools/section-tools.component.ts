@@ -118,5 +118,4 @@ export class SectionToolsComponent implements OnInit {
   closeDelete(): void {
     this.modalDelete = false;
   }
-
 }
