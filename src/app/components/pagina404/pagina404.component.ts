@@ -9,9 +9,13 @@ import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
 })
 export class Pagina404Component implements OnInit {
 
-  constructor(private portfolioDataService: PortfolioDataService) { }
+  constructor() { }
 
   ngOnInit(): void {
+  }
+
+  returnHome(){
+
   }
 
 }

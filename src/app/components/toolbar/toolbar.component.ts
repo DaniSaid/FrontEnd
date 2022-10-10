@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
-import { PortfolioDataService } from 'src/app/services/portfolio-data.service'
 import { Router } from '@angular/router';
 
 @Component({
@@ -60,7 +59,7 @@ export class ToolbarComponent implements OnInit {
 
   ArgPLogo: string = " /assets/images/APLogo-darkmode.png";
 
-  constructor(private portfolioData:PortfolioDataService, public router: Router){
+  constructor(public router: Router){
 
   }
   
