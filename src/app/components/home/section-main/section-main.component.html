@@ -48,22 +48,26 @@
       <form [formGroup]="editForm" novalidate>
         <mat-form-field>
           <mat-label for="nombre">Nombre</mat-label>
-          <input type="text" matInput name="nombre" value="" formControlName="nombre">
+          <input type="text" matInput name="nombre" value="" formControlName="nombre" required>
+          <mat-error>campo obligatorio</mat-error>
         </mat-form-field>
       
         <mat-form-field>
           <mat-label for="provincia">Provincia</mat-label>
-          <input type="text" matInput name="" value="" formControlName="provincia">
+          <input type="text" matInput name="" value="" formControlName="provincia" required>
+          <mat-error>campo obligatorio</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label for="pais">País</mat-label>
-          <input type="text" matInput name="" value="" formControlName="pais">
+          <input type="text" matInput name="" value="" formControlName="pais" required>
+          <mat-error>campo obligatorio</mat-error>
         </mat-form-field>
      
         <mat-form-field>
           <mat-label for="titulo">Título</mat-label>
-          <input type="text" matInput name="" value="" formControlName="titulo">
+          <input type="text" matInput name="" value="" formControlName="titulo" required>
+          <mat-error>campo obligatorio</mat-error>
         </mat-form-field>
         <br>
         <mat-form-field>

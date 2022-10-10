@@ -75,6 +75,7 @@ export class SectionToolsComponent implements OnInit {
       console.log("herramienta agregada" + JSON.stringify(toolResponse));
       this.getToolList();
     });
+    this.closeAdd();
   }
   closeAdd(): void {
     this.modalAdd = false;
@@ -95,7 +96,6 @@ export class SectionToolsComponent implements OnInit {
       console.log("herramienta editada" + JSON.stringify(toolResponse));
       this.getToolList();
     });
-
     this.editClose();
   }
   editClose(): void {

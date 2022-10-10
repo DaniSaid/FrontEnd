@@ -91,7 +91,6 @@ export class SectionProjectsComponent implements OnInit {
        console.log("proyecto editado" + JSON.stringify(projectResponse));
        this.getProjectList();
     });
-
     this.closeEdit();
   }
   

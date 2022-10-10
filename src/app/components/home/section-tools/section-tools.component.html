@@ -54,7 +54,8 @@
         <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
           <mat-form-field appearance="fill">
             <mat-label for="nombre">nombre</mat-label>
-            <input type="text" matInput name="nombre" value="" ngModel #nombre="ngModel"/>
+            <input type="text" matInput name="nombre" value="" ngModel #nombre="ngModel" required/>
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
@@ -92,7 +93,9 @@
               name="nombre"
               value=""
               formControlName="nombre"
+              required
             />
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" color="primary">

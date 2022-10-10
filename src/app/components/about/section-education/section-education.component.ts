@@ -70,6 +70,7 @@ export class SectionEducationComponent implements OnInit {
       console.log("edu agregada:" + JSON.stringify(eduResponse));
       this.getEducationList();
     });
+    this.closeAdd();
   }
   closeAdd(): void{
     this.modalAdd = false;
@@ -91,9 +92,7 @@ export class SectionEducationComponent implements OnInit {
     this.portfolioService.updateEducation(this.editForm.value).subscribe(data =>{
       console.log("datos editados:" + JSON.stringify(data));
       this.getEducationList();
-    }
-    );
-
+    });
     this.closeEdit();
   }
   closeEdit(): void{
