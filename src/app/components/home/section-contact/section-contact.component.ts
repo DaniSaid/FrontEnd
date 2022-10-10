@@ -10,8 +10,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class SectionContactComponent implements OnInit {
  
-  discord: string = " /assets/images/logos/discord-logo.svg";
-  discordName: string = "Dani G #2921";
   linkedIn: string = " /assets/images/logos/linkedin-logo.svg";
   linkedInLink: string = "https://www.linkedin.com/in/daniela-gavil%C3%A1n-bba28122a/";
   gmail: string = " /assets/images/logos/mail-logo.svg";
@@ -28,19 +26,13 @@ export class SectionContactComponent implements OnInit {
     let x : number = n;
 
     switch (x) {
-      case 0 :
-        navigator.clipboard.writeText(this.discordName);
-        this.snack.open('Usuario de Discord copiado!', 'Cerrar', {
-          duration : 5000
-        });
-        break;
-      case 1: 
+      case 0: 
         navigator.clipboard.writeText(this.linkedInLink);
         this.snack.open('link de linkedin copiado!', 'Cerrar', {
           duration : 5000
         });
         break;
-      case 2:
+      case 1:
         navigator.clipboard.writeText(this.myMail);
         this.snack.open('mail copiado!', 'Cerrar', {
           duration : 5000
