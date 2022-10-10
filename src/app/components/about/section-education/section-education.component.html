@@ -1,9 +1,4 @@
 <div class="container">
-    <section class="left">
-        <div class="svg">
-            <img src="/assets/images/studying.svg" alt="">
-        </div>
-    </section>
     <section class="right">
         <div class="add-btn">
             <button mat-icon-button aria-label="botón crear" class="white" (click)="add()" *ngIf="isLogged">
@@ -20,17 +15,19 @@
                     <mat-card-subtitle>{{edu.detalle}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content class="azul">
-                    <p>{{edu.fechaIni}} <span>-</span>{{edu.fechaFin}}</p>
+                    <p>{{edu.fechaIni}}<span class="accent-color"> - </span>{{edu.fechaFin}}</p>
                 </mat-card-content>
                 <mat-divider class="azul"></mat-divider>
-                <mat-card-actions align="end" *ngIf="isLogged">
-                    <button mat-flat-button color="warn" aria-label="botón borrar" (click)="delete(edu)">
-                        borrar
-                    </button>
-                    <button mat-stroked-button class="white" aria-label="botón editar" (click)="edit(edu)">
-                         editar
-                    </button>
-                </mat-card-actions>
+                <mat-card-footer>
+                    <mat-card-actions align="end" *ngIf="isLogged">
+                        <button mat-flat-button color="warn" aria-label="botón borrar" (click)="delete(edu)">
+                            borrar
+                        </button>
+                        <button mat-stroked-button class="white" aria-label="botón editar" (click)="edit(edu)">
+                             editar
+                        </button>
+                    </mat-card-actions>
+                </mat-card-footer>
             </mat-card>
         </div>
     </section>
