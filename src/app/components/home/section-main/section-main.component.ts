@@ -78,6 +78,7 @@ export class SectionMainComponent implements OnInit {
       console.log("datos editados:" + JSON.stringify(data));
       this.cargarAbout();
     });
+    this.editClose();
   }
 
   editClose(){

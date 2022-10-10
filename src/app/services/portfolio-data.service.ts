@@ -14,7 +14,7 @@ import { Project } from '../model/Project.model';
 })
 export class PortfolioDataService {
 
-  readonly Url = 'http://localhost:8080/';
+  readonly Url = 'https://portfoliodg.herokuapp.com/';
 
   constructor(private http:HttpClient) { }
 

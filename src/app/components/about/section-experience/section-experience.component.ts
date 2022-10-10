@@ -106,7 +106,7 @@ public editForm!: FormGroup;
       console.log("datos editados:" + JSON.stringify(data));
       this.getExperiences();
     });
-    
+    this.closeEdit();
   }
   closeEdit(): void{
     this.modalEdit = false;

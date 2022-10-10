@@ -51,7 +51,7 @@
 
   <section class="left">
     <div class="svg-background">
-      <img src="/assets/images/looking-for-job.svg" alt="" />
+      <img src="/assets/images/looking-for-job.svg" width="100%" alt="imagen" />
     </div>
     <p>
       Actualmente me encuentro sin experiencia laboral relacionada a
@@ -69,7 +69,7 @@
       <mat-card-content>
         <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
             <mat-form-field >
-              <mat-label for="puesto"> Puesto</mat-label>
+              <mat-label for="puesto">Puesto</mat-label>
               <input
                 type="text"
                 matInput
@@ -79,6 +79,7 @@
                 ngModel
                 required
               />
+              <mat-error>campo obligatorio</mat-error>
             </mat-form-field>
   
             <mat-form-field appearance="fill">
@@ -92,10 +93,11 @@
                 ngModel
                 required
               />
+              <mat-error>campo obligatorio</mat-error>
             </mat-form-field>
           <br />
           <mat-form-field>
-            <mat-label for="tipo">ej: full-time</mat-label>
+            <mat-label for="tipo">Jornada</mat-label>
             <input
               type="text"
               matInput
@@ -105,6 +107,8 @@
               ngModel
               required
             />
+            <mat-error>campo obligatorio</mat-error>
+            <mat-hint>Ej: full-time</mat-hint>
           </mat-form-field>
 
           <mat-form-field>
@@ -118,6 +122,7 @@
               ngModel
               required
             />
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br />
           <mat-form-field>
@@ -130,6 +135,7 @@
               #fechaIni="ngModel"
               ngModel
             />
+            <mat-hint>Ingrese solo el Año</mat-hint>
           </mat-form-field>
           <mat-form-field>
             <mat-label for="fechaFin">fecha de Finalización</mat-label>
@@ -141,6 +147,7 @@
               #fechaFin="ngModel"
               ngModel
             />
+            <mat-hint>Ingrese solo el Año</mat-hint>
           </mat-form-field>
           <br />
           <mat-card-actions>
@@ -167,38 +174,46 @@
       <mat-card-content>
         <form [formGroup]="editForm" novalidate>
           <mat-form-field>
-            <mat-label for="puesto">nuevo puesto</mat-label>
-            <input type="text" matInput value="" name="puedto" formControlName="puesto" />
+            <mat-label for="puesto">Nuevo puesto</mat-label>
+            <input type="text" matInput value="" name="puedto" formControlName="puesto" required/>
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
        
           <mat-form-field>
-            <mat-label for="detalle">nuevo detalle</mat-label>
-            <input type="text" matInput value="" name="detalle" formControlName="detalle" />
+            <mat-label for="detalle">Nuevo detalle</mat-label>
+            <input type="text" matInput value="" name="detalle" formControlName="detalle" required/>
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <mat-label for="tipo">ej: full-time</mat-label>
-            <input type="text" matInput value="" name="tipo" formControlName="tipo" />
+            <mat-label for="tipo">Jornada</mat-label>
+            <input type="text" matInput value="" name="tipo" formControlName="tipo" required/>
+            <mat-hint>Ej: full-time</mat-hint>
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           
           <mat-form-field>
-            <mat-label for="nombreEmpresa">nuevo nombre</mat-label>
+            <mat-label for="nombreEmpresa">Nuevo nombre</mat-label>
             <input
               type="text"
               matInput
               value=""
               name="nombreEmpresa"
               formControlName="nombreEmpresa"
+              required
             />
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <mat-label for="fechaIni">nueva fecha de Inicio</mat-label>
+            <mat-label for="fechaIni">Nueva fecha de Inicio</mat-label>
             <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni" />
+            <mat-hint>Ingrese solo el Año, no se permiten letras</mat-hint>
           </mat-form-field>
           <mat-form-field>
-            <mat-label for="fechaFin">nueva fecha de finalización</mat-label>
+            <mat-label for="fechaFin">Nueva fecha de finalización</mat-label>
             <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin" />
+            <mat-hint>Ingrese solo el Año, no se permiten letras</mat-hint>
           </mat-form-field>
         </form>
         <mat-card-actions>
@@ -214,7 +229,6 @@
 
   <!--Borrar-->
   <section *ngIf="modalDelete" class="modal">
-    
     <mat-card @showTrigger class="modal-delete">
       <mat-card-header>
           <mat-card-title>¿Borrar Experiencia?</mat-card-title>

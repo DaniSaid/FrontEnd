@@ -69,6 +69,7 @@
               ngModel
               required
             />
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill">
@@ -80,9 +81,8 @@
               name="icon"
               #icon="ngModel"
               ngModel
-              required
             />
-            <mat-hint align="end">usar iconos de google font</mat-hint>
+            <mat-hint>usar iconos de google fonts ej: brush</mat-hint>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill">
@@ -96,6 +96,7 @@
               ngModel
               required
             />
+            <mat-error>campo obligatorio</mat-error>
             <mat-hint>Ingrese un número del 1 al 100</mat-hint>
           </mat-form-field>
           <mat-card-actions>
@@ -128,7 +129,9 @@
               name="skill"
               value=""
               formControlName="skill"
+              required
             />
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" color="primary">
@@ -140,6 +143,7 @@
               value=""
               formControlName="icon"
             />
+            <mat-hint>usar iconos de google fonts ej: handshake</mat-hint>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" color="primary">
@@ -150,8 +154,10 @@
               value=""
               name="progress"
               formControlName="progress"
+              required
             />
             <mat-hint>Ingrese un número del 1 al 100</mat-hint>
+            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>

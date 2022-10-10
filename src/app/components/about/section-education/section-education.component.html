@@ -43,26 +43,28 @@
                 <mat-divider inset></mat-divider>
             <mat-card-content>
                 <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
-            
                     <mat-form-field appearance="fill">
                         <mat-label  for="titulo">título</mat-label>
                         <input type="text" matInput value="" name="titulo" #titulo="ngModel" ngModel required>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
-                   
                     <mat-form-field>
                         <mat-label for="detalle">Nivel</mat-label>
-                        <input type="text" matInput value="" name="detalle" #detalle="ngModel" ngModel>
+                        <input type="text" matInput value="" name="detalle" #detalle="ngModel" ngModel required>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>                   
                     <mat-form-field>
                         <mat-label for="fechaIni">Fecha inicio</mat-label>
                         <input type="text" matInput value="" name="fechaIni" #fechaIni="ngModel" ngModel required>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
                         <mat-label for="fechaFin">fecha finalización</mat-label>
                         <input type="text" matInput value="" name="fechaFin" #fechaFin="ngModel" ngModel required>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-card-actions>
@@ -90,23 +92,28 @@
                    
                     <mat-form-field>
                         <mat-label  for="titulo">Nuevo título</mat-label>
-                        <input type="text" matInput value="" name="titulo" formControlName="titulo">
+                        <input type="text" matInput value="" name="titulo" formControlName="titulo" required>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
                         <mat-label for="detalle">Nivel Educativo</mat-label>
-                        <input type="text" matInput value="" name="detalle" formControlName="detalle">
+                        <input type="text" matInput value="ej: Universitario" name="detalle" formControlName="detalle" required>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
                         <mat-label  for="fechaIni">nueva fecha de inicio</mat-label>
-                        <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni">
+                        <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni" required>
+                        <mat-hint>Ingrese solo el Año</mat-hint>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
                         <mat-label  for="fechaFin">nueva fecha finalización</mat-label>
-                        <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin">
-    
+                        <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin" required>
+                        <mat-hint>Ingrese solo el Año</mat-hint>
+                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>                    
                     
                 </form>

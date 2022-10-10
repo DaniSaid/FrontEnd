@@ -76,6 +76,7 @@ export class SectionSkillsComponent implements OnInit {
       console.log("habilidad agregada" + JSON.stringify(skillResponse));
       this.getSkillList();
     });
+    this.closeAdd();
   }
   closeAdd(): void{
     this.modalAdd = false;
@@ -106,7 +107,6 @@ export class SectionSkillsComponent implements OnInit {
       progress: e.progress,
       icon: e.icon
     });
-
     this.getSkillList();
   }
 
