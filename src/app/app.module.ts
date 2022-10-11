@@ -55,6 +55,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MaterialModule,
     HttpClientModule,
     FormsModule,
+    NgsRevealModule,
     ReactiveFormsModule,
     NgsRevealModule,
     DragDropModule

@@ -1,4 +1,4 @@
-<section id="aboutMe" *ngFor="let a of aboutList">
+<section id="aboutMe" *ngFor="let a of aboutList" [ngsRevealSet]="{ reset: true}" [ngsInterval]="50" [ngsSelector]="'.animated'">
   <button
     id="edit-btn"
     mat-raised-button
@@ -8,7 +8,7 @@
     <mat-icon>edit</mat-icon>
   </button>
 
-  <div class="title section-style on-hover">
+  <div class="title section-style on-hover animated">
     <h1><b>Hola!</b></h1>
   </div>
 
