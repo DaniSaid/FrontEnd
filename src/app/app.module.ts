@@ -5,7 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MaterialModule } from './material.module';
-import { NgsRevealModule } from 'ngx-scrollreveal';
+
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -55,9 +55,9 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    NgsRevealModule,
+
     ReactiveFormsModule,
-    NgsRevealModule,
+
     DragDropModule
   ],
   entryComponents: [ConfirmDialogComponent],
