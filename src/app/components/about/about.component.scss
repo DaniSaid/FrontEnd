@@ -81,39 +81,18 @@ section {
 
   margin-top: 3rem;
 }
-.title-style-left {
-  display: inline-block;
-  position: relative;
-  text-transform: uppercase;
-  left: -10rem;
-  margin: 3rem 0;
+
+@media screen and(min-width: 775px) {
+  .svg-img{
+    position: absolute;
+    top: 25%;
+    right: -20rem;
+    z-index: 0;
+  } 
 }
-.title-style-left::before {
-  content: "";
-  position: absolute;
-  width: 26rem;
-  height: 3px;
-  background-color: currentColor;
-  top: 1.7rem;
+@media screen and(max-width: 774px) {
+  .svg-img{
+    display: none;
+  } 
 }
-.title-style-left::before {
-  left: -27rem;
-}
-.title-style-right {
-  display: inline-block;
-  position: relative;
-  text-transform: uppercase;
-  left: 10rem;
-  margin: 3rem 0;
-}
-.title-style-right::after {
-  content: "";
-  position: absolute;
-  width: 26rem;
-  height: 3px;
-  background-color: currentColor;
-  top: 1.7rem;
-}
-.title-style-right::after {
-  right: -27rem;
-}
+
