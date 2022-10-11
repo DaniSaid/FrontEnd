@@ -90,7 +90,9 @@ section {
     z-index: 0;
   } 
 }
-
-.svg-img{
-  display: none;
+@media screen and(max-width: 774px) {
+  .svg-img{
+    display: none;
+  } 
 }
+

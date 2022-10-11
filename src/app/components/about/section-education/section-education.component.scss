@@ -6,10 +6,10 @@ $accent: #F06449;
 .container {
   display: grid;
   background: rgba(51, 51, 51, 0);
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 90% 1fr;
   grid-auto-rows: auto;
   padding-bottom: 20px;
-  grid-template-areas: "rightSide";
+  grid-template-areas: ". rightSide .";
 }  
 
 @media screen and(min-width: 775px) {
@@ -49,6 +49,7 @@ $accent: #F06449;
 }
 
 mat-card.dark-background {
+  width: 19rem;
   background: rgba(0, 0, 0, 0.75);
   border-radius: 15px;
   mat-card-title {
