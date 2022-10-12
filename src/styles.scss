@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $Portafolio-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$Portafolio-theme: mat.define-light-theme((
-  color: (
-    primary: $Portafolio-primary,
-    accent: $Portafolio-accent,
-    warn: $Portafolio-warn,
+$Portafolio-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $Portafolio-primary,
+      accent: $Portafolio-accent,
+      warn: $Portafolio-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -34,74 +35,74 @@ $Portafolio-theme: mat.define-light-theme((
 @include mat.all-component-themes($Portafolio-theme);
 
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,300&display=swap");
 
 //variables para colores declaradas usando sass
-$base: #EDE6DB;
+$base: #ede6db;
 $darkContrast: #4b2b21;
-$highlight: #D74E09;
-$secondHighlight:#F1E0AC;
+$highlight: #d74e09;
+$secondHighlight: #f1e0ac;
 $darkHighlight: #d4662ecc;
 
-html{
+html {
   overflow: auto;
 }
-body{
+body {
   width: 100%;
   position: fixed;
   background: $base;
   margin: 0;
-  font-family: 'Roboto','Poppins', "Helvetica Neue", sans-serif;
+  font-family: "Roboto", "Poppins", "Helvetica Neue", sans-serif;
   overflow-x: hidden;
 }
-main{
+main {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
-ul, li{
-  padding:0;
+ul,
+li {
+  padding: 0;
   list-style-type: none;
 }
-a{
+a {
   text-decoration: none;
   color: $darkContrast;
 }
-h1{
+h1 {
   padding: 10px;
   margin: 0;
   font-size: 52.11px;
-font-style: normal;
-font-weight: 400;
+  font-style: normal;
+  font-weight: 400;
 }
-   h2{
+h2 {
   padding: 10px;
   margin: 0;
   font-size: 39.09px;
-font-style: normal;
-font-weight: 300;
+  font-style: normal;
+  font-weight: 300;
 }
 
-  
-h3{
+h3 {
   padding: 10px;
   margin: 0;
   font-size: 29.33px;
-font-style: normal;
-font-weight: 200;
+  font-style: normal;
+  font-weight: 200;
 }
-p{
+p {
   padding: 10px;
   margin: 0;
   font-size: 22px;
   line-height: 35px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-input{
-  font-family: 'Poppins', sans-serif;
+input {
+  font-family: "Poppins", sans-serif;
 }
 
 //layout principal de la página
-.grid{
+.grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 30px;
@@ -117,179 +118,262 @@ input{
 
   border-radius: 17px;
   padding: 0 1em;
-  background-color: rgba(#dee0f7,.53);
+  background-color: rgba(#dee0f7, 0.53);
 
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 
-              0 2px 2px rgba(0,0,0,0.11), 
-              0 4px 4px rgba(0,0,0,0.11), 
-              0 6px 8px rgba(0,0,0,0.11);
-    
-  &:hover{
-    box-shadow: 0 1px 1px rgba(0,0,0,0.25), 
-    0 2px 2px rgba(0,0,0,0.20), 
-    0 4px 4px rgba(0,0,0,0.15), 
-    0 8px 8px rgba(0,0,0,0.10),
-    0 16px 16px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
+    0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11);
+
+  &:hover {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.2),
+      0 4px 4px rgba(0, 0, 0, 0.15), 0 8px 8px rgba(0, 0, 0, 0.1),
+      0 16px 16px rgba(0, 0, 0, 0.05);
   }
-    
 }
 
-.highlight{
+.highlight {
   cursor: pointer;
   will-change: transform;
   transition: color 450ms ease-in;
   border-radius: 4px;
   padding: 0 5px;
   margin: 2px;
-  background-color: rgba(#dee0f7,.53);
-  box-shadow: 0 0 1px rgba(0,0,0,0.25), 
-  0 1px 2px rgba(0,0,0,0.20), 
-  0 2px 4px rgba(0,0,0,0.15), 
-  ;
+  background-color: rgba(#dee0f7, 0.53);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.15);
 
-  &:hover{
+  &:hover {
     transition: transform 150ms;
     color: $highlight;
-    box-shadow: 0 0px 1px rgba(0,0,0,0.25), 
-    0 1px 2px rgba(0,0,0,0.20), 
-    0 2px 4px rgba(0,0,0,0.15), 
-    0 4px 8px rgba(0,0,0,0.10),;
-  
+    box-shadow: 0 0px 1px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2),
+      0 2px 4px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
-.on-hover{
+.on-hover {
   cursor: pointer;
   will-change: transform;
   transition: color 450ms ease-in;
   color: $darkContrast;
 
-  &:hover{
+  &:hover {
     transition: transform 150ms;
     color: $darkHighlight;
   }
 }
 
-.custom-hr{
-    border: 0;
-    margin: 1.35em auto;
-    max-width: 100%;
-    background-position: 50%;
-    box-sizing: border-box;
-    height: 2px;
+.custom-hr {
+  border: 0;
+  margin: 1.35em auto;
+  max-width: 100%;
+  background-position: 50%;
+  box-sizing: border-box;
+  height: 2px;
 
-    background-image: linear-gradient(
+  background-image: linear-gradient(
     90deg,
     rgba($base, 0),
     rgba($base, 1) 50%,
-    rgba($base, 0) 100%);
+    rgba($base, 0) 100%
+  );
 }
 
 //delete dialog modal
-.delete-warning{
-  mat-dialog-container{
+.delete-warning {
+  mat-dialog-container {
     background-color: rgb(230, 207, 194);
   }
 }
 
 //form card styles
-.modal{
+.modal {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed; 
+  position: fixed;
   z-index: 4;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   overflow: auto;
-  background-color: rgb(41, 41, 41); 
+  background-color: rgb(41, 41, 41);
   background-color: rgba(0, 0, 0, 0.32);
 
-  .modal-container, mat-card{
+  .modal-container,
+  mat-card {
     padding: 1rem;
     background-color: rgb(236, 220, 210);
-
   }
- .btn-right{
+  .btn-right {
     display: flex;
     justify-content: flex-end;
     padding: 0;
     margin: 0;
   }
- .btn-left{
+  .btn-left {
     display: flex;
     justify-content: flex-start;
     padding: 0;
     margin: 0;
   }
-  mat-card{
+  mat-card {
     flex-direction: column;
     align-content: center;
     text-align: center;
   }
-  mat-card-title{
+  mat-card-title {
     justify-content: center;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    h2{
+    h2 {
       margin: 0;
     }
-    h3{
+    h3 {
       margin: 0;
     }
   }
-  mat-card-content{
+  mat-card-content {
     margin-top: 10px;
   }
-  mat-card-actions{
+  mat-card-actions {
     justify-content: center;
   }
-  mat-form-field{
+  mat-form-field {
     margin: 5px;
   }
-  mat-divider{
+  mat-divider {
     margin-bottom: 15px;
   }
 }
 
-mat-card.modal-delete{
+mat-card.modal-delete {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   padding: 18px 15px 0;
 
-  mat-card-actions{
+  mat-card-actions {
     margin-top: 5px;
   }
 }
 
 // main custom scrollbar
 body::-webkit-scrollbar {
-  width: 5px;               
+  width: 5px;
 }
 
 body::-webkit-scrollbar-track {
-  background: $base;        
+  background: $base;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: $base;    
-  border-radius: 20px;       
-  border: 3px solid $secondHighlight;  
+  background-color: $base;
+  border-radius: 20px;
+  border: 3px solid $secondHighlight;
 }
 
 //containers custom scrollbar
 .scroll::-webkit-scrollbar {
-  width: 3px;               
+  width: 3px;
 }
 
 .scroll::-webkit-scrollbar-track {
-  background: #333;        
+  background: #333;
 }
 
 .scroll::-webkit-scrollbar-thumb {
-  background-color: #333;   
-  border-radius: 20px;      
+  background-color: #333;
+  border-radius: 20px;
   border: 3px solid #555;
+}
+//mis animaciones
+.slide-in-r {
+  animation: slide-in-r 1s ease 0s 1 normal forwards;
+}
+@keyframes slide-in-r {
+  0% {
+    opacity: 0;
+    transform: translateX(250px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.slide-in {
+  animation: silde-in 1s ease 0s 1 normal forwards;
+}
+@keyframes silde-in {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s ease-in 0.5s 1 normal forwards;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    box-shadow: 0 1px 14px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 20px 14px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-2px);
+  }
+  100% {
+    box-shadow: 0 1px 14px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
+.jello:hover {
+  animation: jello 2s;
+  transform-origin: center;
+}
+@keyframes jello {
+  11.1% {
+    transform: none;
+  }
+  24.4% {
+    transform: skewX(-5.125deg) skewY(-2.125deg);
+  }
+  55.5% {
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  63.6% {
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+  75.7% {
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+  88.8% {
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+  100% {
+    transform: none;
+  }
 }

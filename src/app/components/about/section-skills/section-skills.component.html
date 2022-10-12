@@ -6,12 +6,13 @@
       color="warn"
       aria-label="botón agregar"
       (click)="add()"
+      *ngIf="isLogged"
     >
       <mat-icon>add</mat-icon>
     </button>
   </div>
 
-  <div class="cards-group">
+  <div class="cards-group fade-in">
     <div *ngFor="let e of skillList" >
       <mat-card class="mat-elevation-z5 skill-card">
         <mat-card-actions align="end">
