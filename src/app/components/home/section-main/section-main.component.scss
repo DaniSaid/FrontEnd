@@ -69,3 +69,34 @@ about-button{
     visibility: visible;
     opacity: 1;
 }
+
+/*saber más animacion*/
+.fade-in {
+    opacity: 0;
+	-webkit-animation: scale-up-center 1s cubic-bezier(0.390, 0.675, 0.665, 1.000) 1.5s both;
+	        animation: scale-up-center 1s cubic-bezier(0.390, 0.675, 0.665, 1.000) 1.5s both;
+}
+
+ @-webkit-keyframes scale-up-center {
+    0% {
+        opacity: 0;
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  @keyframes scale-up-center {
+    0% {
+      -webkit-transform: scale(0.5);
+              transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+  }
+  

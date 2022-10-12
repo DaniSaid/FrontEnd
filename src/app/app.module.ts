@@ -46,7 +46,6 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     SectionMainComponent,
     SectionSkillsComponent,
     ConfirmDialogComponent,
-   
   ],
   imports: [
     BrowserModule,
@@ -55,9 +54,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     MaterialModule,
     HttpClientModule,
     FormsModule,
-
     ReactiveFormsModule,
-
     DragDropModule
   ],
   entryComponents: [ConfirmDialogComponent],

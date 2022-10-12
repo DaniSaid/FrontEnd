@@ -56,6 +56,8 @@ $background: #D4D2D5;
     flex-direction: row;
     align-content: space-around;
     justify-content: space-evenly;
+    gap: 5px;
+    margin: 0 10px;
   }
 mat-card.exp-card{
   width: 25em;
