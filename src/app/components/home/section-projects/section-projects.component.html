@@ -1,5 +1,5 @@
 <section id="projects">
-    <div class="title section-style on-hover">
+    <div class="title section-style on-hover float">
         <h2><b>Proyectos</b></h2>
     </div>
     <div id="addBtn" *ngIf="isLogged">
@@ -45,7 +45,7 @@
                         </button>
                       </mat-card-actions>
                       <mat-card-header>
-                        <mat-card-title><h4><b>{{p.nombre}}</b></h4>{{p.nombre}}</mat-card-title>
+                        <mat-card-title><h4><b>{{p.nombre}}</b></h4></mat-card-title>
                       </mat-card-header>
                       <img mat-card-image [src]="p.imagen" alt="imagen del proyecto">
                       <mat-card-content>
@@ -54,8 +54,8 @@
                         </p>
                       </mat-card-content>
                       <mat-card-actions>
-                        <a mat-stroked-button [href]="p.repo">repositorio</a>
-                        <a mat-flat-button color="primary" [href]="p.web">sitio web</a>
+                        <a mat-stroked-button [href]="p.repo" Target="_blank">repositorio</a>
+                        <a mat-flat-button color="primary" [href]="p.web" Target="_blank">sitio web</a>
                       </mat-card-actions>
                     </mat-card>
               </mat-tab>
