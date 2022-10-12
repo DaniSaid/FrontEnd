@@ -1,6 +1,6 @@
 $font:#F1E0AC;
-$bg:#3E3333;
-$highlight: #D74E09;
+$bg:#6c3212;
+$highlight: #fffaf6;
 
 .container{
     display: flex;
@@ -40,7 +40,7 @@ $highlight: #D74E09;
     z-index: -1; //asi la sombra queda dentro del botón y detras de las letras
 
     transform-origin: left;
-    transform: scaleX(.93);
+    transform: scaleX(.90);
     transition: transform 500ms ease-in;
 }
 .bttn:hover{
