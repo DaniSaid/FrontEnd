@@ -40,7 +40,6 @@ export class SectionEducationComponent implements OnInit {
       this.isLogged = true;
     }else{
       this.isLogged = false;
-
     }
 
     this.getEducationList();

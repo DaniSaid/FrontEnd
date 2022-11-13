@@ -1,13 +1,7 @@
 <div class="container">
   <section class="right">
     <div class="add-btn">
-      <button
-        mat-icon-button
-        aria-label="botón crear"
-        class="white"
-        (click)="add()"
-        *ngIf="isLogged"
-      >
+      <button mat-icon-button aria-label="botón crear" class="white" (click)="add()" *ngIf="isLogged">
         <mat-icon>add</mat-icon>
       </button>
     </div>
@@ -15,25 +9,12 @@
       <mat-card class="exp-card" *ngFor="let exp of experienceList">
         <mat-card-header>
           <mat-card-title>{{ exp.puesto }}</mat-card-title>
-          <mat-card-subtitle
-            >{{ exp.detalle }}, {{ exp.tipo }}</mat-card-subtitle
-          >
+          <mat-card-subtitle>{{ exp.detalle }}, {{ exp.tipo }}</mat-card-subtitle>
           <mat-card-actions align="end" *ngIf="isLogged">
-            <button
-              type="button"
-              mat-stroked-button
-              (click)="edit(exp)"
-              *ngIf="isLogged"
-            >
+            <button type="button" mat-stroked-button (click)="edit(exp)" *ngIf="isLogged">
               editar
             </button>
-            <button
-              type="button"
-              mat-flat-button
-              color="warn"
-              (click)="delete(exp)"
-              *ngIf="isLogged"
-            >
+            <button type="button" mat-flat-button color="warn" (click)="delete(exp)" *ngIf="isLogged">
               borrar
             </button>
           </mat-card-actions>
@@ -68,93 +49,47 @@
       <mat-divider inset></mat-divider>
       <mat-card-content>
         <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
-            <mat-form-field >
-              <mat-label for="puesto">Puesto</mat-label>
-              <input
-                type="text"
-                matInput
-                value=""
-                name="puesto"
-                #puesto="ngModel"
-                ngModel
-                required
-              />
-              <mat-error>campo obligatorio</mat-error>
-            </mat-form-field>
-  
-            <mat-form-field appearance="fill">
-              <mat-label for="detalle">detalle</mat-label>
-              <input
-                type="text"
-                matInput
-                value=""
-                name="detalle"
-                #detalle="ngModel"
-                ngModel
-                required
-              />
-              <mat-error>campo obligatorio</mat-error>
-            </mat-form-field>
-          <br />
           <mat-form-field>
-            <mat-label for="tipo">Jornada</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="tipo"
-              #detalle="ngModel"
-              ngModel
-              required
-            />
+            <mat-label for="puesto">Puesto</mat-label>
+            <input type="text" matInput value="" name="puesto" #puesto="ngModel" ngModel required/>
             <mat-error>campo obligatorio</mat-error>
-            <mat-hint>Ej: full-time</mat-hint>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label for="detalle">Descripción breve</mat-label>
+            <input type="text" matInput value="" name="detalle" #detalle="ngModel" ngModel/>   
+            <mat-hint>Ej: Seguimiento postventa</mat-hint>     
           </mat-form-field>
 
+          <br/>
           <mat-form-field>
-            <mat-label for="nombreE">nombre de la empresa</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="nombreE"
-              #nombreE="ngModel"
-              ngModel
-              required
-            />
+            <mat-label for="tipo">Tipo de trabajo</mat-label>
+            <input type="text" matInput value="" name="tipo" #detalle="ngModel" ngModel/>        
+            <mat-hint>Ej: full-time, remoto</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label for="nombreE">Nombre de la empresa</mat-label>
+            <input type="text" matInput value="" name="nombreE" #nombreE="ngModel" ngModel required/>
             <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
-          <br />
+
+          <br/>
           <mat-form-field>
-            <mat-label for="fechaIni">fecha de Inicio</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="fechaIni"
-              #fechaIni="ngModel"
-              ngModel
-            />
+            <mat-label for="fechaIni">Fecha de Inicio</mat-label>
+            <input type="number" matInput value="" name="fechaIni" #fechaIni="ngModel" ngModel/>
             <mat-hint>Ingrese solo el Año</mat-hint>
           </mat-form-field>
           <mat-form-field>
-            <mat-label for="fechaFin">fecha de Finalización</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="fechaFin"
-              #fechaFin="ngModel"
-              ngModel
-            />
+            <mat-label for="fechaFin">Fecha de Finalización</mat-label>
+            <input type="number" matInput value="" name="fechaFin" #fechaFin="ngModel" ngModel/>
             <mat-hint>Ingrese solo el Año</mat-hint>
           </mat-form-field>
+
           <br />
           <mat-card-actions>
             <button mat-flat-button color="warn" (click)="closeAdd()">
               Cancelar
             </button>
-            <button type="submit" mat-stroked-button color="accent">
+            <button type="submit" mat-stroked-button color="accent" [disabled]="!addForm.valid">
               Confirmar
             </button>
           </mat-card-actions>
@@ -165,7 +100,7 @@
 
   <!--Editar-->
   <section *ngIf="modalEdit" class="modal">
-    
+
     <mat-card @showTrigger class="modal-container">
       <mat-card-title>
         <h3><b>Editar Experiencia</b></h3>
@@ -174,72 +109,60 @@
       <mat-card-content>
         <form [formGroup]="editForm" novalidate>
           <mat-form-field>
-            <mat-label for="puesto">Nuevo puesto</mat-label>
+            <mat-label for="puesto">Puesto</mat-label>
             <input type="text" matInput value="" name="puedto" formControlName="puesto" required/>
-            <mat-error>campo obligatorio</mat-error>
+            <mat-error>El campo es obligatorio</mat-error>
           </mat-form-field>
-       
+
           <mat-form-field>
-            <mat-label for="detalle">Nuevo detalle</mat-label>
-            <input type="text" matInput value="" name="detalle" formControlName="detalle" required/>
+            <mat-label for="detalle">Detalle</mat-label>
+            <input type="text" matInput value="" name="detalle" formControlName="detalle"/>
             <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br>
           <mat-form-field>
-            <mat-label for="tipo">Jornada</mat-label>
-            <input type="text" matInput value="" name="tipo" formControlName="tipo" required/>
-            <mat-hint>Ej: full-time</mat-hint>
-            <mat-error>campo obligatorio</mat-error>
+            <mat-label for="tipo">Tipo de trabajo</mat-label>
+            <input type="text" matInput value="" name="tipo" formControlName="tipo"/>
+            <mat-hint>Ej: full-time, remoto</mat-hint>
           </mat-form-field>
-          
+
           <mat-form-field>
-            <mat-label for="nombreEmpresa">Nuevo nombre</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="nombreEmpresa"
-              formControlName="nombreEmpresa"
-              required
-            />
-            <mat-error>campo obligatorio</mat-error>
+            <mat-label for="nombreEmpresa">Empresa</mat-label>
+            <input type="text" matInput value="" name="nombreEmpresa" formControlName="nombreEmpresa" required/>
           </mat-form-field>
           <br>
           <mat-form-field>
             <mat-label for="fechaIni">Nueva fecha de Inicio</mat-label>
-            <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni" />
-            <mat-hint>Ingrese solo el Año, no se permiten letras</mat-hint>
+            <input type="number" matInput value="" name="fechaIni" formControlName="fechaIni"/>
+            <mat-hint>Ingrese solo el Año</mat-hint>
           </mat-form-field>
           <mat-form-field>
             <mat-label for="fechaFin">Nueva fecha de finalización</mat-label>
-            <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin" />
-            <mat-hint>Ingrese solo el Año, no se permiten letras</mat-hint>
+            <input type="number" matInput value="" name="fechaFin" formControlName="fechaFin"/>
+            <mat-hint>Ingrese solo el Año</mat-hint>
           </mat-form-field>
         </form>
         <mat-card-actions>
           <button type="button" mat-flat-button color="warn" (click)="closeEdit()">Cancelar</button>
-          <button type="button" mat-stroked-button color="accent" (click)="onEdit()">Aplicar</button>
+          <button type="button" mat-stroked-button color="accent" (click)="onEdit()" [disabled]="!editForm.valid">Aplicar</button>
         </mat-card-actions>
       </mat-card-content>
     </mat-card>
-  
-    <div class="modal-content">
-    </div>
   </section>
 
   <!--Borrar-->
   <section *ngIf="modalDelete" class="modal">
     <mat-card @showTrigger class="modal-delete">
       <mat-card-header>
-          <mat-card-title>¿Borrar Experiencia?</mat-card-title>
+        <mat-card-title>¿Borrar Experiencia?</mat-card-title>
       </mat-card-header>
       <mat-divider inset></mat-divider>
       <mat-card-footer>
-          <mat-card-actions>
-              <button type="button" mat-flat-button color="warn" (click)="closeDelete()">Cancelar</button>
-              <button type="button" mat-stroked-button color="accent" (click)="onDelete()">Confirmar</button>
-          </mat-card-actions>
+        <mat-card-actions>
+          <button type="button" mat-flat-button color="warn" (click)="closeDelete()">Cancelar</button>
+          <button type="button" mat-stroked-button color="accent" (click)="onDelete()">Confirmar</button>
+        </mat-card-actions>
       </mat-card-footer>
-  </mat-card>
+    </mat-card>
   </section>
 </div>

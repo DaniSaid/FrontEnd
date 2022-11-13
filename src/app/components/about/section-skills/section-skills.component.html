@@ -1,35 +1,18 @@
 <div class="container">
-
   <div class="add-btn">
-    <button
-      mat-mini-fab
-      color="warn"
-      aria-label="botón agregar"
-      (click)="add()"
-      *ngIf="isLogged"
-    >
+    <button mat-mini-fab color="warn" aria-label="botón agregar" (click)="add()" *ngIf="isLogged">
       <mat-icon>add</mat-icon>
     </button>
   </div>
 
   <div class="cards-group fade-in">
-    <div *ngFor="let e of skillList" >
+    <div *ngFor="let e of skillList">
       <mat-card class="mat-elevation-z5 skill-card">
         <mat-card-actions align="end">
-          <button
-            mat-icon-button
-            aria-label="botón editar"
-            (click)="openEdit(e)"
-            *ngIf="isLogged"
-          >
+          <button mat-icon-button aria-label="botón editar" (click)="openEdit(e)" *ngIf="isLogged">
             <mat-icon>edit</mat-icon>
           </button>
-          <button
-            mat-icon-button
-            aria-label="botón borrar"
-            (click)="delete(e)"
-            *ngIf="isLogged"
-          >
+          <button mat-icon-button aria-label="botón borrar" (click)="delete(e)" *ngIf="isLogged">
             <mat-icon>close</mat-icon>
           </button>
         </mat-card-actions>
@@ -39,12 +22,8 @@
           <p>{{ e.skill }}</p>
         </mat-card-content>
         <mat-card-footer>
-          <mat-progress-bar
-            class="card-progress"
-            mode="determinate"
-            [value]="e.progress"
-            color="warn"
-          ></mat-progress-bar>
+          <mat-progress-bar class="card-progress" mode="determinate" [value]="e.progress" color="warn">
+          </mat-progress-bar>
         </mat-card-footer>
       </mat-card>
     </div>
@@ -60,51 +39,27 @@
       <mat-card-content>
         <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
           <mat-form-field appearance="fill">
-            <mat-label>nueva Habilidad</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="skill"
-              #skill="ngModel"
-              ngModel
-              required
-            />
-            <mat-error>campo obligatorio</mat-error>
+            <mat-label>Habilidad</mat-label>
+            <input type="text" matInput value="" name="skill" #skill="ngModel" ngModel required/>
+            <mat-error>El campo es obligatorio</mat-error>
           </mat-form-field>
-          <br />
-          <mat-form-field appearance="fill">
-            <mat-label>icono</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="icon"
-              #icon="ngModel"
-              ngModel
-            />
-            <mat-hint>usar iconos de google fonts ej: brush</mat-hint>
+          <br/>
+          <mat-form-field appearance="fill" style="margin-bottom: 20px;">
+            <mat-label>Icono</mat-label>
+            <input type="text" matInput value="" name="icon" #icon="ngModel" ngModel/>
+            <mat-hint>Usar google fonts icons ej: brush</mat-hint>
           </mat-form-field>
-          <br />
+          <br/>
           <mat-form-field appearance="fill">
             <mat-label>Nivel</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="progress"
-              #progress="ngModel"
-              ngModel
-              required
-            />
-            <mat-error>campo obligatorio</mat-error>
-            <mat-hint>Ingrese un número del 1 al 100</mat-hint>
+            <input type="number" matInput value="" name="progress" #progress="ngModel" ngModel/>
+            <mat-hint style="margin-bottom: 5px;">Ingrese un número del 1 al 100</mat-hint>
           </mat-form-field>
           <mat-card-actions>
             <button mat-flat-button color="warn" (click)="closeAdd()">
               Cancelar
             </button>
-            <button type="submit" mat-stroked-button color="accent">
+            <button type="submit" mat-stroked-button color="accent" [disabled]="!addForm.valid">
               Confirmar
             </button>
           </mat-card-actions>
@@ -124,41 +79,20 @@
         <form [formGroup]="editForm" novalidate>
           <mat-form-field appearance="fill" color="primary">
             <mat-label for="skill">Habilidad</mat-label>
-            <input
-              type="text"
-              matInput
-              name="skill"
-              value=""
-              formControlName="skill"
-              required
-            />
-            <mat-error>campo obligatorio</mat-error>
+            <input type="text" matInput name="skill" value="" formControlName="skill" required/>
+            <mat-error>El campo es obligatorio</mat-error>
           </mat-form-field>
           <br />
-          <mat-form-field appearance="fill" color="primary">
+          <mat-form-field appearance="fill" color="primary" style="margin-bottom: 20px;">
             <mat-label for="icon">Icono</mat-label>
-            <input
-              type="text"
-              matInput
-              name="icon"
-              value=""
-              formControlName="icon"
-            />
+            <input type="text" matInput name="icon" value="" formControlName="icon"/>
             <mat-hint>usar iconos de google fonts ej: handshake</mat-hint>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" color="primary">
             <mat-label>Nivel</mat-label>
-            <input
-              type="text"
-              matInput
-              value=""
-              name="progress"
-              formControlName="progress"
-              required
-            />
+            <input type="number" matInput value="" name="progress" formControlName="progress"/>
             <mat-hint>Ingrese un número del 1 al 100</mat-hint>
-            <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
@@ -166,7 +100,7 @@
         <button mat-flat-button color="warn" (click)="closeEdit()">
           Cancelar
         </button>
-        <button mat-stroked-button color="accent" (click)="onEdit()">
+        <button mat-stroked-button color="accent" (click)="onEdit()" [disabled]="!editForm.valid">
           Confirmar
         </button>
       </mat-card-actions>
@@ -181,20 +115,10 @@
       <mat-divider inset></mat-divider>
       <mat-card-footer>
         <mat-card-actions>
-          <button
-            type="button"
-            mat-flat-button
-            color="warn"
-            (click)="closeDelete()"
-          >
+          <button type="button" mat-flat-button color="warn" (click)="closeDelete()">
             Cancelar
           </button>
-          <button
-            type="button"
-            mat-stroked-button
-            color="accent"
-            (click)="onDelete()"
-          >
+          <button type="button" mat-stroked-button color="accent" (click)="onDelete()">
             Confirmar
           </button>
         </mat-card-actions>
