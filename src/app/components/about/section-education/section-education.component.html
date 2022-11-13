@@ -42,7 +42,7 @@
                     <mat-form-field appearance="fill">
                         <mat-label  for="titulo">Título</mat-label>
                         <input type="text" matInput value="" name="titulo" #titulo="ngModel" ngModel required>
-                        <mat-error>campo obligatorio</mat-error>
+                        <mat-error>El campo es obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
@@ -85,29 +85,23 @@
                     <mat-form-field>
                         <mat-label  for="titulo">Nuevo título</mat-label>
                         <input type="text" matInput value="" name="titulo" formControlName="titulo" required>
-                        <mat-error>campo obligatorio</mat-error>
+                        <mat-error>El campo es obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
                         <mat-label for="detalle">Nivel Educativo</mat-label>
                         <input type="text" matInput value="ej: Universitario" name="detalle" formControlName="detalle">
-                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
-                        <mat-label  for="fechaIni">Año de inicio</mat-label>
+                        <mat-label for="fechaIni">Año de inicio</mat-label>
                         <input type="text" matInput value="" name="fechaIni" formControlName="fechaIni">
-                        <mat-hint>Ingrese solo el Año</mat-hint>
-                        <mat-error>campo obligatorio</mat-error>
                     </mat-form-field>
                     <br>
                     <mat-form-field>
                         <mat-label  for="fechaFin">Año de finalización</mat-label>
                         <input type="text" matInput value="" name="fechaFin" formControlName="fechaFin">
-                        <mat-hint>Ingrese solo el Año</mat-hint>
-                        <mat-error>campo obligatorio</mat-error>
-                    </mat-form-field>                    
-                    
+                    </mat-form-field>
                 </form>
                 <mat-card-actions>
                     <button type="button" mat-flat-button color="warn" (click)="closeEdit()">Cancelar</button>

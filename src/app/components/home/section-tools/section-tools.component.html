@@ -4,12 +4,7 @@
   </div>
 
   <div id="addMenu" *ngIf="isLogged">
-    <button
-      mat-mini-fab
-      color="warn"
-      aria-label="botón agregar"
-      (click)="add()"
-    >
+    <button mat-mini-fab color="warn" aria-label="botón agregar" (click)="add()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -31,11 +26,7 @@
           </h4>
         </mat-card-content>
         <mat-card-actions *ngIf="isLogged">
-          <button
-            mat-stroked-button
-            aria-label="botón editar"
-            (click)="editOpen(t)"
-          >
+          <button mat-stroked-button aria-label="botón editar" (click)="editOpen(t)">
             editar
           </button>
         </mat-card-actions>
@@ -43,6 +34,7 @@
     </div>
   </section>
 
+  <!--Crear-->
   <section *ngIf="modalAdd" class="modal">
     <!--@showTrigger se usa para activar la animacion -->
     <mat-card @showTrigger class="modal-container">
@@ -54,24 +46,24 @@
         <form #addForm="ngForm" (ngSubmit)="submit(addForm)" novalidate>
           <mat-form-field appearance="fill">
             <mat-label for="nombre">nombre</mat-label>
-            <input type="text" matInput name="nombre" value="" ngModel #nombre="ngModel" required/>
+            <input type="text" matInput name="nombre" value="" ngModel #nombre="ngModel" required />
             <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br>
           <mat-form-field appearance="fill">
             <mat-label for="imagen">imagen</mat-label>
-            <input type="text" matInput name="imagen" value="" ngModel #imagen="ngModel"/>
+            <input type="text" matInput name="imagen" value="" ngModel #imagen="ngModel" />
           </mat-form-field>
           <br>
-        
-        <mat-card-actions>
-          <button mat-flat-button color="warn" (click)="closeAdd()">
-            Cancelar
-          </button>
-          <button type="submit" mat-stroked-button color="accent">
-            Confirmar
-          </button>
-        </mat-card-actions>
+
+          <mat-card-actions>
+            <button mat-flat-button color="warn" (click)="closeAdd()">
+              Cancelar
+            </button>
+            <button type="submit" mat-stroked-button color="accent" [disabled]="!addForm.valid">
+              Confirmar
+            </button>
+          </mat-card-actions>
         </form>
       </mat-card-content>
     </mat-card>
@@ -87,26 +79,13 @@
         <form [formGroup]="editForm" novalidate>
           <mat-form-field appearance="fill" color="primary">
             <mat-label for="nombre">Nombre</mat-label>
-            <input
-              type="text"
-              matInput
-              name="nombre"
-              value=""
-              formControlName="nombre"
-              required
-            />
+            <input type="text" matInput name="nombre" value="" formControlName="nombre" required/>
             <mat-error>campo obligatorio</mat-error>
           </mat-form-field>
           <br />
           <mat-form-field appearance="fill" color="primary">
             <mat-label for="imagen">URL imagen</mat-label>
-            <input
-              type="text"
-              matInput
-              name="imagen"
-              value=""
-              formControlName="imagen"
-            />
+            <input type="text" matInput name="imagen" value="" formControlName="imagen"/>
           </mat-form-field>
           <br />
         </form>
@@ -114,7 +93,7 @@
           <button mat-flat-button color="warn" (click)="editClose()">
             Cancelar
           </button>
-          <button mat-stroked-button color="accent" (click)="onEdit()">
+          <button mat-stroked-button color="accent" (click)="onEdit()" [disabled]="!editForm.valid">
             Confirmar
           </button>
         </mat-card-actions>
@@ -125,16 +104,16 @@
   <!--Borrar-->
   <section *ngIf="modalDelete" class="modal">
     <mat-card @showTrigger class="modal-delete">
-        <mat-card-header>
-            <mat-card-title>¿Borrar Formación?</mat-card-title>
-        </mat-card-header>
-        <mat-divider inset></mat-divider>
-        <mat-card-footer>
-            <mat-card-actions>
-                <button type="button" mat-flat-button color="warn" (click)="closeDelete()">Cancelar</button>
-                <button type="button" mat-stroked-button color="accent" (click)="onDelete()">Confirmar</button>
-            </mat-card-actions>
-        </mat-card-footer>
+      <mat-card-header>
+        <mat-card-title>¿Borrar Formación?</mat-card-title>
+      </mat-card-header>
+      <mat-divider inset></mat-divider>
+      <mat-card-footer>
+        <mat-card-actions>
+          <button type="button" mat-flat-button color="warn" (click)="closeDelete()">Cancelar</button>
+          <button type="button" mat-stroked-button color="accent" (click)="onDelete()">Confirmar</button>
+        </mat-card-actions>
+      </mat-card-footer>
     </mat-card>
   </section>
 </section>
