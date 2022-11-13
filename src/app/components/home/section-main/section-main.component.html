@@ -79,7 +79,7 @@
           <button  type="button" mat-flat-button color="warn" aria-label="botón cancelar" (click)="editClose()">
             Cancelar
           </button>
-          <button  type="button" mat-stroked-button color="accent" aria-label="botón confirmar cambios" (click)="onEdit()">
+          <button  type="button" mat-stroked-button color="accent" aria-label="botón confirmar cambios" (click)="onEdit()" [disabled]="!editForm.valid">
             Confirmar
           </button>
         </mat-card-actions>
