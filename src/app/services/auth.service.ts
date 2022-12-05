@@ -10,7 +10,7 @@ import { UserLogin } from '../model/UserLogin.model';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL = 'https://portfoliodg.herokuapp.com/auth';
+  authURL = 'https://web-production-0d34.up.railway.app/auth';
   /*authURL = 'http://localhost:8080/auth';*/
 
   constructor(private http: HttpClient) { }
